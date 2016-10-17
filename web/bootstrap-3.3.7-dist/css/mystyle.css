@@ -1,0 +1,53 @@
+#myForm{
+    margin:80px auto;
+    border:1px solid #F9F9F8;
+    border-radius:15px;
+    width:400px;
+    height:500px;
+    background-color:#F9FFF1;
+}
+body{
+    background-color:#DDFFB3;
+
+}
+
+#myForm div>p {
+    padding: 10px 10px;
+}
+#myForm .data , .inputs{
+
+     margin-top:125px;
+}
+.data{
+    width:39%;
+    display:inline-block;
+    text-align:right;
+    margin:0 auto;
+}
+.inputs{
+    width:59%;
+    display:inline-block;
+    margin:0 auto;
+}
+.select{
+    margin:20px auto;
+    width:50%;
+    text-align:center;
+}
+.inputs input, .select select{
+    border-radius:8px;
+    padding:3px;
+    outline:none;
+}
+#logIn{
+    margin:100px auto;
+    width:50%;
+    text-align:center;
+}
+#logIn >button{
+    width:90px;
+    outline:none;
+    border-radius:10px;
+    background: #ffffff;
+    padding:10px;
+}
