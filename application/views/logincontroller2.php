@@ -5,7 +5,9 @@
  * Date: 10/17/2016
  * Time: 9:11 PM
  */
+echo 'MM';
 try{
+
     $link = @mysqli_connect('localhost','root','Sta19Hor','upwego');
     if(!$link){
         throw new Exception(' Cannot connect to DB' );
