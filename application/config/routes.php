@@ -55,4 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 $route['profiler'] = "Profiler_controller";
 $route['profiler/disable'] = "Profiler_controller/disable";
 
-$route['loginvalidation'] = "login/index";
+//$route['loginvalidation'] = "login/index";

@@ -12,21 +12,21 @@
 </head>
 <body>
     <div id="myForm">
-        <form id="form1">
+        <form id="form1" action="<?php echo site_url('login/index') ?>">
             <div class="data">
                 <p>User:</p>
                 <p>Password:</p>
             </div>
             <div class="inputs">
-                <p><input type="text" name="username" placeholder="Insert your name here"></p>
-                <p><input type="password" name="password" placeholder="Insert your password here"></p>
+                <p><input class="userpass" type="text" name="username" placeholder="Insert your name here"></p>
+                <p><input class="userpass" type="password" name="password" placeholder="Insert your password here"></p>
             </div>
-            <div class="select"><select>
+            <!--<div class="select"><select>
                     <option disabled selected>-- Select an option --</option>
                     <option>USER</option>
                     <option>ADMIN</option>
                 </select>
-            </div>
+            </div>-->
             <div id="logIn"><button id="btn1" type="button">Log in</button></div>
         </form>
     </div>

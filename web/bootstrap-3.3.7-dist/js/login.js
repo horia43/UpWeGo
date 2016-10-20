@@ -12,20 +12,8 @@ $(document).ready(function(){
     });
 
     function submitAction(){
-/*        var base_url = "<?php echo base_url();?>";
-        var base_url = window.location.origin;*/
-        //var url = "topoftable()";
-        //var base_url = '<?php echo base_url();?>';
-        //base_url+='/application/controllers/login.php';
-        //alert(base_url);
-        //var a='<?php echo site_url('application/controllers/login.php')?>';
         $.ajax({
-            // url:base_url+"application/controllers/login.php", // pun " , " intre elementele trimise / parametrii
-            url: 'loginvalidation',
-            //url: '<?php echo base_url("index.php/application/controllers/login.php");?>',
-            //url: 'application/controllers/login.php',
-            //url: url,
-            //url: base_url,
+            url: $('#form1').attr("action"),
 
             data:$('#form1').serializeArray(),    // data=  ce trimit eu la script ( php )
             dataType: 'json',
@@ -37,6 +25,11 @@ $(document).ready(function(){
 
                 }else{
                     alert(response.msg);
+                    document.getElementsByTagName("input")[1].value='';
+
+                    //$("#form1")[0].reset();
+                    //document.getElementsByClassName("userpass")[0].value='';
+                    //document.getElementsByTagName("input")[1].style.border='5px dashed red';
                 }
             },
             type:'POST'

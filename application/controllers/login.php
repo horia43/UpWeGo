@@ -30,23 +30,30 @@ class Login extends CI_Controller
     {
 
         try {
-
-            $link = @mysqli_connect('localhost', 'root', 'Sta19Hor', 'upwego');
+            $this->load->database();
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            print_r($username);
+            $this->db->where('username', $username);
+            $query = $this->db->get('user');
+            $users = $query->result_array();
+            print_r($users);
+            die;
+            /*$link = @mysqli_connect('localhost', 'root', 'Sta19Hor', 'upwego');
             if (!$link) {
                 throw new Exception(' Cannot connect to DB');
             }
-            mysqli_select_db($link, "first"); // Use DB
             if (empty($_POST["username"])) {
                 throw new Exception("Umpleti campul 1");  // orice mesaj de eroare prind aici o sa il abordez in catch
             }
             if (($_POST["password"]) == '') {
                 throw new Exception("Umpleti campul 2");  // orice mesaj de eroare prind aici o sa il abordez in catch
             }
-            $query = mysqli_query($link, "SELECT * FROM user WHERE username='" . $_POST['username'] . "'");
-            if (mysqli_num_rows($query) == 0) {
-                throw new Exception("Username or password not valid");
+            $query = mysqli_query($link, "SELECT * FROM user WHERE username='".$_POST['username']."'");
+            if (mysqli_num_rows($query) < 1) {
+                throw new Exception("Username or password not valid!!!");
             } else {
-                $query = mysqli_query($link, "SELECT * FROM user WHERE username='" . $_POST['username'] . "' AND password='" . $_POST['password'] . "'");
+                $query = mysqli_query($link,"SELECT * FROM user WHERE username='".$_POST['username']."' AND password='".$_POST['password']."'");
                 if (mysqli_num_rows($query) == 0) {
                     throw new Exception("Username or password not valid");
                 } else {
@@ -55,7 +62,7 @@ class Login extends CI_Controller
                     );
                 }
                 $link->close();
-            }
+            }*/
         } catch (Exception $e) {
             $response = array(
                 "success" => false, // e o cheie de tip string success
