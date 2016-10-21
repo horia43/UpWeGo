@@ -33,11 +33,52 @@ class Login extends CI_Controller
             $this->load->database();
             $username = $this->input->post('username');
             $password = $this->input->post('password');
+            echo 'Username: ';
             print_r($username);
-            $this->db->where('username', $username);
-            $query = $this->db->get('user');
-            $users = $query->result_array();
-            print_r($users);
+            echo '<br>Password: ';
+            print_r($password);
+
+            //$array = array('username' => $username, 'password' => $password);
+
+            //$query=$this->db->where($array);
+            //$query = $this->db->where('username',$username)->where('password',$password);
+
+            //$query = $this->db->get_where('user', array('username' => $username, 'password' => $password));
+            echo 'SELECT username,password FROM user WHERE username="'.$username.'" AND password="'.$password.'"';
+            //$query=$this->db->query('SELECT username,password FROM user WHERE username="'.$username.'" AND password="'.$password.'"');
+            $query=$this->db->query('SELECT username FROM user');
+            //$query=$this->db->query($hope);
+            //$query=$this->db->query('SELECT username FROM user WHERE username="$username"');
+            if($query->num_rows()>0) {
+                echo "<br>Super";
+                $records = $query->result();
+                for($i=0; $i<count($records); $i++) {
+                    $record = $records[$i];
+                    echo "<br>------".$record->username.'<br>';
+                }
+
+
+                foreach ($query->result() as $row)
+                {
+                    echo "username".$row->username."<br>";
+                }
+
+            }
+
+
+
+            else
+                echo"<br>That's too bad";
+            //$show  = $query->result_array();
+            //echo $query;
+            //echo $query->result();
+            //echo $query->result_array();
+            echo '<pre>';
+            var_dump($query);
+            //$this->db->where('username', $username);
+            //$query = $this->db->get('user');            //SELECT * FROM user ( mysql table )
+            //$users = $query->result_array();
+            //print_r($users);
             die;
             /*$link = @mysqli_connect('localhost', 'root', 'Sta19Hor', 'upwego');
             if (!$link) {
