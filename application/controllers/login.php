@@ -30,57 +30,62 @@ class Login extends CI_Controller
     {
 
         try {
+
             $this->load->database();
             $username = $this->input->post('username');
             $password = $this->input->post('password');
-            echo 'Username: ';
-            print_r($username);
-            echo '<br>Password: ';
-            print_r($password);
 
-            //$array = array('username' => $username, 'password' => $password);
-
-            //$query=$this->db->where($array);
-            //$query = $this->db->where('username',$username)->where('password',$password);
+            $query=$this->db->query('SELECT username,password FROM user WHERE username="'.$username.'" AND password="'.$password.'"');
 
             //$query = $this->db->get_where('user', array('username' => $username, 'password' => $password));
-            echo 'SELECT username,password FROM user WHERE username="'.$username.'" AND password="'.$password.'"';
-            //$query=$this->db->query('SELECT username,password FROM user WHERE username="'.$username.'" AND password="'.$password.'"');
-            $query=$this->db->query('SELECT username FROM user');
-            //$query=$this->db->query($hope);
-            //$query=$this->db->query('SELECT username FROM user WHERE username="$username"');
-            if($query->num_rows()>0) {
-                echo "<br>Super";
-                $records = $query->result();
-                for($i=0; $i<count($records); $i++) {
-                    $record = $records[$i];
-                    echo "<br>------".$record->username.'<br>';
-                }
 
-
-                foreach ($query->result() as $row)
-                {
-                    echo "username".$row->username."<br>";
-                }
-
-            }
+            /*$this->db->where('username', $username);
+            $this->db->where('password', $password);
+            $query = $this->db->get('user');*/
 
 
 
-            else
-                echo"<br>That's too bad";
-            //$show  = $query->result_array();
-            //echo $query;
-            //echo $query->result();
-            //echo $query->result_array();
+            /*$this->db->where('username', $username);
+            $query = $this->db->get('user');            //SELECT * FROM user ( mysql table )
+            $users = $query->result_array();
             echo '<pre>';
-            var_dump($query);
-            //$this->db->where('username', $username);
-            //$query = $this->db->get('user');            //SELECT * FROM user ( mysql table )
-            //$users = $query->result_array();
-            //print_r($users);
-            die;
-            /*$link = @mysqli_connect('localhost', 'root', 'Sta19Hor', 'upwego');
+            print_r($users);
+            echo '</pre>';
+            print_r($users);
+            die;*/
+
+            /*if ($query->num_rows() == 0) {
+                throw new Exception("Invalid input data.");
+            }
+            else{
+                $response = array(
+                    "success" => true
+                );
+            }*/
+
+            if ($query->num_rows() == 0) {
+                throw new Exception("Invalid input data.");
+                }
+            elseif ($query->num_rows() > 1) {
+                throw new Exception("Error in Database. Please contact our support.");
+            }elseif($query->num_rows() == 1){
+                $isAdmin=$this->db->query('SELECT admin FROM user WHERE username="'.$username.'" AND password="'.$password.'"');
+                if($isAdmin=='1'){
+                    $response = array(
+                        "success" => true,
+                        "isAdmin" => true
+                    );
+                }else{
+                    $response = array(
+                        "success" => true,
+                        "isAdmin" => false
+                    );
+                }
+            }else{
+                throw new Exception("There is a problem our developer didn't think about. Please contact our support.");
+            }
+        /*
+            $link = @mysqli_connect('localhost', 'root', 'Sta19Hor', 'upwego');
             if (!$link) {
                 throw new Exception(' Cannot connect to DB');
             }
@@ -103,7 +108,8 @@ class Login extends CI_Controller
                     );
                 }
                 $link->close();
-            }*/
+            }
+        */
         } catch (Exception $e) {
             $response = array(
                 "success" => false, // e o cheie de tip string success
