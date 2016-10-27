@@ -26,8 +26,13 @@ class Login extends CI_Controller
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
+    function __construct()
+    {
+        parent::__construct();
+    }
     public function index()
     {
+
 
         try {
 
@@ -35,7 +40,7 @@ class Login extends CI_Controller
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
-            $query=$this->db->query('SELECT username,password FROM user WHERE username="'.$username.'" AND password="'.$password.'"');
+            $query=$this->db->query('SELECT username,password,admin FROM user WHERE username="'.$username.'" AND password="'.$password.'"');
 
             //$query = $this->db->get_where('user', array('username' => $username, 'password' => $password));
 
@@ -69,17 +74,41 @@ class Login extends CI_Controller
             elseif ($query->num_rows() > 1) {
                 throw new Exception("Error in Database. Please contact our support.");
             }elseif($query->num_rows() == 1){
-                $isAdmin=$this->db->query('SELECT admin FROM user WHERE username="'.$username.'" AND password="'.$password.'"');
-                if($isAdmin=='1'){
+//                $isAdmin=$this->db->query('SELECT admin FROM user WHERE username="'.$username.'" AND password="'.$password.'"')->result_array();
+
+                $isAdmin = $query->result_array()[0]['admin'];
+                if($isAdmin){
                     $response = array(
                         "success" => true,
                         "isAdmin" => true
                     );
+
+                    $sessiondata= array(
+                        'username'  => $username,
+                        'email'     => 'johndoe@some-site.com',
+                        'logged_in' => TRUE,
+                        'isAdmin' => true,
+                        'password' => $password
+                    );
+                    $this->session->set_userdata('logged_in',$sessiondata);
                 }else{
+
                     $response = array(
                         "success" => true,
                         "isAdmin" => false
                     );
+
+                    $sessiondata = array(
+                        'username'  => $username,
+                        'email'     => 'johndoe@some-site.com',
+                        'logged_in' => TRUE,
+                        'password' => $password,
+                        'isAdmin' => false
+                    );
+
+                    //var_dump($isAdmin);
+
+                    $this->session->set_userdata('logged_in',$sessiondata);
                 }
             }else{
                 throw new Exception("There is a problem our developer didn't think about. Please contact our support.");

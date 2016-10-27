@@ -7,5 +7,5 @@
  */
 
 echo "Text scris";
-echo "EU SUNT ADMIN !";
+echo "EU SUNT USER !";
 ?>
