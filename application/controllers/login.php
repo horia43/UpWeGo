@@ -40,15 +40,15 @@ class Login extends CI_Controller
             $username = $this->input->post('username');
             $password = $this->input->post('password');
 
-            $query=$this->db->query('SELECT username,password,admin FROM user WHERE username="'.$username.'" AND password="'.$password.'"');
+            $query=$this->db->query('SELECT username,password,admin,email FROM user WHERE username="'.$username.'" AND password="'.$password.'"');
 
-            //$query = $this->db->get_where('user', array('username' => $username, 'password' => $password));
+            /*
+             * $query = $this->db->get_where('user', array('username' => $username, 'password' => $password));
+             * */
 
             /*$this->db->where('username', $username);
             $this->db->where('password', $password);
             $query = $this->db->get('user');*/
-
-
 
             /*$this->db->where('username', $username);
             $query = $this->db->get('user');            //SELECT * FROM user ( mysql table )
@@ -69,14 +69,14 @@ class Login extends CI_Controller
             }*/
 
             if ($query->num_rows() == 0) {
-                throw new Exception("Invalid input data.");
+                throw new Exception("Invalid input data. Right here.");
                 }
             elseif ($query->num_rows() > 1) {
                 throw new Exception("Error in Database. Please contact our support.");
             }elseif($query->num_rows() == 1){
-//                $isAdmin=$this->db->query('SELECT admin FROM user WHERE username="'.$username.'" AND password="'.$password.'"')->result_array();
 
-                $isAdmin = $query->result_array()[0]['admin'];
+                $isAdmin = $query->result_array()[0]['admin']; /// Select from first result, the 'admin' property
+                $email =$query->result_array()[0]['email'];
                 if($isAdmin){
                     $response = array(
                         "success" => true,
@@ -85,7 +85,7 @@ class Login extends CI_Controller
 
                     $sessiondata= array(
                         'username'  => $username,
-                        'email'     => 'johndoe@some-site.com',
+                        'email'     => $email,
                         'logged_in' => TRUE,
                         'isAdmin' => true,
                         'password' => $password
@@ -100,13 +100,11 @@ class Login extends CI_Controller
 
                     $sessiondata = array(
                         'username'  => $username,
-                        'email'     => 'johndoe@some-site.com',
+                        'email'     => $email,
                         'logged_in' => TRUE,
                         'password' => $password,
                         'isAdmin' => false
                     );
-
-                    //var_dump($isAdmin);
 
                     $this->session->set_userdata('logged_in',$sessiondata);
                 }

@@ -51,3 +51,40 @@ body{
     background: #ffffff;
     padding:10px;
 }
+fieldset label, fieldset input{
+
+}
+fieldset label{
+    display:inline-block;
+    width:130px;
+    text-align:right;
+    padding:10px;
+}
+fieldset input{
+    padding:2px;
+    border-radius:6px;
+    border:2px solid green;
+    outline:none;
+}
+#addPhoto:hover{
+    opacity:0.8;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

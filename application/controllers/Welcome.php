@@ -32,11 +32,13 @@ class Welcome extends CI_Controller {
 		$this->load->view('login');
         //$this->tralala();
 	}
-	public function createSession()   // http://localhost/UpWeGo/index.php/welcome/toAdminPage
+
+	/*public function createSession()   // http://localhost/UpWeGo/index.php/welcome/toAdminPage
     {
 
         if($this->session->userdata('logged_in'))
         {
+
             $session_data = $this->session->userdata('logged_in');
             $data['username'] = $session_data['username'];
             $data['password'] = $session_data['password'];  // doar pentru testare
@@ -44,6 +46,7 @@ class Welcome extends CI_Controller {
 
             $data['isAdmin'] = $session_data['isAdmin'];    // doar pentru testare
             $data['logged_in'] = $session_data['logged_in'];
+            //$this->load->view('ListUsers',$data);
         }
         else
         {
@@ -53,5 +56,10 @@ class Welcome extends CI_Controller {
 
 
 
+    }*/
+
+
+    public function tralala(){
+        $this->load->view('second');
     }
 }

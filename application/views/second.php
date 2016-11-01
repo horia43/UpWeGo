@@ -6,6 +6,6 @@
  * Time: 5:02 PM
  */
 
-echo "Text scris";
+
 echo "EU SUNT USER !";
 ?>

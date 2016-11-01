@@ -22,12 +22,14 @@ $(document).ready(function () {
                 if (response.success) {
                     alert("REDIRECTING TO NEXT PAGE");
                     if (response.isAdmin) {
-                        window.location.href = "welcome/createSession";
+                        //window.location.href = "welcome/createSession";
                         window.location.href = "admin";
                         /*window.location.href = "http://localhost/ex1/2.html";*/
+                        /*window.location.href = "http://localhost/ex1/2.html";*/
                     } else {
-                        window.location.href = "welcome/createSession";
-                        window.location.href = "welcome/createSession";
+                        //window.location.href = "welcome/createSession";
+                        //window.location.href = "admin";
+                        window.location.href = "welcome/tralala";
                     }
                 } else {
                     alert(response.msg);
