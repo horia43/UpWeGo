@@ -6,14 +6,16 @@
     <title>Add User</title>
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/css/mystyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>/web/bootstrap-3.3.7-dist/js/adduser.js" ></script>
+
 
 </head>
 <body>
 <div style="border:3px solid #2E4209; border-radius:5px; margin:0 auto; width:600px; height:350px; margin-top:120px;">
 
     <form  method="post" action="<?php echo site_url('admin/adduser') ?>">
-        <div style="height:50px;overflow:hidden">
+        <div style="height:0px;overflow:hidden">
             <input type="file" id="fileInput" name="fileInput" accept="image/*" />
         </div>
 
