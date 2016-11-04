@@ -41,7 +41,7 @@
     <?php foreach($myUsers as  $user): ?>
         <tr>
             <!--<td><img src="<?php /*echo $user['picture']; */?>" alt=" :( "></td>-->
-            <td><img src="data:image/jpeg;base64,'<?php base64_encode( $user['picture'] );?>'"/> </td>
+            <td><?php echo ( $user['picture'] );?><img src="data:image/jpeg;base64,'<?php base64_encode( $user['picture'] );?>'"/> </td>
             <td><?=$user['firstname']; ?></td>
             <td><?=$user['lastname']; ?></td>
             <td><?=$user['username']; ?></td>
@@ -50,7 +50,6 @@
             <td><a href="#">Edit</a></td>
             <td><a href="#">Delete</a></td>
         </tr>
-        <tr><td><?php echo ( $user['picture'] );?></td></tr>
     <?php endforeach;?>
 
     </tbody>

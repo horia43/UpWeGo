@@ -96,7 +96,7 @@ class Admin extends CI_Controller
     function pageadduser()
     {
         if ($this->input->post()) {
-            var_dump($_FILES);
+            //var_dump($_FILES);
             $this->load->database();
             //echo $_POST['firstname'];
             //echo $this->input->post('firstname');
