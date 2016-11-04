@@ -38,9 +38,10 @@
     </tr>
     </thead>
     <tbody>
-    <?php foreach($myUsers as $user): ?>
+    <?php foreach($myUsers as  $user): ?>
         <tr>
-            <td><?=$user['picture']; ?></td>
+            <!--<td><img src="<?php /*echo $user['picture']; */?>" alt=" :( "></td>-->
+            <td><img src="data:image/jpeg;base64,'<?php base64_encode( $user['picture'] );?>'"/> </td>
             <td><?=$user['firstname']; ?></td>
             <td><?=$user['lastname']; ?></td>
             <td><?=$user['username']; ?></td>
@@ -49,10 +50,24 @@
             <td><a href="#">Edit</a></td>
             <td><a href="#">Delete</a></td>
         </tr>
+        <tr><td><?php echo ( $user['picture'] );?></td></tr>
     <?php endforeach;?>
 
     </tbody>
 </table>
+<?php foreach($myUsers as $user): ?>
+<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $user['picture'] ).'"/>'; ?>
+<?php endforeach;?>
+<br>
+<?php foreach($myUsers as $user): ?>
+    <img src="data:image/jpeg;base64,<?php echo base64_encode($user['picture']) ?>" />
+<?php endforeach;?>
+<br>
+<?php foreach($myUsers as $key => $user): ?>
+    <!--<img width="550" src="getimage.php?ImageId=<?php /*echo mysql_result($res,$i,"ImageId"); */?>  "/>
+    <img width="550" src="getimage.php?ImageId=<?php /*echo mysql_result($res,$i,$_GET[ImageId]); */?>  "/>-->
+    <img src="getimage.php?imageID=<?php echo $key ?>" />
+<?php endforeach;?>
 
 <button type="button" style="margin-left:350px; margin-top:20px; width:100px; height:30px; background-color:#ECFFC7;
         border-color:white; outline:none;"

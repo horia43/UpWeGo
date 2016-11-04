@@ -51,9 +51,6 @@ body{
     background: #ffffff;
     padding:10px;
 }
-fieldset label, fieldset input{
-
-}
 fieldset label{
     display:inline-block;
     width:130px;
@@ -70,8 +67,6 @@ fieldset input{
     opacity:0.8;
     cursor: pointer;
 }
-
-
 
 
 

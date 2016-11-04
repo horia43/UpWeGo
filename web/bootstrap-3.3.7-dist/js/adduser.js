@@ -3,9 +3,6 @@
  */
 
 
-function chooseFile() {
-    document.getElementById("fileInput").click();
-}
 
 
 //$("#fileInput").on('change', function() {
@@ -22,21 +19,27 @@ function chooseFile() {
 //var filename = $('input[type=file]').val().replace(/C:\\fakepath\\/i, '');
 //document.getElementById("addPhoto").src="https://s-media-cache-ak0.pinimg.com/originals/7a/b9/d1/7ab9d1065843c220175b59b936eb955b.jpg";
 //document.getElementById("addPhoto").src=tmppath;
-$( document ).ready(function() {
-function readURL(input) {
-
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#addPhoto').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
+function chooseFile() {
+    document.getElementById("fileInput").click();
 }
+$(document).ready(function () {
 
-$("#fileInput").change(function () {
-    readURL(this);
-});
+
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#addPhoto').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#fileInput").change(function () {
+        readURL(this);
+    });
 });

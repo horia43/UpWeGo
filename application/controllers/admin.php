@@ -7,7 +7,10 @@
  */
 //  session_start(); ///////////////////
 
-
+// require mail gun autoload
+/// ii trimit un link si ii aparenew password - repeat new password
+//un unique id  din php ca sa creez string/ token -ul respectiv pe care trebuie sa il am in baza de date
+//
 class Admin extends CI_Controller
 {
 
@@ -92,46 +95,55 @@ class Admin extends CI_Controller
 
     function pageadduser()
     {
+        if ($this->input->post()) {
+            var_dump($_FILES);
+            $this->load->database();
+            //echo $_POST['firstname'];
+            //echo $this->input->post('firstname');
+
+            $this->db->select('username');
+            $this->db->where('username=', $this->input->post('username'));
+            $query = $this->db->get('user');
+
+            $this->db->select('firstname,lastname');
+            $this->db->where('firstname=', $this->input->post('firstname'));
+            $this->db->where('lastname=', $this->input->post('lastname'));
+            $query2 = $this->db->get('user');
+
+
+            if ($query->num_rows() > 0) {
+                $message = "Username already exists. Please try a different username.";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+//                $this->load->view('adduser');
+                //echo('Username already exists. Please try a different username.');
+            } elseif ($query2->num_rows() > 0) {
+                $message = "This person already exists in database.";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+//                $this->load->view('adduser');
+            } elseif (!(filter_var($this->input->post('email'), FILTER_VALIDATE_EMAIL))) {
+                $message = "This email is not valid.";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+            } else {
+
+                $data = array(
+                    'picture' =>$this->input->post('fileInput'),
+                    'firstname' => $this->input->post('firstname'),
+                    'lastname' => $this->input->post('lastname'),
+                    'email' => $this->input->post('email'),
+                    'username' => $this->input->post('username'),
+                    'admin' => '0'
+
+                );
+                $this->db->insert('user', $data);
+
+                redirect('admin', 'refresh');
+            }
+        }
+
+
         $this->load->view("adduser");
     }
 
-    function adduser()
-    {
-        $this->load->database();
-        //echo $_POST['firstname'];
-        //echo $this->input->post('firstname');
-
-        $this->db->select('username');
-        $this->db->where('username=', $_POST['username']);
-        $query = $this->db->get('user');
-
-        $this->db->select('firstname,lastname');
-        $this->db->where('firstname=', $_POST['firstname']);
-        $this->db->where('lastname=', $_POST['lastname']);
-        $query2 = $this->db->get('user');
-
-
-        if ($query->num_rows() > 0) {
-            $message = "Username already exists. Please try a different username.";
-            echo "<script type='text/javascript'>alert('$message');</script>";
-            $this->load->view('adduser');
-            //echo('Username already exists. Please try a different username.');
-        }elseif($query2->num_rows() > 0){
-            $message = "This person already exists in database.";
-            echo "<script type='text/javascript'>alert('$message');</script>";
-            $this->load->view('adduser');
-        } else {
-            $data = array(
-                'firstname' => $_POST['firstname'],
-                'lastname' => $_POST['lastname'],
-                'email' => $_POST['email'],
-                'username' => $_POST['username'],
-                'admin' => '0'
-
-            );
-            $this->db->insert('user', $data);
-        }
-    }
 
     function logout()
     {
