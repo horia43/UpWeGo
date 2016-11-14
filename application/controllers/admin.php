@@ -96,10 +96,7 @@ class Admin extends CI_Controller
     function pageadduser()
     {
         if ($this->input->post()) {
-            //var_dump($_FILES);
             $this->load->database();
-            //echo $_POST['firstname'];
-            //echo $this->input->post('firstname');
 
             $this->db->select('username');
             $this->db->where('username=', $this->input->post('username'));
@@ -114,30 +111,30 @@ class Admin extends CI_Controller
             if ($query->num_rows() > 0) {
                 $message = "Username already exists. Please try a different username.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
-//                $this->load->view('adduser');
-                //echo('Username already exists. Please try a different username.');
             } elseif ($query2->num_rows() > 0) {
                 $message = "This person already exists in database.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
-//                $this->load->view('adduser');
             } elseif (!(filter_var($this->input->post('email'), FILTER_VALIDATE_EMAIL))) {
                 $message = "This email is not valid.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } else {
+
+                $extension_pos = strrpos($this->input->post('fileInputName'), '.'); // find position of the last dot, so where the extension starts
+                $new_name = $this->input->post('username')."_".uniqid().substr($this->input->post('fileInputName'), $extension_pos);
+
 
                 $config['upload_path']          = './upload/';
                 $config['allowed_types']        = 'gif|jpg|png';
                 $config['max_size']             = 8192000;
                 $config['max_width']            = 9000;
                 $config['max_height']           = 9000;
+                $config['file_name']            = $new_name;
 
                 $this->load->library('upload', $config);
                 $this->upload->do_upload('fileInput');
-                //print_r($this->upload->data('fileInput'));
-                //die;
-                //echo "fileInput value: ".$this->input->post('fileInput');
+
                 $data = array(
-                    'picture' =>$this->input->post('fileInputName'),
+                    'picture' =>$new_name,
                     'firstname' => $this->input->post('firstname'),
                     'lastname' => $this->input->post('lastname'),
                     'email' => $this->input->post('email'),
@@ -154,6 +151,70 @@ class Admin extends CI_Controller
 
         $this->load->view("adduser");
     }
+
+    function pageedituser()
+    {
+        if ($this->input->post()) {
+
+            $this->load->database();
+
+            $this->db->select('username');
+            $this->db->where('username=', $this->input->post('username'));
+            $query = $this->db->get('user');
+
+            $this->db->select('firstname,lastname');
+            $this->db->where('firstname=', $this->input->post('firstname'));
+            $this->db->where('lastname=', $this->input->post('lastname'));
+            $query2 = $this->db->get('user');
+
+
+            if ($query->num_rows() > 0) {
+                $message = "Username already exists. Please try a different username.";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+            } elseif ($query2->num_rows() > 0) {
+                $message = "This person already exists in database.";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+            } elseif (!(filter_var($this->input->post('email'), FILTER_VALIDATE_EMAIL))) {
+                $message = "This email is not valid.";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+            } else {
+
+                $extension_pos = strrpos($this->input->post('fileInputName'), '.'); // find position of the last dot, so where the extension starts
+                $new_name = $this->input->post('username')."_".uniqid().substr($this->input->post('fileInputName'), $extension_pos);
+
+
+                $config['upload_path']          = './upload/';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_size']             = 8192000;
+                $config['max_width']            = 9000;
+                $config['max_height']           = 9000;
+                $config['file_name']            = $new_name;
+
+                $this->load->library('upload', $config);
+                $this->upload->do_upload('fileInput');
+
+                $data = array(
+                    'picture' =>$new_name,
+                    'firstname' => $this->input->post('firstname'),
+                    'lastname' => $this->input->post('lastname'),
+                    'email' => $this->input->post('email'),
+                    'username' => $this->input->post('username'),
+                    'admin' => '0'
+
+                );
+                $this->db->insert('user', $data);
+
+                redirect('admin', 'refresh');
+            }
+        }
+
+
+        $this->load->view("adduser");
+    }
+
+
+
+
 
 
     function logout()
