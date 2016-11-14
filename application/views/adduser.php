@@ -17,6 +17,7 @@
     <form method="post" enctype="multipart/form-data">
         <div style="height:0px;overflow:hidden">
             <input type="file" id="fileInput" name="fileInput" accept="image/*"/>
+            <input type="text" name="fileInputName" id="fileInputName" value=""></input>
         </div>
 
         <div style="float:left; width:150px; height:150px; margin-left:25px; margin-top:50px; margin-right:5px; border-radius:50%; background-color:#DDFFB3; ">

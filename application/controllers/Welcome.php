@@ -59,6 +59,6 @@ class Welcome extends CI_Controller {
 
 
     public function tralala(){
-        $this->load->view('second');
+        $this->load->view('pinql');
     }
 }

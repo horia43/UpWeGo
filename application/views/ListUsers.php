@@ -41,7 +41,10 @@
     <?php foreach($myUsers as  $user): ?>
         <tr>
             <!--<td><img src="<?php /*echo $user['picture']; */?>" alt=" :( "></td>-->
-            <td><?php echo ( $user['picture'] );?><img src="data:image/jpeg;base64,'<?php base64_encode( $user['picture'] );?>'"/> </td>
+            <!--<td><?php /*echo ( $user['picture'] );*/?><img src=<?php /*echo $user['picture']; */?>"data:image/jpeg;base64,'<?php /*base64_encode( $user['picture'] );*/?>'"/> </td>-->
+            <!--<td><?php /*echo ( $user['picture'] );*/?><img width="80px" height="80px" style="border-radius:50%;"  src="<?php /*echo base_url()*/?>/upload/<?php /*echo $user['picture']; */?>"/> </td>-->
+            <!--<td><?php /*echo ( $user['picture'] );*/?><img width="150px" height="150px" style="border-radius:50%;"  src="<?php /*echo base_url()*/?>/upload/<?php /*echo $user['picture']; */?>"  alt="Image not found" onerror="this.onerror=null;this.src='<?php /*echo base_url()*/?>/upload/noprofilepic.jpg';"/> </td>-->
+            <td><div style="border-radius:50%; width:100px; height:100px; background: url(<?php echo base_url()?>/upload/<?php echo $user['picture']; ?>) no-repeat center, url(<?php echo base_url()?>/upload/noprofilepic.jpg); background-size:cover;"></div></td>
             <td><?=$user['firstname']; ?></td>
             <td><?=$user['lastname']; ?></td>
             <td><?=$user['username']; ?></td>
@@ -54,19 +57,7 @@
 
     </tbody>
 </table>
-<?php foreach($myUsers as $user): ?>
-<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $user['picture'] ).'"/>'; ?>
-<?php endforeach;?>
-<br>
-<?php foreach($myUsers as $user): ?>
-    <img src="data:image/jpeg;base64,<?php echo base64_encode($user['picture']) ?>" />
-<?php endforeach;?>
-<br>
-<?php foreach($myUsers as $key => $user): ?>
-    <!--<img width="550" src="getimage.php?ImageId=<?php /*echo mysql_result($res,$i,"ImageId"); */?>  "/>
-    <img width="550" src="getimage.php?ImageId=<?php /*echo mysql_result($res,$i,$_GET[ImageId]); */?>  "/>-->
-    <img src="getimage.php?imageID=<?php echo $key ?>" />
-<?php endforeach;?>
+
 
 <button type="button" style="margin-left:350px; margin-top:20px; width:100px; height:30px; background-color:#ECFFC7;
         border-color:white; outline:none;"

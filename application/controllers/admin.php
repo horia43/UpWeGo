@@ -125,8 +125,19 @@ class Admin extends CI_Controller
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } else {
 
+                $config['upload_path']          = './upload/';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_size']             = 8192000;
+                $config['max_width']            = 9000;
+                $config['max_height']           = 9000;
+
+                $this->load->library('upload', $config);
+                $this->upload->do_upload('fileInput');
+                //print_r($this->upload->data('fileInput'));
+                //die;
+                //echo "fileInput value: ".$this->input->post('fileInput');
                 $data = array(
-                    'picture' =>$this->input->post('fileInput'),
+                    'picture' =>$this->input->post('fileInputName'),
                     'firstname' => $this->input->post('firstname'),
                     'lastname' => $this->input->post('lastname'),
                     'email' => $this->input->post('email'),
