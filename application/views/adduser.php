@@ -25,7 +25,7 @@
 
             <img id="addPhoto" onclick="chooseFile();"
                  src="https://cdn1.iconfinder.com/data/icons/ui-5/502/user-512.png" alt="Add photo of user"
-                 style="border-radius:50%; width: 100%; height: 100%; object-fit: contain; border: 1px solid #B8EE9A;">
+                 style="border-radius:50%; width: 100%; height: 100%; object-fit: contain; border: 1px solid #B8EE9A; object-fit:cover;">
 
         </div>
 

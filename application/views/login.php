@@ -18,8 +18,8 @@
                 <p>Password:</p>
             </div>
             <div class="inputs">
-                <p><input class="userpass" type="text" name="username" placeholder="Insert your name here"></p>
-                <p><input class="userpass" type="password" name="password" placeholder="Insert your password here"></p>
+                <p><input class="userpass" id="username" type="text" name="username" placeholder="Insert your name here"></p>
+                <p><input class="userpass" id="password" type="password" name="password" placeholder="Insert your password here"></p>
             </div>
             <!--<div class="select"><select>
                     <option disabled selected>-- Select an option --</option>

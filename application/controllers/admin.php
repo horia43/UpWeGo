@@ -158,21 +158,18 @@ class Admin extends CI_Controller
 
             $this->load->database();
 
-            $this->db->select('username');
-            $this->db->where('username=', $this->input->post('username'));
+            $this->db->select('username,firstname,lastname,email');
+            $this->db->where('id=', $this->input->get('id'));
             $query = $this->db->get('user');
 
-            $this->db->select('firstname,lastname');
+            /*$this->db->select('firstname,lastname');
             $this->db->where('firstname=', $this->input->post('firstname'));
             $this->db->where('lastname=', $this->input->post('lastname'));
-            $query2 = $this->db->get('user');
+            $query2 = $this->db->get('user');*/
 
 
             if ($query->num_rows() > 0) {
                 $message = "Username already exists. Please try a different username.";
-                echo "<script type='text/javascript'>alert('$message');</script>";
-            } elseif ($query2->num_rows() > 0) {
-                $message = "This person already exists in database.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } elseif (!(filter_var($this->input->post('email'), FILTER_VALIDATE_EMAIL))) {
                 $message = "This email is not valid.";
@@ -209,7 +206,17 @@ class Admin extends CI_Controller
         }
 
 
-        $this->load->view("adduser");
+
+        $this->load->database();
+
+        $this->db->select('username,firstname,lastname,email,picture');
+        $this->db->where('id=', $this->input->get('id'));
+        $select = $this->db->get('user');
+        $users = $select->result_array();
+        $data['myUser'] = $users;
+
+
+        $this->load->view("edituser",$data);
     }
 
 

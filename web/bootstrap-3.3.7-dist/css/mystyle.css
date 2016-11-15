@@ -67,6 +67,10 @@ fieldset input{
     opacity:0.8;
     cursor: pointer;
 }
+#changePhoto:hover{
+    opacity:0.8;
+    cursor: pointer;
+}
 
 
 

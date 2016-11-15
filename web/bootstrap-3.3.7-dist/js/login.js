@@ -1,6 +1,7 @@
 /**
  * Created by hstancu on 10/17/2016.
  */
+
 $(document).ready(function () {
     // $("#form1").on('input', function() {
     // submitAction();
@@ -10,6 +11,16 @@ $(document).ready(function () {
         submitAction();
 
     });
+    /*$("#username").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#btn1").click();
+        }
+    });
+    $("#password").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#btn1").click();
+        }
+    });*/
 
     function submitAction() {
         $.ajax({
