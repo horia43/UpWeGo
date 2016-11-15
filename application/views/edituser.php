@@ -15,7 +15,7 @@
 <div style="border:3px solid #2E4209; border-radius:5px; margin:0 auto; width:700px; height:350px; margin-top:120px;">
     <?php foreach($myUser as  $user): ?>
     <form method="post" enctype="multipart/form-data">
-        <div style="height:0px;overflow:hidden">
+        <div style="height:50px;overflow:hidden">
             <input type="file" id="fileInput" name="fileInput" accept="image/*"/>
             <input type="text" name="fileInputName" id="fileInputName" value=""></input>
         </div>

@@ -118,32 +118,42 @@ class Admin extends CI_Controller
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } else {
 
+                if ($this->input->post('fileInputName') != '') {
+                    $extension_pos = strrpos($this->input->post('fileInputName'), '.'); // find position of the last dot, so where the extension starts
+                    $new_name = $this->input->post('username') . "_" . uniqid() . substr($this->input->post('fileInputName'), $extension_pos);
 
-                $extension_pos = strrpos($this->input->post('fileInputName'), '.'); // find position of the last dot, so where the extension starts
-                $new_name = $this->input->post('username') . "_" . uniqid() . substr($this->input->post('fileInputName'), $extension_pos);
 
+                    $config['upload_path'] = './upload/';
+                    $config['allowed_types'] = 'gif|jpg|png';
+                    $config['max_size'] = 8192000;
+                    $config['max_width'] = 9000;
+                    $config['max_height'] = 9000;
+                    $config['file_name'] = $new_name;
 
-                $config['upload_path'] = './upload/';
-                $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size'] = 8192000;
-                $config['max_width'] = 9000;
-                $config['max_height'] = 9000;
-                $config['file_name'] = $new_name;
+                    $this->load->library('upload', $config);
+                    $this->upload->do_upload('fileInput');
 
-                $this->load->library('upload', $config);
-                $this->upload->do_upload('fileInput');
-
-                $data = array(
-                    'picture' => $new_name,
-                    'firstname' => $this->input->post('firstname'),
-                    'lastname' => $this->input->post('lastname'),
-                    'email' => $this->input->post('email'),
-                    'username' => $this->input->post('username'),
-                    'admin' => '0'
-                );
-                $this->db->insert('user', $data);
-
+                    $data = array(
+                        'picture' => $new_name,
+                        'firstname' => $this->input->post('firstname'),
+                        'lastname' => $this->input->post('lastname'),
+                        'email' => $this->input->post('email'),
+                        'username' => $this->input->post('username'),
+                        'admin' => '0'
+                    );
+                    $this->db->insert('user', $data);
+                }else{
+                    $data = array(
+                        'firstname' => $this->input->post('firstname'),
+                        'lastname' => $this->input->post('lastname'),
+                        'email' => $this->input->post('email'),
+                        'username' => $this->input->post('username'),
+                        'admin' => '0'
+                    );
+                    $this->db->insert('user', $data);
+                }
                 redirect('admin', 'refresh');
+
             }
         }
 
@@ -195,35 +205,23 @@ class Admin extends CI_Controller
                         'username' => $this->input->post('username')
 
                     );
+                    $this->db->where('id=', $this->input->get('id'));       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
+                    $this->db->update('user', $data);
                 } else {
 
                     $this->db->select('picture');
                     $this->db->where('id=', $this->input->get('id'));
-                    $query=$this->db->get('user');
-                    if ($query->num_rows() > 0) {
+                    $query = $this->db->get('user');
+                    /*echo '<pre>';
+                    var_dump($query->row()->picture!=NULL);
+                    echo '<pre>';
+                    die;*/
+                    if ($query->row()->picture!=NULL) {
 
-                        $config['upload_path'] = './upload/';
-                        $config['allowed_types'] = 'gif|jpg|png';
-                        $config['max_size'] = 8192000;
-                        $config['max_width'] = 9000;
-                        $config['max_height'] = 9000;
-                        $config['overwrite'] = TRUE;
+                        $new_name = $query->row()->picture;
 
-                        $this->load->library('upload', $config);
-                        $this->upload->do_upload('fileInput');
-
-                        $data = array(
-                            'firstname' => $this->input->post('firstname'),
-                            'lastname' => $this->input->post('lastname'),
-                            'email' => $this->input->post('email'),
-                            'username' => $this->input->post('username')
-
-                        );
-                    }else{
-
-                        $extension_pos = strrpos($this->input->post('fileInputName'), '.'); // find position of the last dot, so where the extension starts
-                        $new_name = $this->input->post('username') . "_" . uniqid() . substr($this->input->post('fileInputName'), $extension_pos);
-
+                        /*var_dump($new_name);
+                        die;*/
 
                         $config['upload_path'] = './upload/';
                         $config['allowed_types'] = 'gif|jpg|png';
@@ -231,6 +229,35 @@ class Admin extends CI_Controller
                         $config['max_width'] = 9000;
                         $config['max_height'] = 9000;
                         $config['file_name'] = $new_name;
+                        $config['overwrite'] = TRUE;
+
+                        $this->load->library('upload', $config);
+                        $this->upload->do_upload('fileInput');
+
+                        $data = array(
+                            'picture' => $new_name,
+                            'firstname' => $this->input->post('firstname'),
+                            'lastname' => $this->input->post('lastname'),
+                            'email' => $this->input->post('email'),
+                            'username' => $this->input->post('username')
+
+                        );
+                        $this->db->where('id=', $this->input->get('id'));       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
+                        $this->db->update('user', $data);
+                    } else {
+
+                        $extension_pos = strrpos($this->input->post('fileInputName'), '.'); // find position of the last dot, so where the extension starts
+                        $new_name = $this->input->post('username') . "_" . uniqid() . substr($this->input->post('fileInputName'), $extension_pos);
+    /*                    echo'sunt aici';
+                        var_dump($new_name);
+                        die;*/
+                        $config['upload_path'] = './upload/';
+                        $config['allowed_types'] = 'gif|jpg|png';
+                        $config['max_size'] = 8192000;
+                        $config['max_width'] = 9000;
+                        $config['max_height'] = 9000;
+                        $config['file_name'] = $new_name;
+
 
                         $this->load->library('upload', $config);
                         $this->upload->do_upload('fileInput');
@@ -243,11 +270,12 @@ class Admin extends CI_Controller
                             'username' => $this->input->post('username'),
                             'admin' => '0'
                         );
+                        $this->db->where('id=', $this->input->get('id'));       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
+                        $this->db->update('user', $data);
                     }
 
                 }
-                $this->db->where('id=', $this->input->get('id'));       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
-                $this->db->update('user', $data);                       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
+                /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
             }
             redirect('admin', 'refresh');
         }
