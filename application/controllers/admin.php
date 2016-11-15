@@ -102,9 +102,8 @@ class Admin extends CI_Controller
             $this->db->where('username=', $this->input->post('username'));
             $query = $this->db->get('user');
 
-            $this->db->select('firstname,lastname');
-            $this->db->where('firstname=', $this->input->post('firstname'));
-            $this->db->where('lastname=', $this->input->post('lastname'));
+            $this->db->select('email');
+            $this->db->where('email=', $this->input->post('email'));
             $query2 = $this->db->get('user');
 
 
@@ -112,35 +111,35 @@ class Admin extends CI_Controller
                 $message = "Username already exists. Please try a different username.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } elseif ($query2->num_rows() > 0) {
-                $message = "This person already exists in database.";
+                $message = "This email is already being used. Please try a different email.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } elseif (!(filter_var($this->input->post('email'), FILTER_VALIDATE_EMAIL))) {
                 $message = "This email is not valid.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } else {
 
+
                 $extension_pos = strrpos($this->input->post('fileInputName'), '.'); // find position of the last dot, so where the extension starts
-                $new_name = $this->input->post('username')."_".uniqid().substr($this->input->post('fileInputName'), $extension_pos);
+                $new_name = $this->input->post('username') . "_" . uniqid() . substr($this->input->post('fileInputName'), $extension_pos);
 
 
-                $config['upload_path']          = './upload/';
-                $config['allowed_types']        = 'gif|jpg|png';
-                $config['max_size']             = 8192000;
-                $config['max_width']            = 9000;
-                $config['max_height']           = 9000;
-                $config['file_name']            = $new_name;
+                $config['upload_path'] = './upload/';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size'] = 8192000;
+                $config['max_width'] = 9000;
+                $config['max_height'] = 9000;
+                $config['file_name'] = $new_name;
 
                 $this->load->library('upload', $config);
                 $this->upload->do_upload('fileInput');
 
                 $data = array(
-                    'picture' =>$new_name,
+                    'picture' => $new_name,
                     'firstname' => $this->input->post('firstname'),
                     'lastname' => $this->input->post('lastname'),
                     'email' => $this->input->post('email'),
                     'username' => $this->input->post('username'),
                     'admin' => '0'
-
                 );
                 $this->db->insert('user', $data);
 
@@ -158,54 +157,100 @@ class Admin extends CI_Controller
 
             $this->load->database();
 
-            $this->db->select('username,firstname,lastname,email');
-            $this->db->where('id=', $this->input->get('id'));
+            $this->db->select('username');
+            $this->db->where('username=', $this->input->post('username'));
+            $this->db->where('id!=', $this->input->get('id'));
             $query = $this->db->get('user');
+
+            $this->db->select('email');
+            $this->db->where('email=', $this->input->post('email'));
+            $this->db->where('id!=', $this->input->get('id'));
+            $query2 = $this->db->get('user');
 
             /*$this->db->select('firstname,lastname');
             $this->db->where('firstname=', $this->input->post('firstname'));
             $this->db->where('lastname=', $this->input->post('lastname'));
             $query2 = $this->db->get('user');*/
 
-
+            /*var_dump($this->input->post('picture'));
+            die;*/
             if ($query->num_rows() > 0) {
                 $message = "Username already exists. Please try a different username.";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+            } elseif ($query2->num_rows() > 0) {
+                $message = "This email is already being used. Please try a different email.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } elseif (!(filter_var($this->input->post('email'), FILTER_VALIDATE_EMAIL))) {
                 $message = "This email is not valid.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } else {
 
-                $extension_pos = strrpos($this->input->post('fileInputName'), '.'); // find position of the last dot, so where the extension starts
-                $new_name = $this->input->post('username')."_".uniqid().substr($this->input->post('fileInputName'), $extension_pos);
+
+                if ($this->input->post('fileInputName') == '') {
+
+                    $data = array(
+                        'firstname' => $this->input->post('firstname'),
+                        'lastname' => $this->input->post('lastname'),
+                        'email' => $this->input->post('email'),
+                        'username' => $this->input->post('username')
+
+                    );
+                } else {
+
+                    $this->db->select('picture');
+                    $this->db->where('id=', $this->input->get('id'));
+                    $query=$this->db->get('user');
+                    if ($query->num_rows() > 0) {
+
+                        $config['upload_path'] = './upload/';
+                        $config['allowed_types'] = 'gif|jpg|png';
+                        $config['max_size'] = 8192000;
+                        $config['max_width'] = 9000;
+                        $config['max_height'] = 9000;
+                        $config['overwrite'] = TRUE;
+
+                        $this->load->library('upload', $config);
+                        $this->upload->do_upload('fileInput');
+
+                        $data = array(
+                            'firstname' => $this->input->post('firstname'),
+                            'lastname' => $this->input->post('lastname'),
+                            'email' => $this->input->post('email'),
+                            'username' => $this->input->post('username')
+
+                        );
+                    }else{
+
+                        $extension_pos = strrpos($this->input->post('fileInputName'), '.'); // find position of the last dot, so where the extension starts
+                        $new_name = $this->input->post('username') . "_" . uniqid() . substr($this->input->post('fileInputName'), $extension_pos);
 
 
-                $config['upload_path']          = './upload/';
-                $config['allowed_types']        = 'gif|jpg|png';
-                $config['max_size']             = 8192000;
-                $config['max_width']            = 9000;
-                $config['max_height']           = 9000;
-                $config['file_name']            = $new_name;
+                        $config['upload_path'] = './upload/';
+                        $config['allowed_types'] = 'gif|jpg|png';
+                        $config['max_size'] = 8192000;
+                        $config['max_width'] = 9000;
+                        $config['max_height'] = 9000;
+                        $config['file_name'] = $new_name;
 
-                $this->load->library('upload', $config);
-                $this->upload->do_upload('fileInput');
+                        $this->load->library('upload', $config);
+                        $this->upload->do_upload('fileInput');
 
-                $data = array(
-                    'picture' =>$new_name,
-                    'firstname' => $this->input->post('firstname'),
-                    'lastname' => $this->input->post('lastname'),
-                    'email' => $this->input->post('email'),
-                    'username' => $this->input->post('username'),
-                    'admin' => '0'
+                        $data = array(
+                            'picture' => $new_name,
+                            'firstname' => $this->input->post('firstname'),
+                            'lastname' => $this->input->post('lastname'),
+                            'email' => $this->input->post('email'),
+                            'username' => $this->input->post('username'),
+                            'admin' => '0'
+                        );
+                    }
 
-                );
-                $this->db->insert('user', $data);
-
-                redirect('admin', 'refresh');
+                }
+                $this->db->where('id=', $this->input->get('id'));       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
+                $this->db->update('user', $data);                       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
             }
+            redirect('admin', 'refresh');
         }
-
-
 
         $this->load->database();
 
@@ -216,12 +261,8 @@ class Admin extends CI_Controller
         $data['myUser'] = $users;
 
 
-        $this->load->view("edituser",$data);
+        $this->load->view("edituser", $data);
     }
-
-
-
-
 
 
     function logout()
