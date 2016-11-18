@@ -8,7 +8,8 @@
 }
 body{
     background-color:#DDFFB3;
-
+    margin-left:20px;
+    margin-top:20px;
 }
 
 #myForm div>p {
@@ -71,8 +72,13 @@ fieldset input{
     opacity:0.8;
     cursor: pointer;
 }
-
-
+#table1 tr > td:first-child{
+    padding:5px;
+}
+#table1 td{
+    text-align: center;
+    padding:5px;
+}
 
 
 
