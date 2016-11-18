@@ -41,8 +41,12 @@ class Admin extends CI_Controller
         $this->load->database();
         //$select = $this->db->query('SELECT * FROM user');
 
+        $itemsPerPage = 3;
+        $indexPage = 1;//$this->input->get('pageIndex');
+
         $this->db->select("*");
         $this->db->where('admin !=', 1);
+        $this->db->limit($itemsPerPage, ($indexPage-1)*$itemsPerPage);
         $select = $this->db->get("user");
 
 
@@ -92,6 +96,19 @@ class Admin extends CI_Controller
             //If no session, redirect to login page
             redirect('login', 'refresh');
         }*/
+    }
+    function pageindex(){
+        $itemsPerPage = 3;
+        $indexPage = 1;//$this->input->get('pageIndex');
+
+        $this->db->select("*");
+        $this->db->where('admin !=', 1);
+        $this->db->limit($itemsPerPage, ($indexPage-1)*$itemsPerPage);
+        $select = $this->db->get("user");
+
+
+        $users = $select->result_array();
+        $this->load->view('ListUsers');
     }
 
     function pageadduser()

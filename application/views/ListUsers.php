@@ -26,7 +26,7 @@
 <table id="table1" border="1">
     <thead>
     <tr>
-        <th>Test Picture</th>
+        <!--<th>Test Picture</th>-->
         <th>Profile Picture</th>
         <th>First Name</th>
         <th>Last Name</th>
@@ -43,8 +43,8 @@
             <!--<td><img src="<?php /*echo $user['picture']; */?>" alt=" :( "></td>-->
             <!--<td><?php /*echo ( $user['picture'] );*/?><img src=<?php /*echo $user['picture']; */?>"data:image/jpeg;base64,'<?php /*base64_encode( $user['picture'] );*/?>'"/> </td>-->
             <!--<td><?php /*echo ( $user['picture'] );*/?><img width="80px" height="80px" style="border-radius:50%;"  src="<?php /*echo base_url()*/?>/upload/<?php /*echo $user['picture']; */?>"/> </td>-->
-            <td><a onclick="divshow('<?php echo base_url()?>/upload/<?php echo $user['picture']; ?>')" ><img id="myImg"  style="width:150px; height:150px; border-radius:50%; object-fit:cover;"  src="<?php echo base_url()?>/upload/<?php echo $user['picture']; ?>"  alt="Image not found" onerror="this.onerror=null;this.src='<?php echo base_url()?>/upload/noprofilepic.jpg';"/></a></td>
-            <td><div style="border-radius:50%; width:100px; height:100px; background: url(<?php echo base_url()?>upload/<?php echo $user['picture']; ?>) no-repeat center, url(<?php echo base_url()?>/upload/noprofilepic.jpg); background-size:cover;"></div></td>
+            <!--<td><a onclick="divshow('<?php /*echo base_url()*/?>/upload/<?php /*echo $user['picture']; */?>','<?php /*echo base_url()*/?>/upload/noprofilepic.jpg')" ><img id="myImg"  style="width:150px; height:150px; border-radius:50%; object-fit:cover;"  src="<?php /*echo base_url()*/?>/upload/<?php /*echo $user['picture']; */?>"  alt="Image not found" onerror="this.onerror=null;this.src='<?php /*echo base_url()*/?>/upload/noprofilepic.jpg';"/></a></td>-->
+            <td><div onclick="divshow('<?php echo base_url()?>/upload/<?php echo $user['picture']; ?>','<?php echo base_url()?>/upload/noprofilepic.jpg')"  style="border-radius:50%; width:150px; height:150px; background: url(<?php echo base_url()?>upload/<?php echo $user['picture']; ?>) no-repeat center, url(<?php echo base_url()?>/upload/noprofilepic.jpg); background-size:cover;"></div></td>
             <td><?=$user['firstname']; ?></td>
             <td><?=$user['lastname']; ?></td>
             <td><?=$user['username']; ?></td>
@@ -60,7 +60,11 @@
     </tbody>
 </table>
 
-
+<ul class="pagination">
+    <?php for ($i = 1; $i <= 10; $i++) : ?>
+        <li class="active"><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
+    <?php endfor ?>
+</ul>
 
 <button type="button" style="margin-left:350px; margin-top:20px; width:100px; height:30px; background-color:#ECFFC7;
         border-color:white; outline:none;"
@@ -76,13 +80,13 @@
 <div class="modal fade" id="viewprofilepic">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close"
+            <div class="modal-header" style="margin-bottom:0;border-bottom:none; color:white; background: rgba(0, 0, 0, 1); ">
+                <button style="color:white;"type="button" class="close"
                         data-dismiss="modal">X</button>
-                <h4 class="modal-title">Profile picture</h4>
+                <h3 class="modal-title">Profile picture</h3>
             </div>
-            <div class="modal-body" >
-                <div id="divPicture" style="margin:0 auto; border-radius:5%; width:500px; height:500px;"></div>
+            <div class="modal-body" style="margin:0; padding:0px 0px 10px 0px; background: rgba(0, 0, 0, 1); " >
+                <div id="divPicture" style=" opacity:1 !important; margin:0 auto; border-radius:5%; width:500px; height:500px;"></div>
             </div>
         </div>
     </div>
