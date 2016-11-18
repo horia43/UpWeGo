@@ -14,8 +14,12 @@
     <meta charset="UTF-8">
     <title>List of Users</title>
 
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/css/mystyle.css">
-    <script type="text/javascript" src="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/js/adduser.js"></script>
+
+    <link rel="stylesheet" href="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/css/mystyle.css">
+
+
 
 
 </head>
@@ -58,13 +62,28 @@
     </tbody>
 </table>
 
-
+<div class="modal fade" id="viewprofilepic">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal">X</button>
+                <h4 class="modal-title">Profile picture</h4>
+            </div>
+            <div class="modal-body" >
+                    <div style="margin:0 auto; border-radius:20%; width:200px; height:200px; background: url(<?php echo base_url()?>upload/<?php echo $user['picture']; ?>) no-repeat center, url(<?php echo base_url()?>/upload/noprofilepic.jpg); background-size:cover;"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <button type="button" style="margin-left:350px; margin-top:20px; width:100px; height:30px; background-color:#ECFFC7;
         border-color:white; outline:none;"
         onclick="window.location='<?php echo site_url("admin/pageadduser");?>'">Add User</button>
 
-
+    <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/adduser.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </body>
 </html>
 

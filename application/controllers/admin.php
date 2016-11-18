@@ -21,6 +21,7 @@ class Admin extends CI_Controller
 
     function index()
     {
+        $this->load->helper('url');
         if ($this->session->userdata('logged_in') && $this->session->userdata('logged_in')['isAdmin']) //// dar in teorie nu am nevoie decat de username ca sa il afisez pe undeva :) Majoritatea lor sunt doar pentru testare
         {
 
