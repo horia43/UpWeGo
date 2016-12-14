@@ -98,8 +98,27 @@ class Admin extends CI_Controller
         }*/
     }
     function pageindex(){
+
+
+        $this->load->helper('url');
+        if ($this->session->userdata('logged_in') && $this->session->userdata('logged_in')['isAdmin']) //// dar in teorie nu am nevoie decat de username ca sa il afisez pe undeva :) Majoritatea lor sunt doar pentru testare
+        {
+
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+            $data['password'] = $session_data['password'];  // doar pentru testare
+            $data['email'] = $session_data['email'];          // doar pentru testare
+
+            $data['isAdmin'] = $session_data['isAdmin'];    // doar pentru testare
+            $data['logged_in'] = $session_data['logged_in'];
+            //$this->load->view('ListUsers',$data);
+        } else {
+            //If no session, redirect to login page
+            redirect('login', 'refresh');
+        }
+
         $itemsPerPage = 3;
-        $indexPage = 1;//$this->input->get('pageIndex');
+        $indexPage = $this->input->get('page');
 
         $this->db->select("*");
         $this->db->where('admin !=', 1);
@@ -108,7 +127,11 @@ class Admin extends CI_Controller
 
 
         $users = $select->result_array();
-        $this->load->view('ListUsers');
+
+        $data['myUsers'] = $users;
+        $this->load->view('ListUsers', $data);
+
+
     }
 
     function pageadduser()

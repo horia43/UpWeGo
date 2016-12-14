@@ -66,6 +66,36 @@
     <?php endfor ?>
 </ul>
 
+<!--
+<div class="example">
+    <nav>
+        <ul class="pagination">
+            <li class="disabled">
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">«</span>
+                </a>
+            </li>
+            <li class="active"><a href="#">1</a>
+            </li>
+            <li><a href="#">2</a>
+            </li>
+            <li><a href="#">3</a>
+            </li>
+            <li><a href="#">4</a>
+            </li>
+            <li><a href="#">5</a>
+            </li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">»</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+-->
+
+
 <button type="button" style="margin-left:350px; margin-top:20px; width:100px; height:30px; background-color:#ECFFC7;
         border-color:white; outline:none;"
         onclick="window.location='<?php echo site_url("admin/pageadduser");?>'">Add User</button>
