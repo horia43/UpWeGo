@@ -61,8 +61,8 @@
 </table>
 
 <ul class="pagination">
-    <?php for ($i = 1; $i <= 10; $i++) : ?>
-        <li class="active"><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
+    <?php for ($i = 1; $i <= $pageCount; $i++) : ?>
+        <li onclick="addClassLi()"><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
     <?php endfor ?>
 </ul>
 

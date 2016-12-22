@@ -49,8 +49,8 @@ class Admin extends CI_Controller
         $this->db->limit($itemsPerPage, ($indexPage-1)*$itemsPerPage);
         $select = $this->db->get("user");
 
-
         $users = $select->result_array();
+        $data['myUsers'] = $users;
 
         /*
         foreach ($select->result() as $row){
@@ -80,7 +80,15 @@ class Admin extends CI_Controller
         /*$sdata = array( $data, $selectall);
         $this->load->view('ListUsers',$sdata);*/
 
-        $data['myUsers'] = $users;
+
+        $this->db->select("*");
+        $this->db->where('admin !=', 1);
+        $select = $this->db->get("user");
+        $pageCount = $select->num_rows();
+        $pageCount=ceil($pageCount/$itemsPerPage);
+        $data['pageCount']=$pageCount;
+
+
         $this->load->view('ListUsers', $data);
         //$this->load->view('ListUsers',$data,$selectall);
 
@@ -124,11 +132,24 @@ class Admin extends CI_Controller
         $this->db->where('admin !=', 1);
         $this->db->limit($itemsPerPage, ($indexPage-1)*$itemsPerPage);
         $select = $this->db->get("user");
-
-
         $users = $select->result_array();
-
         $data['myUsers'] = $users;
+
+        /*$this->db->count_all("user");
+        $this->db->where('admin !=', 1);
+        $select = $this->db->get("user");
+        $pageCount = $select->result();
+        $numberPages=count($pageCount);
+        $data['numberPages']=$numberPages;*/
+
+        $this->db->select("*");
+        $this->db->where('admin !=', 1);
+        $select = $this->db->get("user");
+        $pageCount = $select->num_rows();
+        $pageCount=ceil($pageCount/$itemsPerPage);
+        $data['pageCount']=$pageCount;
+
+
         $this->load->view('ListUsers', $data);
 
 
