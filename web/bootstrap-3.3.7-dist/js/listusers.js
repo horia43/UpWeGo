@@ -13,10 +13,9 @@ function divshow(url_name,backup_name){
     $('#viewprofilepic').modal();
 }
 
-function addClassLi() {
-    $("li").addClass("active");
-}
+/*
 $(document).ready(function () {
 
 
 });
+*/

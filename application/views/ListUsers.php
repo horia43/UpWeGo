@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/css/mystyle.css">
 
+
+
 </head>
 <body>
 <p>Buna ziua,domnule <?php echo $username; ?> , dumneavoastra sunteti ADMIN, felicitari ! <br></p>
@@ -62,7 +64,7 @@
 
 <ul class="pagination">
     <?php for ($i = 1; $i <= $pageCount; $i++) : ?>
-        <li onclick="addClassLi()"><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
+        <li id="list-<?php echo $i;?>" onclick="addClassLi()"><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
     <?php endfor ?>
 </ul>
 
@@ -129,6 +131,14 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/adduser.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            /*$("#list-<?php echo $_GET["page"]; ?> a").css("background-color","pink");*/
+            $("#list-<?php echo $_GET["page"]; ?>").addClass("active");
+        });
+    </script>
+
 </body>
 </html>
 
