@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/css/mystyle.css">
 
+    <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js"></script>
+
 
 
 </head>
@@ -129,15 +131,14 @@
 
     <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/listusers.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/adduser.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-            /*$("#list-<?php echo $_GET["page"]; ?> a").css("background-color","pink");*/
-            $("#list-<?php echo $_GET["page"]; ?>").addClass("active");
-        });
-    </script>
+<!--<script type="text/javascript">
+    $(document).ready(function(){
+        //    $("#list-<?php/*echo $_GET["page"];*/ ?> a").css("background-color","pink");
+        $("#list-<?php /*echo $_GET["page"]; */?>").addClass("active");
+    });
+</script>-->
 
 </body>
 </html>
