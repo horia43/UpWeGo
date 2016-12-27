@@ -12,37 +12,17 @@ function divshow(url_name,backup_name){
 
     $('#viewprofilepic').modal();
 }
+function pageExists(page) {
+    var field = page;
+    var url = window.location.href;
+    if (url.indexOf('?' + field + '=') != -1)
+        return true;
+    else if (url.indexOf('&' + field + '=') != -1)
+        return true;
+    return false;
+}
 
-$("#goto_page").on('keyup', function (e) {
-    if (e.keyCode == 13) {
-        var page= $("#goto_page").val();
-        var max = $("#pageCount").val();
-        if(page.match(/^\d+$/)) {
 
-            alert(page);
-            alert(max);
-            alert(page>max);
-            if(page>max){
-                var go="pageindex?page="+max;    // cum de nu trebuie sa scriu si admin/pagein.... ?
-                window.location.href=go;
-            }
-            else
-            {
-                var go="pageindex?page="+page;    // cum de nu trebuie sa scriu si admin/pagein.... ?
-                window.location.href=go;
-            }
-            //document.getElementById("list-"+page).click();//trigger("click");
-            //var x="list-"+page;
-            //alert(go);
-            //alert('String ok!');
-        }
-        else
-        {
-            alert('Cannot send to this page! Please use only numbers.');
-        }
-
-    }
-});
 
 /*function findGetParameter(parameterName) {
     var result = null,
@@ -67,8 +47,61 @@ function findGetParameter(parameterName) {
     return result;
 }
 
+
 $(document).ready(function(){
     //    $("#list-<?php /*echo $_GET["page"];*/ ?> a").css("background-color","pink");
     //$("#list-<?php echo $_GET["page"]; ?>").addClass("active");
+
+
+    if (pageExists("page")==false) {
+        $("#list-1").addClass("active");
+    }
+
     $("#list-"+findGetParameter("page")).addClass("active");
+
+
+
+    $("#goto_page").on('keyup', function (e) {
+        if (e.keyCode == 13) {
+            //var page= $("#goto_page").val();
+            var page= document.getElementById('goto_page').value;
+            //var max = $("#pageCount").val();
+            var max = document.getElementById('pageCount').value;
+            if(page.match(/^\d+$/)) {
+                page=parseInt(page);
+                max=parseInt(max);
+
+                if(page>max){
+
+                    if (pageExists("page")==true) {
+                        var go = "pageindex?page=" + max;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                        window.location.href = go;
+                    }
+                    else {
+                        var go = "admin/pageindex?page=" + max;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                        window.location.href = go;
+                    }
+                }
+                else
+                {
+                    if (pageExists("page")==true) {
+                        var go = "pageindex?page=" + page;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                        window.location.href = go;
+                    }
+                    else {
+                        var go = "admin/pageindex?page=" + page;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                        window.location.href = go;
+                    }
+
+                }
+            }
+            else
+            {
+                alert('Cannot send to this page! Please use only numbers.');
+            }
+
+        }
+    });
+
+
 });
