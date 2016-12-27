@@ -68,8 +68,8 @@
 
     <?php if(  isset($_GET['page'])) : ?>
         <?php if($_GET['page']!=1) : ?>
-            <li><a  onclick="window.location='<?php echo site_url("admin/pageindex?page=1");?>'">&laquo;</a></li>
-            <li><a  onclick="window.location='<?php echo site_url("admin/pageindex?page=").($_GET["page"]-1);?>'">&lt;</a></li>
+            <li><a class="arrow2" onclick="window.location='<?php echo site_url("admin/pageindex?page=1");?>'">&laquo;</a></li>
+            <li><a class="arrow1" onclick="window.location='<?php echo site_url("admin/pageindex?page=").($_GET["page"]-1);?>'">&lt;</a></li>
         <?php endif ?>
     <?php endif ?>
 
@@ -78,51 +78,67 @@
         <?php if($pageCount>=5) : ?>
             <?php if(  $_GET['page']<=3 ) : ?>
                 <?php for ($i = 1; $i <= 5; $i++) : ?>
-                    <li id="list-<?php echo $i;?>" onclick="addClassLi()"><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
+                    <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
                 <?php endfor ?>
             <?php endif ?>
 
             <?php if(  $_GET['page']>3 && $_GET['page']<$pageCount-2 ) : ?>
                 <?php for ($i = $_GET['page']-2; $i <= $_GET['page']+2; $i++) : ?>
-                    <li id="list-<?php echo $i;?>" onclick="addClassLi()"><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
+                    <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
                 <?php endfor ?>
             <?php endif ?>
 
             <?php if(  $_GET['page']>=$pageCount-2 ) : ?>
                 <?php for ($i = $pageCount-5; $i <= $pageCount; $i++) : ?>
-                    <li id="list-<?php echo $i;?>" onclick="addClassLi()"><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
+                    <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
                 <?php endfor ?>
             <?php endif ?>
 
         <?php else : ?>
             <?php for ($i = 1; $i <= $pageCount; $i++) : ?>
-                <li id="list-<?php echo $i;?>" onclick="addClassLi()"><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
+                <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
             <?php endfor ?>
         <?php endif ?>
     <?php else : ?>
         <?php if($pageCount>=5) :?>
             <?php for ($i = 1; $i <= 5; $i++) : ?>
-                <li id="list-<?php echo $i;?>" onclick="addClassLi()"><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
+                <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
             <?php endfor ?>
         <?php else : ?>
             <?php for ($i = 1; $i <= $pageCount; $i++) : ?>
-                <li id="list-<?php echo $i;?>" onclick="addClassLi()"><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
+                <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
             <?php endfor ?>
         <?php endif ?>
     <?php endif ?>
 
     <?php if(  isset($_GET['page'])) : ?>
         <?php if($_GET['page']!=$pageCount) : ?>
-            <li><a  onclick="window.location='<?php echo site_url("admin/pageindex?page=").($_GET["page"]+1);?>'">&gt;</a></li>
-            <li><a  onclick="window.location='<?php echo site_url("admin/pageindex?page=").$pageCount;?>'">&raquo;</a></li>
+            <li><a class="arrow1" onclick="window.location='<?php echo site_url("admin/pageindex?page=").($_GET["page"]+1);?>'">&gt;</a></li>
+            <li><a class="arrow2" onclick="window.location='<?php echo site_url("admin/pageindex?page=").$pageCount;?>'">&raquo;</a></li>
         <?php endif ?>
 
     <?php else : ?>
-        <li><a  onclick="window.location='<?php echo site_url("admin/pageindex?page=2")?>'">&gt;</a></li>
-        <li><a  onclick="window.location='<?php echo site_url("admin/pageindex?page=").$pageCount;?>'">&raquo;</a></li>
+        <li><a class="arrow1" onclick="window.location='<?php echo site_url("admin/pageindex?page=2")?>'">&gt;</a></li>
+        <li><a class="arrow2" onclick="window.location='<?php echo site_url("admin/pageindex?page=").$pageCount;?>'">&raquo;</a></li>
     <?php endif ?>
 </ul>
 
+
+<div class="input-group">
+    <span class="input-group-addon" title="Go to page">
+        <i class="glyphicon glyphicon-arrow-right"></i>
+    </span>
+    <input id="goto_page" type="text" class="form-control small-input" title="Go to page"><input type="text" id="pageCount"  value="<?php echo $pageCount; ?>">
+</div>
+
+
+
+<div class="input-group">
+    <span class="input-group-addon" title="Rows per page">
+        <i class="glyphicon glyphicon-th-list"></i>
+    </span>
+    <input id="rows_per_page" value="10" type="text" class="form-control small-input" title="Rows per page">
+</div>
 <!--
 <div class="example">
     <nav>

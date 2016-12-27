@@ -13,6 +13,37 @@ function divshow(url_name,backup_name){
     $('#viewprofilepic').modal();
 }
 
+$("#goto_page").on('keyup', function (e) {
+    if (e.keyCode == 13) {
+        var page= $("#goto_page").val();
+        var max = $("#pageCount").val();
+        if(page.match(/^\d+$/)) {
+
+            alert(page);
+            alert(max);
+            alert(page>max);
+            if(page>max){
+                var go="pageindex?page="+max;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                window.location.href=go;
+            }
+            else
+            {
+                var go="pageindex?page="+page;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                window.location.href=go;
+            }
+            //document.getElementById("list-"+page).click();//trigger("click");
+            //var x="list-"+page;
+            //alert(go);
+            //alert('String ok!');
+        }
+        else
+        {
+            alert('Cannot send to this page! Please use only numbers.');
+        }
+
+    }
+});
+
 /*function findGetParameter(parameterName) {
     var result = null,
         tmp = [];
@@ -35,6 +66,7 @@ function findGetParameter(parameterName) {
         });
     return result;
 }
+
 $(document).ready(function(){
     //    $("#list-<?php /*echo $_GET["page"];*/ ?> a").css("background-color","pink");
     //$("#list-<?php echo $_GET["page"]; ?>").addClass("active");
