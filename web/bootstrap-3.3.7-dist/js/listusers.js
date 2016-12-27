@@ -1,12 +1,12 @@
 /**
  * Created by hstancu on 11/18/2016.
  */
-function divshow(url_name,backup_name){
+function divshow(url_name, backup_name) {
 
-    document.getElementById("divPicture").style.backgroundImage="url('" +url_name +"'),url('"+backup_name +"')";
-    document.getElementById("divPicture").style.backgroundRepeat="no-repeat";
-    document.getElementById("divPicture").style.backgroundPosition="center center";
-    document.getElementById("divPicture").style.backgroundSize="cover"
+    document.getElementById("divPicture").style.backgroundImage = "url('" + url_name + "'),url('" + backup_name + "')";
+    document.getElementById("divPicture").style.backgroundRepeat = "no-repeat";
+    document.getElementById("divPicture").style.backgroundPosition = "center center";
+    document.getElementById("divPicture").style.backgroundSize = "cover"
     //document.getElementById("divPicture").style.background="#ffffff url('" +url_name +"') no-repeat center";
 
 
@@ -23,17 +23,16 @@ function pageExists(page) {
 }
 
 
-
 /*function findGetParameter(parameterName) {
-    var result = null,
-        tmp = [];
-    var items = location.search.substr(1).split("&");
-    for (var index = 0; index < items.length; index++) {
-        tmp = items[index].split("=");
-        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
-    }
-    return result;
-}*/
+ var result = null,
+ tmp = [];
+ var items = location.search.substr(1).split("&");
+ for (var index = 0; index < items.length; index++) {
+ tmp = items[index].split("=");
+ if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+ }
+ return result;
+ }*/
 function findGetParameter(parameterName) {
     var result = null,
         tmp = [];
@@ -48,32 +47,31 @@ function findGetParameter(parameterName) {
 }
 
 
-$(document).ready(function(){
+$(document).ready(function () {
     //    $("#list-<?php /*echo $_GET["page"];*/ ?> a").css("background-color","pink");
     //$("#list-<?php echo $_GET["page"]; ?>").addClass("active");
 
 
-    if (pageExists("page")==false) {
+    if (pageExists("page") == false) {
         $("#list-1").addClass("active");
     }
 
-    $("#list-"+findGetParameter("page")).addClass("active");
-
+    $("#list-" + findGetParameter("page")).addClass("active");
 
 
     $("#goto_page").on('keyup', function (e) {
         if (e.keyCode == 13) {
             //var page= $("#goto_page").val();
-            var page= document.getElementById('goto_page').value;
+            var page = document.getElementById('goto_page').value;
             //var max = $("#pageCount").val();
             var max = document.getElementById('pageCount').value;
-            if(page.match(/^\d+$/)) {
-                page=parseInt(page);
-                max=parseInt(max);
+            if (page.match(/^\d+$/)) {
+                page = parseInt(page);
+                max = parseInt(max);
 
-                if(page>max){
+                if (page > max) {
 
-                    if (pageExists("page")==true) {
+                    if (pageExists("page") == true) {
                         var go = "pageindex?page=" + max;    // cum de nu trebuie sa scriu si admin/pagein.... ?
                         window.location.href = go;
                     }
@@ -82,9 +80,8 @@ $(document).ready(function(){
                         window.location.href = go;
                     }
                 }
-                else
-                {
-                    if (pageExists("page")==true) {
+                else {
+                    if (pageExists("page") == true) {
                         var go = "pageindex?page=" + page;    // cum de nu trebuie sa scriu si admin/pagein.... ?
                         window.location.href = go;
                     }
@@ -95,9 +92,34 @@ $(document).ready(function(){
 
                 }
             }
-            else
-            {
+            else {
                 alert('Cannot send to this page! Please use only numbers.');
+            }
+
+        }
+    });
+
+
+    $("#rows_per_page").on('keyup', function (e) {
+        if (e.keyCode == 13) {
+            //var page= $("#goto_page").val();
+            var items = document.getElementById('rows_per_page').value;
+            alert(items);
+
+            //var max = $("#pageCount").val();
+            //var max = document.getElementById('pageCount').value;
+            if (items.match(/^\d+$/)) {
+                items = parseInt(items);
+                if (pageExists("page") == false) {
+                    var go="pageindex?page=1"+"&items="+items;
+                    window.location.href = go;
+                }else{
+                    var go="pageindex?page="+findGetParameter("page")+"&items="+items;
+                    window.location.href = go;
+                }
+            }
+            else {
+                alert('Please use only numbers.');
             }
 
         }

@@ -41,7 +41,12 @@ class Admin extends CI_Controller
         $this->load->database();
         //$select = $this->db->query('SELECT * FROM user');
 
-        $itemsPerPage = 3;
+        if($this->input->get('items')!=NULL){
+            $itemsPerPage=$this->input->get('items');
+        }
+        else{
+            $itemsPerPage = 3;
+        }
         $indexPage = 1;//$this->input->get('pageIndex');
 
         $this->db->select("*");
@@ -125,7 +130,12 @@ class Admin extends CI_Controller
             redirect('login', 'refresh');
         }
 
-        $itemsPerPage = 3;
+        if($this->input->get('items')!=NULL){
+            $itemsPerPage=$this->input->get('items');
+        }
+        else{
+            $itemsPerPage = 3;
+        }
         $indexPage = $this->input->get('page');
 
         $this->db->select("*");

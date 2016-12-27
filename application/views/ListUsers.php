@@ -128,7 +128,8 @@
     <span class="input-group-addon" title="Go to page">
         <i class="glyphicon glyphicon-arrow-right"></i>
     </span>
-    <input id="goto_page" type="text" class="form-control small-input" title="Go to page"><input type="text" id="pageCount"  value="<?php echo $pageCount; ?>">
+    <input id="goto_page" type="text" class="form-control small-input" title="Go to page">
+    <span type="text" id="pageCount" > /<?php echo $pageCount; ?></span>
 </div>
 
 
