@@ -91,9 +91,15 @@
             <?php endif ?>
 
             <?php if(  $_GET['page']>$pageCount-2 ) : ?>                               <!-- DACA MA AFLU PRINTRE ULTIMELE PAGINI, AFISEZ DOAR -4 -3 -2 -1 last  -->
-                <?php for ($i = $pageCount-5; $i <= $pageCount; $i++) : ?>
-                    <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i."&items=".$_GET["items"];?>'"><?php echo $i;?></a></li>
-                <?php endfor ?>
+                <?php if($pageCount!=5) : ?>
+                    <?php for ($i = $pageCount-5; $i <= $pageCount; $i++) : ?>
+                        <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i."&items=".$_GET["items"];?>'"><?php echo $i;?></a></li>
+                    <?php endfor ?>
+                <?php else: ?>
+                    <?php for ($i = 1; $i <= 5; $i++) : ?>
+                        <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i."&items=".$_GET["items"];?>'"><?php echo $i;?></a></li>
+                    <?php endfor ?>
+                <?php endif ?>
             <?php endif ?>
 
         <?php else : ?>                                                                 <!-- DACA NU, AFISEZ DOAR PAGINILE PE CARE LE AM (I.E. 1 2 3 )   -->
