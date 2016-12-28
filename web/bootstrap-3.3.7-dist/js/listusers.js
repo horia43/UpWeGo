@@ -23,7 +23,7 @@ function pageExists(page) {
 }
 
 
-/*function findGetParameter(parameterName) {
+function findGetParameter(parameterName) {
  var result = null,
  tmp = [];
  var items = location.search.substr(1).split("&");
@@ -32,8 +32,8 @@ function pageExists(page) {
  if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
  }
  return result;
- }*/
-function findGetParameter(parameterName) {
+ }
+/*function findGetParameter(parameterName) {
     var result = null,
         tmp = [];
     location.search
@@ -44,7 +44,7 @@ function findGetParameter(parameterName) {
             if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
         });
     return result;
-}
+}*/
 
 
 $(document).ready(function () {
@@ -54,9 +54,16 @@ $(document).ready(function () {
 
     if (pageExists("page") == false) {
         $("#list-1").addClass("active");
+    }else{
+        $("#list-" + findGetParameter("page")).addClass("active");     //// ATENTIE ! AICI PREIA  #list-4&items in loc de 4 doar !
     }
 
-    $("#list-" + findGetParameter("page")).addClass("active");
+    if (pageExists("items") == true) {
+        alert(findGetParameter("items"));
+        $('input[name=rows_per_page]').val(findGetParameter("items"));
+
+    }
+
 
 
     $("#goto_page").on('keyup', function (e) {
@@ -103,7 +110,7 @@ $(document).ready(function () {
     $("#rows_per_page").on('keyup', function (e) {
         if (e.keyCode == 13) {
             //var page= $("#goto_page").val();
-            var items = document.getElementById('rows_per_page').value;
+            var items = $('#rows_per_page').val();
             alert(items);
 
             //var max = $("#pageCount").val();

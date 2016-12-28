@@ -41,12 +41,13 @@ class Admin extends CI_Controller
         $this->load->database();
         //$select = $this->db->query('SELECT * FROM user');
 
-        if($this->input->get('items')!=NULL){
+        /*if($this->input->get('items')!=NULL){
             $itemsPerPage=$this->input->get('items');
         }
         else{
             $itemsPerPage = 3;
-        }
+        }*/
+        $itemsPerPage = 5;
         $indexPage = 1;//$this->input->get('pageIndex');
 
         $this->db->select("*");
