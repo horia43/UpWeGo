@@ -84,7 +84,7 @@
                 <?php endfor ?>
             <?php endif ?>
 
-            <?php if(  $_GET['page']>3 && $_GET['page']<$pageCount-2 ) : ?>             <!-- DACA MA AFLU LA MIJLOC, AFISEZ DOAR -2 -1 page +1 +2  -->
+            <?php if(  $_GET['page']>3 && $_GET['page']<=$pageCount-2 ) : ?>             <!-- DACA MA AFLU LA MIJLOC, AFISEZ DOAR -2 -1 page +1 +2  -->
                 <?php for ($i = $_GET['page']-2; $i <= $_GET['page']+2; $i++) : ?>
                     <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i."&items=".$_GET["items"];?>'"><?php echo $i;?></a></li>
                 <?php endfor ?>
@@ -92,7 +92,7 @@
 
             <?php if(  $_GET['page']>$pageCount-2 ) : ?>                               <!-- DACA MA AFLU PRINTRE ULTIMELE PAGINI, AFISEZ DOAR -4 -3 -2 -1 last  -->
                 <?php if($pageCount!=5) : ?>
-                    <?php for ($i = $pageCount-5; $i <= $pageCount; $i++) : ?>
+                    <?php for ($i = $pageCount-4; $i <= $pageCount; $i++) : ?>
                         <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i."&items=".$_GET["items"];?>'"><?php echo $i;?></a></li>
                     <?php endfor ?>
                 <?php else: ?>
