@@ -139,12 +139,7 @@ class Admin extends CI_Controller
         }
         $indexPage = $this->input->get('page');
 
-        $this->db->select("*");
-        $this->db->where('admin !=', 1);
-        $this->db->limit($itemsPerPage, ($indexPage-1)*$itemsPerPage);
-        $select = $this->db->get("user");
-        $users = $select->result_array();
-        $data['myUsers'] = $users;
+
 
         /*$this->db->count_all("user");
         $this->db->where('admin !=', 1);
@@ -160,6 +155,20 @@ class Admin extends CI_Controller
         $pageCount=ceil($pageCount/$itemsPerPage);
         $data['pageCount']=$pageCount;
 
+        if($indexPage>$pageCount){
+            $indexPage=$pageCount;
+            $var=$_GET;
+            $_GET['page']=$pageCount;
+
+        }
+
+
+        $this->db->select("*");
+        $this->db->where('admin !=', 1);
+        $this->db->limit($itemsPerPage, ($indexPage-1)*$itemsPerPage);
+        $select = $this->db->get("user");
+        $users = $select->result_array();
+        $data['myUsers'] = $users;
 
         $this->load->view('ListUsers', $data);
 

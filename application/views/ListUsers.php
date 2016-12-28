@@ -90,7 +90,7 @@
                 <?php endfor ?>
             <?php endif ?>
 
-            <?php if(  $_GET['page']>=$pageCount-2 ) : ?>                               <!-- DACA MA AFLU PRINTRE ULTIMELE PAGINI, AFISEZ DOAR -4 -3 -2 -1 last  -->
+            <?php if(  $_GET['page']>$pageCount-2 ) : ?>                               <!-- DACA MA AFLU PRINTRE ULTIMELE PAGINI, AFISEZ DOAR -4 -3 -2 -1 last  -->
                 <?php for ($i = $pageCount-5; $i <= $pageCount; $i++) : ?>
                     <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i."&items=".$_GET["items"];?>'"><?php echo $i;?></a></li>
                 <?php endfor ?>
@@ -135,7 +135,8 @@
         <i class="glyphicon glyphicon-arrow-right"></i>
     </span>
     <input id="goto_page" type="text" class="form-control small-input" title="Go to page">
-    <span type="text" id="pageCount" > /<?php echo $pageCount; ?></span>
+    <span id="pageCount" ><?php echo $pageCount; ?></span>
+    <!--<input type="text" id="pageCount" value="<?php /*echo $pageCount; */?>" >-->
 </div>
 
 
