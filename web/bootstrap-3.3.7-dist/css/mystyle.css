@@ -1,0 +1,142 @@
+#myForm{
+    margin:80px auto;
+    border:1px solid #F9F9F8;
+    border-radius:15px;
+    width:400px;
+    height:500px;
+    background-color:#F9FFF1;
+}
+body{
+    background-color:#DDFFB3;
+    margin-left:20px;
+    margin-top:20px;
+}
+
+#myForm div>p {
+    padding: 10px 10px;
+}
+#myForm .data , .inputs{
+
+     margin-top:125px;
+}
+.data{
+    width:39%;
+    display:inline-block;
+    text-align:right;
+    margin:0 auto;
+}
+.inputs{
+    width:59%;
+    display:inline-block;
+    margin:0 auto;
+}
+.select{
+    margin:20px auto;
+    width:50%;
+    text-align:center;
+}
+.inputs input, .select select{
+    border-radius:8px;
+    padding:3px;
+    outline:none;
+}
+#logIn{
+    margin:100px auto;
+    width:50%;
+    text-align:center;
+}
+#logIn >button{
+    width:90px;
+    outline:none;
+    border-radius:10px;
+    background: #ffffff;
+    padding:10px;
+}
+fieldset label{
+    display:inline-block;
+    width:130px;
+    text-align:right;
+    padding:10px;
+}
+fieldset input{
+    padding:2px;
+    border-radius:6px;
+    border:2px solid green;
+    outline:none;
+}
+#addPhoto:hover{
+    opacity:0.8;
+    cursor: pointer;
+}
+#changePhoto:hover{
+    opacity:0.8;
+    cursor: pointer;
+}
+#table1 tr > td:first-child{
+    padding:5px;
+}
+#table1 td{
+    text-align: center;
+    padding:5px;
+}
+.pagination>li>a{
+    z-index: 3;
+    color: darkgreen;
+    border-color: black;
+}
+.pagination>li>a:focus,.pagination>li>a:hover{
+    z-index: 3;
+    color: darkgreen;
+    border-color: black;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: darkgreen;
+    border-color: black;
+}
+.pagination>li>.arrow1{
+
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #0fbfb0;
+    border-color: black;
+}
+.pagination>li>.arrow1:focus, .pagination>li>.arrow1:hover{
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #0fecdd;
+    border-color: black;
+
+}
+.pagination>li>.arrow2{
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #1aa813;
+    border-color: black;
+}
+.pagination>li>.arrow2:focus, .pagination>li>.arrow2:hover{
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #1ada13;
+    border-color: black;
+
+}
+#rows_per_page,#goto_page{
+    width:60px;
+}
+#pageCount{
+    font-size:25px;
+    padding-left:5px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
