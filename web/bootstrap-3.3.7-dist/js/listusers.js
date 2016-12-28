@@ -59,7 +59,6 @@ $(document).ready(function () {
     }
 
     if (pageExists("items") == true) {
-        alert(findGetParameter("items"));
         $('input[name=rows_per_page]').val(findGetParameter("items"));
 
     }
@@ -70,6 +69,7 @@ $(document).ready(function () {
         if (e.keyCode == 13) {
             //var page= $("#goto_page").val();
             var page = document.getElementById('goto_page').value;
+            var items= document.getElementById('rows_per_page').value;
             //var max = $("#pageCount").val();
             var max = document.getElementById('pageCount').value;
             if (page.match(/^\d+$/)) {
@@ -79,21 +79,21 @@ $(document).ready(function () {
                 if (page > max) {
 
                     if (pageExists("page") == true) {
-                        var go = "pageindex?page=" + max;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                        var go = "pageindex?page=" + max +"&items="+items;    // cum de nu trebuie sa scriu si admin/pagein.... ?
                         window.location.href = go;
                     }
                     else {
-                        var go = "admin/pageindex?page=" + max;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                        var go = "admin/pageindex?page=" + max +"&items="+items;    // cum de nu trebuie sa scriu si admin/pagein.... ?
                         window.location.href = go;
                     }
                 }
                 else {
                     if (pageExists("page") == true) {
-                        var go = "pageindex?page=" + page;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                        var go = "pageindex?page=" + page +"&items="+items;    // cum de nu trebuie sa scriu si admin/pagein.... ?
                         window.location.href = go;
                     }
                     else {
-                        var go = "admin/pageindex?page=" + page;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                        var go = "admin/pageindex?page=" + page +"&items="+items;    // cum de nu trebuie sa scriu si admin/pagein.... ?
                         window.location.href = go;
                     }
 
@@ -111,14 +111,13 @@ $(document).ready(function () {
         if (e.keyCode == 13) {
             //var page= $("#goto_page").val();
             var items = $('#rows_per_page').val();
-            alert(items);
 
             //var max = $("#pageCount").val();
             //var max = document.getElementById('pageCount').value;
             if (items.match(/^\d+$/)) {
                 items = parseInt(items);
                 if (pageExists("page") == false) {
-                    var go="pageindex?page=1"+"&items="+items;
+                    var go="admin/pageindex?page=1"+"&items="+items;
                     window.location.href = go;
                 }else{
                     var go="pageindex?page="+findGetParameter("page")+"&items="+items;

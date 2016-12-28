@@ -70,8 +70,8 @@
 
     <?php if(  isset($_GET['page'])) : ?>
         <?php if($_GET['page']!=1) : ?>
-            <li><a class="arrow2" onclick="window.location='<?php echo site_url("admin/pageindex?page=1");?>'">&laquo;</a></li>
-            <li><a class="arrow1" onclick="window.location='<?php echo site_url("admin/pageindex?page=").($_GET["page"]-1);?>'">&lt;</a></li>
+            <li><a class="arrow2" onclick="window.location='<?php echo site_url("admin/pageindex?page=1")."&items=".$_GET["items"];?>'">&laquo;</a></li>
+            <li><a class="arrow1" onclick="window.location='<?php echo site_url("admin/pageindex?page=").($_GET["page"]-1)."&items=".$_GET["items"];?>'">&lt;</a></li>
         <?php endif ?>
     <?php endif ?>
 
@@ -80,35 +80,35 @@
         <?php if($pageCount>=5) : ?>                                                    <!-- DACA AM MAI MULT DE 5 PAGINI DE AFISAT -->
             <?php if(  $_GET['page']<=3 ) : ?>                                          <!-- DACA MA AFLU PRINTRE PRIMELE PAGINI, AFISEZ DOAR 1 2 3 4 5  -->
                 <?php for ($i = 1; $i <= 5; $i++) : ?>
-                    <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
+                    <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i."&items=".$_GET["items"];?>'"><?php echo $i;?></a></li>
                 <?php endfor ?>
             <?php endif ?>
 
             <?php if(  $_GET['page']>3 && $_GET['page']<$pageCount-2 ) : ?>             <!-- DACA MA AFLU LA MIJLOC, AFISEZ DOAR -2 -1 page +1 +2  -->
                 <?php for ($i = $_GET['page']-2; $i <= $_GET['page']+2; $i++) : ?>
-                    <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
+                    <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i."&items=".$_GET["items"];?>'"><?php echo $i;?></a></li>
                 <?php endfor ?>
             <?php endif ?>
 
             <?php if(  $_GET['page']>=$pageCount-2 ) : ?>                               <!-- DACA MA AFLU PRINTRE ULTIMELE PAGINI, AFISEZ DOAR -4 -3 -2 -1 last  -->
                 <?php for ($i = $pageCount-5; $i <= $pageCount; $i++) : ?>
-                    <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
+                    <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i."&items=".$_GET["items"];?>'"><?php echo $i;?></a></li>
                 <?php endfor ?>
             <?php endif ?>
 
         <?php else : ?>                                                                 <!-- DACA NU, AFISEZ DOAR PAGINILE PE CARE LE AM (I.E. 1 2 3 )   -->
             <?php for ($i = 1; $i <= $pageCount; $i++) : ?>
-                <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
+                <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i."&items=".$_GET["items"];?>'"><?php echo $i;?></a></li>
             <?php endfor ?>
         <?php endif ?>
-    <?php else : ?>
-        <?php if($pageCount>=5) :?>                                                     <!-- DACA NU AM PARAMETRUL PAGE / inseamna ca sunt pe prima pagina-->
+    <?php else : ?>                                                                     <!-- DACA NU AM PARAMETRUL PAGE / inseamna ca sunt pe prima pagina-->
+        <?php if($pageCount>=5) :?>
             <?php for ($i = 1; $i <= 5; $i++) : ?>                                      <!-- AFISEZ DOAR 1 2 3 4 5  -->
-                <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
+                <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i."&items=5";?>'"><?php echo $i;?></a></li>
             <?php endfor ?>
         <?php else : ?>
             <?php for ($i = 1; $i <= $pageCount; $i++) : ?>                             <!-- AFISEZ DOAR 1 2 3 ( sunt mai putine pagini decat 5 )  -->
-                <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i;?>'"><?php echo $i;?></a></li>
+                <li id="list-<?php echo $i;?>" ><a onclick="window.location='<?php echo site_url("admin/pageindex?page=").$i."&items=5";?>'"><?php echo $i;?></a></li>
             <?php endfor ?>
         <?php endif ?>
     <?php endif ?>
@@ -117,15 +117,15 @@
 
     <?php if(  isset($_GET['page'])) : ?>
         <?php if($_GET['page']!=$pageCount) : ?>
-            <li><a class="arrow1" onclick="window.location='<?php echo site_url("admin/pageindex?page=").($_GET["page"]+1);?>'">&gt;</a></li>
-            <li><a class="arrow2" onclick="window.location='<?php echo site_url("admin/pageindex?page=").$pageCount;?>'">&raquo;</a></li>
+            <li><a class="arrow1" onclick="window.location='<?php echo site_url("admin/pageindex?page=").($_GET["page"]+1)."&items=".$_GET["items"];?>'">&gt;</a></li>
+            <li><a class="arrow2" onclick="window.location='<?php echo site_url("admin/pageindex?page=").$pageCount."&items=".$_GET["items"];?>'">&raquo;</a></li>
         <?php endif ?>
 
         <!--  ARROWS RIGHT -->
 
     <?php else : ?>
-        <li><a class="arrow1" onclick="window.location='<?php echo site_url("admin/pageindex?page=2")?>'">&gt;</a></li>
-        <li><a class="arrow2" onclick="window.location='<?php echo site_url("admin/pageindex?page=").$pageCount;?>'">&raquo;</a></li>
+        <li><a class="arrow1" onclick="window.location='<?php echo site_url("admin/pageindex?page=2")."&items=5"; ?>'">&gt;</a></li>
+        <li><a class="arrow2" onclick="window.location='<?php echo site_url("admin/pageindex?page=").$pageCount."&items=5";?>'">&raquo;</a></li>
     <?php endif ?>
 </ul>
 

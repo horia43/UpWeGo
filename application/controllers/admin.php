@@ -135,7 +135,7 @@ class Admin extends CI_Controller
             $itemsPerPage=$this->input->get('items');
         }
         else{
-            $itemsPerPage = 3;
+            $itemsPerPage = 5;
         }
         $indexPage = $this->input->get('page');
 
