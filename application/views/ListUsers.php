@@ -134,8 +134,8 @@
     <span class="input-group-addon" title="Go to page">
         <i class="glyphicon glyphicon-arrow-right"></i>
     </span>
-    <input id="goto_page" type="text" class="form-control small-input" title="Go to page">
-    <span id="pageCount" ><?php echo $pageCount; ?></span>
+    <input id="goto_page" type="number" class="form-control small-input" title="Go to page">
+    <span id="pageCount" >/<?php echo $pageCount; ?></span>
     <!--<input type="text" id="pageCount" value="<?php /*echo $pageCount; */?>" >-->
 </div>
 
@@ -145,7 +145,7 @@
     <span class="input-group-addon" title="Rows per page">
         <i class="glyphicon glyphicon-th-list"></i>
     </span>
-    <input id="rows_per_page" name="rows_per_page" value="5" type="text" class="form-control small-input" title="Rows per page">
+    <input id="rows_per_page" name="rows_per_page" value="5" type="number" class="form-control small-input" title="Rows per page">
 </div>
 <!--
 <div class="example">

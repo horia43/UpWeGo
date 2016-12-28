@@ -82,11 +82,11 @@ $(document).ready(function () {
         if (e.keyCode == 13) {
             var page = document.getElementById('goto_page').value;
             var items = document.getElementById('rows_per_page').value;
-            var max = document.getElementById('pageCount').textContent;
+            var max = document.getElementById('pageCount').textContent.substring(1);
             alert(page);
             alert(items);
             alert(max);
-            if (page.match(/^\d+$/)) {
+            if (page.match(/^\d+$/) && parseInt(page)>0) {
                 page = parseInt(page);
                 max = parseInt(max);
 
@@ -114,7 +114,7 @@ $(document).ready(function () {
                 }
             }
             else {
-                alert('Cannot send to this page! Please use only numbers.');
+                alert('Cannot send to this page! Please use only positive natural numbers.');
             }
 
         }
@@ -128,7 +128,7 @@ $(document).ready(function () {
 
             //var max = $("#pageCount").val();
             //var max = document.getElementById('pageCount').value;
-            if (items.match(/^\d+$/)) {
+            if (items.match(/^\d+$/) && parseInt(items)>0) {
                 items = parseInt(items);
                 if (parameterExists("page") == false) {
                     var go = "admin/pageindex?page=1" + "&items=" + items;
@@ -140,7 +140,7 @@ $(document).ready(function () {
                 }
             }
             else {
-                alert('Please use only numbers.');
+                alert('Please use only positive natural numbers.');
             }
 
         }
