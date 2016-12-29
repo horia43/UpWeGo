@@ -12,53 +12,16 @@
 //un unique id  din php ca sa creez string/ token -ul respectiv pe care trebuie sa il am in baza de date
 //
 
-$secret_key="key-587313660811b72439cdd67c897ea689";
-$domain = "sandbox9ca54d91dbdf46b4b961f7700fa16fc4.mailgun.org";
 
-#email options
-$Option['FROM_MAIL']="postmaster@sandbox9ca54d91dbdf46b4b961f7700fa16fc4.mailgun.org";
-$Option['FROM_NAME']="Gorillaz";
-$Option['TO_MAIL']="hbsfirstfugitive@gmail.com";
-$Option['TO_NAME']="Mr. Stancu";
-$Option['SUBJECT']="This is so going to be awesome";
-$Option['BODY_TEXT']="Here is some plain message";
-$Option['BODY_HTML']="<b style='color:red'>Ia de aici !</b>";
+/*$Option['BODY_HTML']="  <div style=\"background-color:black;color:white;padding:20px;\">
+                            <h2>London</h2>
+                            <p>London is the capital city of England. It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
+                            <p>Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.</p>
+                        </div>";*/
 
-### Calling mailGun API ###
-
-#Include the Autoloader
 
 require  'vendor/autoload.php';
 use Mailgun\Mailgun;
-
-$client = new \GuzzleHttp\Client([
-    'verify'=>false,
-]);
-
-$mailgun = new Mailgun($secret_key, new \Http\Adapter\Guzzle6\Client($client));
-
-#Instantiate the client with option to disable ssl verification.
-
-
-# pass te client to Guzzle Adapter
-
-# $adapter = new \Http\Adapter\Guzzle6\Client($client);
-
-# pass the Adapter to mailgun object
-
-# $mailgun = new \Mailgun\Mailgun($secret_key,$adapter);
-
-# Make the call to the client.
-
-$result= $mailgun->sendMessage($domain,array(
-   'from'       =>"{$Option['FROM_NAME']} <{$Option['FROM_MAIL']}>",
-   'to'         =>"{$Option['TO_NAME']} <{$Option['TO_MAIL']}>",
-   'subject'    =>$Option['SUBJECT'],
-   'text'       =>$Option['BODY_TEXT'],
-   'html'       =>$Option['BODY_HTML'],
-));
-# result will return as object //let's test it
-# var_dump($result);
 
 class Admin extends CI_Controller
 {
@@ -70,6 +33,34 @@ class Admin extends CI_Controller
 
     function index()
     {
+
+        $secret_key="key-587313660811b72439cdd67c897ea689";
+        $domain = "sandbox9ca54d91dbdf46b4b961f7700fa16fc4.mailgun.org";
+
+        $html= $this->load->view('pinql', '', true);
+
+        $Option['FROM_MAIL']="postmaster@sandbox9ca54d91dbdf46b4b961f7700fa16fc4.mailgun.org";
+        $Option['FROM_NAME']="Gorillaz";
+        $Option['TO_MAIL']="hbsfirstfugitive@gmail.com";
+        $Option['TO_NAME']="Mr. Stancu";
+        $Option['SUBJECT']="This is so going to be awesome";
+        $Option['BODY_TEXT']="Here is some plain message";
+        $Option['BODY_HTML']=$html;
+
+        $client = new \GuzzleHttp\Client([
+            'verify'=>false,
+        ]);
+        $mailgun = new Mailgun($secret_key, new \Http\Adapter\Guzzle6\Client($client));
+
+        $mailgun->sendMessage($domain,array(
+            'from'       =>"{$Option['FROM_NAME']} <{$Option['FROM_MAIL']}>",
+            'to'         =>"{$Option['TO_NAME']} <{$Option['TO_MAIL']}>",
+            'subject'    =>$Option['SUBJECT'],
+            'text'       =>$Option['BODY_TEXT'],
+            'html'       =>$Option['BODY_HTML'],
+        ));
+        echo "<script type='text/javascript'>alert('$html');</script>";
+
         $this->load->helper('url');
         if ($this->session->userdata('logged_in') && $this->session->userdata('logged_in')['isAdmin']) //// dar in teorie nu am nevoie decat de username ca sa il afisez pe undeva :) Majoritatea lor sunt doar pentru testare
         {
