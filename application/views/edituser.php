@@ -23,7 +23,7 @@
         <div style="float:left; width:150px; height:150px; margin-left:25px; margin-top:50px; margin-right:5px; border-radius:50%; background-color:#DDFFB3; ">
             <img id="changePhoto" onclick="chooseFile();"
                  style="object-fit:cover; width:150px; height:150px; border-radius:50%; border: 1px solid #B8EE9A;"
-                 src="<?php echo base_url()?>/upload/<?php echo $user['picture']; ?>"  alt="Image not found"
+                 src="<?php echo base_url()?>upload/<?php echo $user['picture']; ?>"  alt="Image not found"
                  onerror="this.onerror=null;this.src='<?php echo base_url()?>/upload/noprofilepic.jpg';"/>
         </div>
 

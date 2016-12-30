@@ -52,14 +52,29 @@ class Admin extends CI_Controller
         ]);
         $mailgun = new Mailgun($secret_key, new \Http\Adapter\Guzzle6\Client($client));
 
-        $mailgun->sendMessage($domain,array(
-            'from'       =>"{$Option['FROM_NAME']} <{$Option['FROM_MAIL']}>",
+/*        $mailgun->sendMessage($domain,array(
+                 'from'       =>"{$Option['FROM_NAME']} <{$Option['FROM_MAIL']}>",
             'to'         =>"{$Option['TO_NAME']} <{$Option['TO_MAIL']}>",
             'subject'    =>$Option['SUBJECT'],
             'text'       =>$Option['BODY_TEXT'],
             'html'       =>$Option['BODY_HTML'],
         ));
+        //echo $html;
         echo "<script type='text/javascript'>alert('$html');</script>";
+*/
+
+        $pass='4343';
+        echo $pass;
+        $hash = password_hash($pass, PASSWORD_BCRYPT);
+        echo '<br>'.$hash;
+        $hash2 = password_hash($pass, PASSWORD_BCRYPT);
+        echo '<br>'.$hash2.'<br>';
+        //if($hash==$hash2){
+        if(password_verify($pass,$hash2)){
+            echo 'Match !';
+        }else{
+            echo 'Nein !';
+        }
 
         $this->load->helper('url');
         if ($this->session->userdata('logged_in') && $this->session->userdata('logged_in')['isAdmin']) //// dar in teorie nu am nevoie decat de username ca sa il afisez pe undeva :) Majoritatea lor sunt doar pentru testare
