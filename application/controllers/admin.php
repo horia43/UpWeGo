@@ -34,36 +34,7 @@ class Admin extends CI_Controller
     function index()
     {
 
-        $secret_key="key-587313660811b72439cdd67c897ea689";
-        $domain = "sandbox9ca54d91dbdf46b4b961f7700fa16fc4.mailgun.org";
-
-        $html= $this->load->view('pinql', '', true);
-
-        $Option['FROM_MAIL']="postmaster@sandbox9ca54d91dbdf46b4b961f7700fa16fc4.mailgun.org";
-        $Option['FROM_NAME']="Gorillaz";
-        $Option['TO_MAIL']="hbsfirstfugitive@gmail.com";
-        $Option['TO_NAME']="Mr. Stancu";
-        $Option['SUBJECT']="This is so going to be awesome";
-        $Option['BODY_TEXT']="Here is some plain message";
-        $Option['BODY_HTML']=$html;
-
-        $client = new \GuzzleHttp\Client([
-            'verify'=>false,
-        ]);
-        $mailgun = new Mailgun($secret_key, new \Http\Adapter\Guzzle6\Client($client));
-
-/*        $mailgun->sendMessage($domain,array(
-                 'from'       =>"{$Option['FROM_NAME']} <{$Option['FROM_MAIL']}>",
-            'to'         =>"{$Option['TO_NAME']} <{$Option['TO_MAIL']}>",
-            'subject'    =>$Option['SUBJECT'],
-            'text'       =>$Option['BODY_TEXT'],
-            'html'       =>$Option['BODY_HTML'],
-        ));
-        //echo $html;
-        echo "<script type='text/javascript'>alert('$html');</script>";
-*/
-
-        $pass='4343';
+        /*$pass=rand(1000,500000);
         echo $pass;
         $hash = password_hash($pass, PASSWORD_BCRYPT);
         echo '<br>'.$hash;
@@ -74,7 +45,9 @@ class Admin extends CI_Controller
             echo 'Match !';
         }else{
             echo 'Nein !';
-        }
+        }*/
+
+
 
         $this->load->helper('url');
         if ($this->session->userdata('logged_in') && $this->session->userdata('logged_in')['isAdmin']) //// dar in teorie nu am nevoie decat de username ca sa il afisez pe undeva :) Majoritatea lor sunt doar pentru testare
@@ -257,37 +230,125 @@ class Admin extends CI_Controller
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } else {
 
+                $secret_key="key-587313660811b72439cdd67c897ea689";
+                $domain = "sandbox9ca54d91dbdf46b4b961f7700fa16fc4.mailgun.org";
+
+                //$html= $this->load->view('pinql', '', true);
+
+                $pass=rand(1000,500000);
+                $hash = password_hash($pass, PASSWORD_BCRYPT);
+                $link= 'http://gorillaz/UpWeGo/verify.php?email='.$this->input->post("email").'&hash='.$hash;
+
+
+                /*if(password_verify($pass,$hash)){
+                    echo 'Match !';
+                }else{
+                    echo 'Nein !';
+                }*/
+
+                $Option['FROM_MAIL']="postmaster@sandbox9ca54d91dbdf46b4b961f7700fa16fc4.mailgun.org";
+                $Option['FROM_NAME']="UpWeGo";
+                $Option['TO_MAIL']=$this->input->post('email');
+                $Option['TO_NAME']="Mr/Mrs.".$this->input->post('lastname');
+                $Option['SUBJECT']="UpWeGo Registration";
+                $Option['BODY_TEXT']="Here is some plain message";
+                $Option['BODY_HTML']='  
+                        <head>
+                            <style>
+                                p{
+                                    color:yellow;
+                                }
+                                i{
+                                    color:#0645AD;
+                                }
+                                li{
+                                    color:sandybrown;
+                                }
+                            </style>
+                        </head> 
+                        <body>
+                        
+                        <div style="background-color:black; color:white; padding:20px; width:100%; height:700px;">
+                            <h2>Hello,'.$this->input->post('lastname').'</h2>
+                            <p>Thank you for joining our team, everything is almost set up.</p>
+                            <p>You can login with the following credentials after you have activated your account by pressing the url below.</p>
+                            
+                            <p>Activation URL: </p>
+                            <p><i>'.$link.'</i></p>
+
+                            -------------------------------
+                            <p>Username: '.$this->input->post('username').'</p>
+                            <p>Password: '.$pass.'</p>
+                            -------------------------------
+                           
+                            <p>This password was assigned automatically. For better security, change the password after first login or as soon as possible.</p>
+                            <p>Here are some tips to help you create a strong password:</p>
+
+                            <ul>
+                                <li>Make sure your password is at least eight characters in length.</li>
+                                <li>Combine numbers and letters, and don\'t include commonly used words.</li>
+                                <li>Select a word or acronym and insert numbers between some of the letters.</li>
+                                <li>Include punctuation marks.</li>
+                                <li>Mix capital and lowercase letters.</li>
+                            </ul>
+                            <p>For your security, we recommend that you don\'t reuse passwords associated with your email address or any other type of account. Additionally, if you enter your original password as your new password, you may trigger an error message. Create an entirely new password the next time you sign in.</p>
+                        
+                        
+                        </div>
+                        </body>';
+
+                $client = new \GuzzleHttp\Client([
+                    'verify'=>false,
+                ]);
+                $mailgun = new Mailgun($secret_key, new \Http\Adapter\Guzzle6\Client($client));
+
+                        $mailgun->sendMessage($domain,array(
+                            'from'       =>"{$Option['FROM_NAME']} <{$Option['FROM_MAIL']}>",
+                            'to'         =>"{$Option['TO_NAME']} <{$Option['TO_MAIL']}>",
+                            'subject'    =>$Option['SUBJECT'],
+                            'text'       =>$Option['BODY_TEXT'],
+                            'html'       =>$Option['BODY_HTML'],
+                        ));
+                        //echo $html;
+                        //echo "<script type='text/javascript'>alert('$html');</script>";
+
+
                 if ($this->input->post('fileInputName') != '') {
                     $extension_pos = strrpos($this->input->post('fileInputName'), '.'); // find position of the last dot, so where the extension starts
                     $new_name = $this->input->post('username') . "_" . uniqid() . substr($this->input->post('fileInputName'), $extension_pos);
 
 
-                    $config['upload_path'] = './upload/';
-                    $config['allowed_types'] = 'gif|jpg|png';
-                    $config['max_size'] = 8192000;
-                    $config['max_width'] = 9000;
-                    $config['max_height'] = 9000;
-                    $config['file_name'] = $new_name;
+                    $config['upload_path']      = './upload/';
+                    $config['allowed_types']    = 'gif|jpg|png';
+                    $config['max_size']         = 8192000;
+                    $config['max_width']        = 9000;
+                    $config['max_height']       = 9000;
+                    $config['file_name']        = $new_name;
 
                     $this->load->library('upload', $config);
                     $this->upload->do_upload('fileInput');
 
                     $data = array(
-                        'picture' => $new_name,
+                        'picture'   => $new_name,
                         'firstname' => $this->input->post('firstname'),
-                        'lastname' => $this->input->post('lastname'),
-                        'email' => $this->input->post('email'),
-                        'username' => $this->input->post('username'),
-                        'admin' => '0'
+                        'lastname'  => $this->input->post('lastname'),
+                        'email'     => $this->input->post('email'),
+                        'username'  => $this->input->post('username'),
+                        'admin'     => '0',
+                        'active'    => '0',
+                        'password'  => $hash
                     );
                     $this->db->insert('user', $data);
                 }else{
                     $data = array(
                         'firstname' => $this->input->post('firstname'),
-                        'lastname' => $this->input->post('lastname'),
-                        'email' => $this->input->post('email'),
-                        'username' => $this->input->post('username'),
-                        'admin' => '0'
+                        'lastname'  => $this->input->post('lastname'),
+                        'email'     => $this->input->post('email'),
+                        'username'  => $this->input->post('username'),
+                        'admin'     => '0',
+                        'active'    => '0',
+                        'password'  => $hash
+
                     );
                     $this->db->insert('user', $data);
                 }
@@ -339,9 +400,9 @@ class Admin extends CI_Controller
 
                     $data = array(
                         'firstname' => $this->input->post('firstname'),
-                        'lastname' => $this->input->post('lastname'),
-                        'email' => $this->input->post('email'),
-                        'username' => $this->input->post('username')
+                        'lastname'  => $this->input->post('lastname'),
+                        'email'     => $this->input->post('email'),
+                        'username'  => $this->input->post('username')
 
                     );
                     $this->db->where('id=', $this->input->get('id'));       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
@@ -362,23 +423,23 @@ class Admin extends CI_Controller
                         /*var_dump($new_name);
                         die;*/
 
-                        $config['upload_path'] = './upload/';
-                        $config['allowed_types'] = 'gif|jpg|png';
-                        $config['max_size'] = 8192000;
-                        $config['max_width'] = 9000;
-                        $config['max_height'] = 9000;
-                        $config['file_name'] = $new_name;
-                        $config['overwrite'] = TRUE;
+                        $config['upload_path']      = './upload/';
+                        $config['allowed_types']    = 'gif|jpg|png';
+                        $config['max_size']         = 8192000;
+                        $config['max_width']        = 9000;
+                        $config['max_height']       = 9000;
+                        $config['file_name']        = $new_name;
+                        $config['overwrite']        = TRUE;
 
                         $this->load->library('upload', $config);
                         $this->upload->do_upload('fileInput');
 
                         $data = array(
-                            'picture' => $new_name,
+                            'picture'   => $new_name,
                             'firstname' => $this->input->post('firstname'),
-                            'lastname' => $this->input->post('lastname'),
-                            'email' => $this->input->post('email'),
-                            'username' => $this->input->post('username')
+                            'lastname'  => $this->input->post('lastname'),
+                            'email'     => $this->input->post('email'),
+                            'username'  => $this->input->post('username')
 
                         );
                         $this->db->where('id=', $this->input->get('id'));       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
@@ -390,24 +451,24 @@ class Admin extends CI_Controller
     /*                    echo'sunt aici';
                         var_dump($new_name);
                         die;*/
-                        $config['upload_path'] = './upload/';
-                        $config['allowed_types'] = 'gif|jpg|png';
-                        $config['max_size'] = 8192000;
-                        $config['max_width'] = 9000;
-                        $config['max_height'] = 9000;
-                        $config['file_name'] = $new_name;
+                        $config['upload_path']      = './upload/';
+                        $config['allowed_types']    = 'gif|jpg|png';
+                        $config['max_size']         = 8192000;
+                        $config['max_width']        = 9000;
+                        $config['max_height']       = 9000;
+                        $config['file_name']        = $new_name;
 
 
                         $this->load->library('upload', $config);
                         $this->upload->do_upload('fileInput');
 
                         $data = array(
-                            'picture' => $new_name,
+                            'picture'   => $new_name,
                             'firstname' => $this->input->post('firstname'),
-                            'lastname' => $this->input->post('lastname'),
-                            'email' => $this->input->post('email'),
-                            'username' => $this->input->post('username'),
-                            'admin' => '0'
+                            'lastname'  => $this->input->post('lastname'),
+                            'email'     => $this->input->post('email'),
+                            'username'  => $this->input->post('username'),
+                            'admin'     => '0'
                         );
                         $this->db->where('id=', $this->input->get('id'));       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
                         $this->db->update('user', $data);

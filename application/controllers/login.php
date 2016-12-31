@@ -39,7 +39,11 @@ class Login extends CI_Controller
             $this->load->database();
             $username = $this->input->post('username');
             $password = $this->input->post('password');
-
+            /*if(password_verify($pass,$hash2)){
+                echo 'Match !';
+            }else{
+                echo 'Nein !';
+            }*/
             $query=$this->db->query('SELECT username,password,admin,email FROM user WHERE username="'.$username.'" AND password="'.$password.'"');
 
             /*
@@ -69,7 +73,7 @@ class Login extends CI_Controller
             }*/
 
             if ($query->num_rows() == 0) {
-                throw new Exception("Invalid input data. Right here.");
+                throw new Exception("Invalid input data. Session expired. Re-enter login data.");
                 }
             elseif ($query->num_rows() > 1) {
                 throw new Exception("Error in Database. Please contact our support.");
