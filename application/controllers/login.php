@@ -53,11 +53,8 @@ class Login extends CI_Controller
             }elseif($select->num_rows() == 1) {
                 $pass = $select->result_array()[0]['password'];
 
-                $hash = password_hash($password, PASSWORD_BCRYPT);
-                echo '<pre>';
-                print_r($hash);
-                echo '</pre>';
-                if (password_verify($password, $hash)) {
+
+                if (password_verify($password, $pass)) {
 
 
                     $query = $this->db->query('SELECT username,password,admin,email FROM user WHERE username="' . $username . '" AND password="' . $pass . '"');
