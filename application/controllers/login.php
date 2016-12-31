@@ -39,81 +39,100 @@ class Login extends CI_Controller
             $this->load->database();
             $username = $this->input->post('username');
             $password = $this->input->post('password');
-            /*if(password_verify($pass,$hash2)){
-                echo 'Match !';
-            }else{
-                echo 'Nein !';
-            }*/
-            $query=$this->db->query('SELECT username,password,admin,email FROM user WHERE username="'.$username.'" AND password="'.$password.'"');
 
-            /*
-             * $query = $this->db->get_where('user', array('username' => $username, 'password' => $password));
-             * */
 
-            /*$this->db->where('username', $username);
-            $this->db->where('password', $password);
-            $query = $this->db->get('user');*/
 
-            /*$this->db->where('username', $username);
-            $query = $this->db->get('user');            //SELECT * FROM user ( mysql table )
-            $users = $query->result_array();
-            echo '<pre>';
-            print_r($users);
-            echo '</pre>';
-            print_r($users);
-            die;*/
-
-            /*if ($query->num_rows() == 0) {
-                throw new Exception("Invalid input data.");
+            $this->db->select("password");
+            $this->db->where('username=', $username);
+            $select = $this->db->get("user");
+            if ($select->num_rows() == 0) {
+                throw new Exception("Invalid input data. Session expired. Re-enter login data.xxxx");
             }
-            else{
-                $response = array(
-                    "success" => true
-                );
-            }*/
-
-            if ($query->num_rows() == 0) {
-                throw new Exception("Invalid input data. Session expired. Re-enter login data.");
-                }
-            elseif ($query->num_rows() > 1) {
+            elseif ($select->num_rows() > 1) {
                 throw new Exception("Error in Database. Please contact our support.");
-            }elseif($query->num_rows() == 1){
+            }elseif($select->num_rows() == 1) {
+                $pass = $select->result_array()[0]['password'];
 
-                $isAdmin = $query->result_array()[0]['admin']; /// Select from first result, the 'admin' property
-                $email =$query->result_array()[0]['email'];
-                if($isAdmin){
-                    $response = array(
-                        "success" => true,
-                        "isAdmin" => true
-                    );
+                $hash = password_hash($password, PASSWORD_BCRYPT);
+                echo '<pre>';
+                print_r($hash);
+                echo '</pre>';
+                if (password_verify($password, $hash)) {
 
-                    $sessiondata= array(
-                        'username'  => $username,
-                        'email'     => $email,
-                        'logged_in' => TRUE,
-                        'isAdmin' => true,
-                        'password' => $password
-                    );
-                    $this->session->set_userdata('logged_in',$sessiondata);
+
+                    $query = $this->db->query('SELECT username,password,admin,email FROM user WHERE username="' . $username . '" AND password="' . $pass . '"');
+
+                    /*
+                     * $query = $this->db->get_where('user', array('username' => $username, 'password' => $password));
+                     * */
+
+                    /*$this->db->where('username', $username);
+                    $this->db->where('password', $password);
+                    $query = $this->db->get('user');*/
+
+                    /*$this->db->where('username', $username);
+                    $query = $this->db->get('user');            //SELECT * FROM user ( mysql table )
+                    $users = $query->result_array();
+                    echo '<pre>';
+                    print_r($users);
+                    echo '</pre>';
+                    print_r($users);
+                    die;*/
+
+                    /*if ($query->num_rows() == 0) {
+                        throw new Exception("Invalid input data.");
+                    }
+                    else{
+                        $response = array(
+                            "success" => true
+                        );
+                    }*/
+
+                    if ($query->num_rows() == 0) {
+                        throw new Exception("Invalid input data. Session expired. Re-enter login data.");
+                    } elseif ($query->num_rows() > 1) {
+                        throw new Exception("Error in Database. Please contact our support.");
+                    } elseif ($query->num_rows() == 1) {
+
+                        $isAdmin = $query->result_array()[0]['admin']; /// Select from first result, the 'admin' property
+                        $email = $query->result_array()[0]['email'];
+                        if ($isAdmin) {
+                            $response = array(
+                                "success" => true,
+                                "isAdmin" => true
+                            );
+
+                            $sessiondata = array(
+                                'username' => $username,
+                                'email' => $email,
+                                'logged_in' => TRUE,
+                                'isAdmin' => true,
+                                'password' => $password
+                            );
+                            $this->session->set_userdata('logged_in', $sessiondata);
+                        } else {
+
+                            $response = array(
+                                "success" => true,
+                                "isAdmin" => false
+                            );
+
+                            $sessiondata = array(
+                                'username' => $username,
+                                'email' => $email,
+                                'logged_in' => TRUE,
+                                'password' => $password,
+                                'isAdmin' => false
+                            );
+
+                            $this->session->set_userdata('logged_in', $sessiondata);
+                        }
+                    } else {
+                        throw new Exception("There is a problem our developer didn't think about. Please contact our support.");
+                    }
                 }else{
-
-                    $response = array(
-                        "success" => true,
-                        "isAdmin" => false
-                    );
-
-                    $sessiondata = array(
-                        'username'  => $username,
-                        'email'     => $email,
-                        'logged_in' => TRUE,
-                        'password' => $password,
-                        'isAdmin' => false
-                    );
-
-                    $this->session->set_userdata('logged_in',$sessiondata);
+                    throw new Exception("Parola nu e buna");
                 }
-            }else{
-                throw new Exception("There is a problem our developer didn't think about. Please contact our support.");
             }
         /*
             $link = @mysqli_connect('localhost', 'root', 'Sta19Hor', 'upwego');
