@@ -4,7 +4,7 @@
 }*/
 body{
     font-family: 'Muli', sans-serif;
-    background-color:#E5E5E5;
+    background-color: #2faca9;
     margin:0;
 }
 #container{
@@ -21,12 +21,12 @@ body{
     font-size:25px;
     padding-top:10px;
     margin-left:45px;
-    color:#A1A1A1;
+    color: #2a87a1;
 }
 
 p:first-child{
     font-size:28px;
-    color:#45556A;
+    color: #376a1f;
     margin-bottom:1px;
     margin-top: 45px;
     padding-top: 1px;
@@ -34,7 +34,7 @@ p:first-child{
 }
 div p{
     font-size:28px;
-    color:#ABB1BC;
+    color: #2faca9;
 
     margin-top: 1px;
     margin-bottom: 1px;
@@ -49,13 +49,13 @@ p:last-child{
     margin-top:70px;
 }
 .common{
-    border-bottom:2px solid #CFCFCF;
+    border-bottom:2px solid #fffad3;
     margin-left:45px;
     margin-right:150px;
 }
 .section1{
     font-size:20px;
-    color:#ABB1BC;
+    color: #bcb8b0;
     margin-top: 35px;
     margin-bottom:35px;
 }
@@ -71,7 +71,7 @@ p:last-child{
 }
 .pieces p{
     font-size:28px;
-    color:#ABB1BC;
+    color: #23bc8d;
 }
 #pieces1{
     margin-right:30px;
