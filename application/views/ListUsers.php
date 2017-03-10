@@ -53,7 +53,7 @@
             <td><?=$user['lastname']; ?></td>
             <td><?=$user['username']; ?></td>
             <td><?=$user['email']; ?></td>
-            <td><a href="#">Add salary</a></td>
+            <td><a href="#" onclick="window.location='<?php echo site_url("admin/pageaddsalary?id=").$user['id'];?>'">Add salary</a></td>
             <td><a href="#" onclick="window.location='<?php echo site_url("admin/pageedituser?id=").$user['id'];?>'">Edit</a></td>
             <td><a href="#">Delete</a></td>
         </tr>

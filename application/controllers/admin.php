@@ -230,8 +230,9 @@ class Admin extends CI_Controller
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } else {
 
-                $secret_key="key-587313660811b72439cdd67c897ea689";
-                $domain = "sandbox9ca54d91dbdf46b4b961f7700fa16fc4.mailgun.org";
+                $secret_key="key-587313660811b72439cdd67c897ea689";  // apparently it's the same
+                //$domain = "sandbox9ca54d91dbdf46b4b961f7700fa16fc4.mailgun.org";
+                $domain = "mg.gorillaz.com";
 
                 //$html= $this->load->view('pinql', '', true);
 
@@ -360,7 +361,18 @@ class Admin extends CI_Controller
 
         $this->load->view("adduser");
     }
+    function pageaddsalary(){
+        $this->load->database();
 
+        $this->db->select('username,firstname,lastname,email,picture');
+        $this->db->where('id=', $this->input->get('id'));
+        $select = $this->db->get('user');
+        $users = $select->result_array();
+        $data['myUser'] = $users;
+
+
+        $this->load->view("addsalary", $data);
+    }
     function pageedituser()
     {
         if ($this->input->post()) {
