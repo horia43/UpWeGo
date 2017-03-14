@@ -5,23 +5,31 @@
     <meta charset="UTF-8">
     <title>Add salary</title>
 
+
+    <link rel="stylesheet" href="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/css/mystyle.css">
+
+    <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/js/addsalary.js.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/js/addsalary.js"></script>
+
+
 
 
 </head>
 <body>
 <div style="border:3px solid #2E4209; border-radius:5px; margin:0 auto; width:700px; height:450px; margin-top:120px;">
     <?php foreach($myUser as  $user): ?>
-        <form method="post" enctype="multipart/form-data">
-            <div style="height:0px;overflow:hidden">
+        <form method="post">
+            <!--<div style="height:0px;overflow:hidden">
                 <input type="file" id="fileInput" name="fileInput" accept="image/*"/>
                 <input type="text" name="fileInputName" id="fileInputName" value=""></input>
-            </div>
+            </div>-->
 
-            <div style="float:left; width:150px; height:150px; margin-left:25px; margin-top:50px; margin-right:5px; border-radius:50%; background-color:#DDFFB3; ">
-                <img id="changePhoto" onclick="chooseFile();"
+            <div onclick="divshow('<?php echo base_url()?>upload/<?php echo $user['picture']; ?>','<?php echo base_url()?>/upload/noprofilepic.jpg')"
+                 style="float:left; width:150px; height:150px; margin-left:25px; margin-top:50px; margin-right:5px; border-radius:50%; background-color:#DDFFB3;">
+                <img id="changePhoto"
                      style="object-fit:cover; width:150px; height:150px; border-radius:50%; border: 1px solid #B8EE9A;"
                      src="<?php echo base_url()?>upload/<?php echo $user['picture']; ?>"  alt="Image not found"
                      onerror="this.onerror=null;this.src='<?php echo base_url()?>/upload/noprofilepic.jpg';"/>
@@ -29,7 +37,7 @@
 
 
             <div style="float:left; width:440px; margin-top:50px;">
-                <fieldset style="border:1px solid darkgreen; height:270px;">
+                <fieldset style="border:1px solid darkgreen; height:270px; padding:30px;">
                     <p>First name: <?php echo $user['firstname']?></p>
                     <p>Last name: <?php echo $user['lastname']?></p>
                     <p>Email address: <?php echo $user['email']?></p>
@@ -47,6 +55,30 @@
         </form>
     <?php endforeach;?>
 </div>
+
+
+
+<div class="modal fade" id="viewprofilepic2">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header" style="margin-bottom:0;border-bottom:none; color:white; background: rgba(0, 0, 0, 1); ">
+                <button style="color:white;"type="button" class="close"
+                        data-dismiss="modal">X</button>
+                <h3 class="modal-title">Profile picture</h3>
+            </div>
+            <div class="modal-body" style="margin:0; padding:0px 0px 10px 0px; background: rgba(0, 0, 0, 1); " >
+                <div id="divPicture2" style=" opacity:1 !important; margin:0 auto; border-radius:5%; width:500px; height:500px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js"></script>
+
+<script type="text/javascript" src="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/js/addsalary.js"></script>
+
+<script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
 
 </body>
 </html>

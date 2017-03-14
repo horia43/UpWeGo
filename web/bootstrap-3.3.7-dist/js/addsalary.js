@@ -13,6 +13,21 @@ function chooseFile() {
  return false;
  }
  });*/
+
+function divshow(url_name, backup_name) {
+
+    document.getElementById("divPicture2").style.backgroundImage = "url('" + url_name + "'),url('" + backup_name + "')";
+    document.getElementById("divPicture2").style.backgroundRepeat = "no-repeat";
+    document.getElementById("divPicture2").style.backgroundPosition = "center center";
+    document.getElementById("divPicture2").style.backgroundSize = "cover";
+    //document.getElementById("divPicture").style.background="#ffffff url('" +url_name +"') no-repeat center";
+
+
+    $('#viewprofilepic2').modal();
+}
+
+
+
 $(document).ready(function () {
 
     $("#datepicker").datepicker( {

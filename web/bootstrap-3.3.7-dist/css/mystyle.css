@@ -11,6 +11,7 @@ body{
     margin-left:20px;
     margin-top:20px;
 }
+body { padding-right: 0 !important; }
 
 #myForm div>p {
     padding: 10px 10px;
