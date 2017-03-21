@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit User</title>
-    <link rel="shortcut icon" href="<?php echo base_url()?>upload/<?php echo $myUser['4']['picture']; ?>">
+    <link rel="shortcut icon" href="<?php echo base_url()?>upload/<?php echo $myUser[0]['picture']; ?>">
 
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/css/mystyle.css">

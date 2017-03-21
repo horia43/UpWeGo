@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Add User</title>
+    <link rel="shortcut icon" href="http://downloadicons.net/sites/default/files/plus-icon-76436.png">
+
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/css/mystyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
