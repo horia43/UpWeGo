@@ -42,8 +42,8 @@
                     <p>Last name: <?php echo $user['lastname']?></p>
                     <p>Email address: <?php echo $user['email']?></p>
                     <p>Username: <?php echo $user['username']?></p>
-                    <p>Add salary: <input type="number" name="s_amount" size="20"> RON</p>
-                    <p>Month and Year: <input type="month" id="myMonth"></p>
+                    <p>Add salary: <input       type="number"   name="s_amount" size="20"> RON</p>
+                    <p>Month and Year: <input   type="month"    name="s_date"   id="myMonth"></p>
                 </fieldset>
             </div>
             <div style="width:100%; height:80px; clear:left; text-align:center;">

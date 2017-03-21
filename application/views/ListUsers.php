@@ -13,6 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <title>List of Users</title>
+    <link rel="shortcut icon" href="http://pm1.narvii.com/6223/68e9e8ca084e06b0e5f05dcf7efcee8ab0406c36_hq.jpg">
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/css/mystyle.css">

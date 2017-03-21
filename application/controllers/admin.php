@@ -362,6 +362,30 @@ class Admin extends CI_Controller
         $this->load->view("adduser");
     }
     function pageaddsalary(){
+
+        if ($this->input->post()) {
+
+            $this->load->database();
+
+            $id_employee= $this->input->get('id');
+            $s_amount   = $this->input->post('s_amount');
+            $s_date     = $this->input->post('s_date');
+            $s_date.='-00';
+//            echo $s_date;
+            $data=array(
+                'id_employee' => $id_employee,
+                's_amount' => $s_amount,
+                's_date' => $s_date
+            );
+            $this->db->insert('salary', $data);
+
+
+
+
+            redirect('admin', 'refresh');
+        }
+
+
         $this->load->database();
 
         $this->db->select('username,firstname,lastname,email,picture');

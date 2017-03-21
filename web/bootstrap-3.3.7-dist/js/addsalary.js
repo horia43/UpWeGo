@@ -30,11 +30,6 @@ function divshow(url_name, backup_name) {
 
 $(document).ready(function () {
 
-    $("#datepicker").datepicker( {
-        format: "mm-yyyy",
-        startView: "months",
-        minViewMode: "months"
-    });
 
     function readURL(input) {
 
