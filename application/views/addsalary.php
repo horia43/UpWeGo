@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Add salary</title>
+    <link rel="shortcut icon" href="http://legalservicesmiami.org/wp-content/uploads/2015/02/icon-money.png">
 
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
@@ -42,8 +43,8 @@
                     <p>Last name: <?php echo $user['lastname']?></p>
                     <p>Email address: <?php echo $user['email']?></p>
                     <p>Username: <?php echo $user['username']?></p>
-                    <p>Add salary: <input       type="number"   name="s_amount" size="20"> RON</p>
-                    <p>Month and Year: <input   type="month"    name="s_date"   id="myMonth"></p>
+                    <p>Add salary: <input       type="number"   name="s_amount" size="20" min="0"   id="s_amount" required> RON</p>
+                    <p>Month and Year: <input   type="month"    name="s_date"   id="myMonth" required></p>
                 </fieldset>
             </div>
             <div style="width:100%; height:80px; clear:left; text-align:center;">

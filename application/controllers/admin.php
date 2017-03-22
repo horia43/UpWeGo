@@ -370,19 +370,26 @@ class Admin extends CI_Controller
             $id_employee= $this->input->get('id');
             $s_amount   = $this->input->post('s_amount');
             $s_date     = $this->input->post('s_date');
-            $s_date.='-00';
-//            echo $s_date;
-            $data=array(
-                'id_employee' => $id_employee,
-                's_amount' => $s_amount,
-                's_date' => $s_date
-            );
-            $this->db->insert('salary', $data);
 
+            $this->db->select('payment_id');
+            $this->db->where('s_date=',$s_date);
+            $this->db->where('id_employee=',$id_employee);
+            $select=$this->db->get('salary');
 
+            if ($select->num_rows() > 0) {
+                $message = "You already made the payment for this employee on the specific month.";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+            }else{
+                $data=array(
+                    'id_employee' => $id_employee,
+                    's_amount' => $s_amount,
+                    's_date' => $s_date
+                );
 
+                $this->db->insert('salary', $data);
+                redirect('admin', 'refresh');
+            }
 
-            redirect('admin', 'refresh');
         }
 
 
