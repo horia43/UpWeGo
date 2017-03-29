@@ -141,3 +141,97 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
+
+
+/* FROM SAMPLE */
+
+body{
+    font-family: 'Muli', sans-serif;
+    background-color: #2faca9;
+    margin:0;
+}
+
+#container{
+    width:1450px;
+    margin:0 auto;
+    background-color:#ffffff;
+}
+#h1{
+    font-size:28px;
+    padding-top:55px;
+    margin-left:45px;
+}
+#h2{
+    font-size:25px;
+    padding-top:10px;
+    margin-left:45px;
+    color: #2a87a1;
+}
+
+p:first-child{
+    font-size:28px;
+    color: #376a1f;
+    margin-bottom:1px;
+    margin-top: 45px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+div p{
+    font-size:28px;
+    color: #2faca9;
+
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+
+}
+p:last-child{
+    margin-bottom:45px;
+}
+.margintop{
+    margin-top:70px;
+}
+.common{
+    border-bottom:2px solid #fffad3;
+    margin-left:45px;
+    margin-right:150px;
+}
+.section1{
+    font-size:20px;
+    color: #bcb8b0;
+    margin-top: 35px;
+    margin-bottom:35px;
+}
+.section2{
+    margin-bottom:45px;
+}
+.section2 img{
+    margin-right:20px;
+    margin-top:20px;
+}
+.pieces{
+    display:inline-block;
+}
+.pieces p{
+    font-size:28px;
+    color: #23bc8d;
+}
+#pieces1{
+    margin-right:30px;
+    margin-top:15px;
+    margin-bottom:45px;
+
+}
+#pieces2{
+    margin-top:15px;
+    margin-bottom:45px;
+}
+.common2{
+    margin-left:45px;
+    margin-right:150px;
+}
+
+
+
+/* END OF SAMPLE  */

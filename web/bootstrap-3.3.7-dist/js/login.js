@@ -40,7 +40,7 @@ $(document).ready(function () {
                     } else {
                         //window.location.href = "welcome/createSession";
                         //window.location.href = "admin";
-                        window.location.href = "welcome/tralala";
+                        window.location.href = "user";
                     }
                 } else {
                     alert(response.msg);
