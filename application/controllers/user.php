@@ -31,18 +31,32 @@ class User extends CI_Controller {
 
         $this->db->select("id");
         $this->db->where('username=', $data['username']);
-        $query=$this->db->get('user');
+        $query=$this->db->get("user");
         $id_employee= $query->result_array()[0]['id'];
 
 
-        $this->db->select("*");
-        $this->db->where('id_employee=', $id_employee);
-        $select=$this->db->get('salary');
+        /*$this->db->select("*");
+        $this->db->where("id_employee=", $id_employee);
+        $select=$this->db->get("salary");*/
+
+        $select = $this->db->query('SELECT * FROM salary WHERE id_employee="' . $id_employee . '"');
+        foreach($select->result_array() as $row){
+            echo $row['s_amount'];
+        }
 
         $jsonArray = array();
-        if ($select->num_rows > 0) {
+
+        //$row = $select->fetch_array();
+        //echo '<pre>';
+        //var_dump($row);
+        //print_r($select);
+        //echo $row;
+        //echo '</pre>';
+
+        if ($select->num_rows() > 0) {
             //Converting the results into an associative array
             while($row = $select->fetch_assoc()) {
+
                 $jsonArrayItem = array();
                 $jsonArrayItem['s_date'] = $row['s_date'];
                 $jsonArrayItem['s_amount'] = $row['s_amount'];
@@ -51,11 +65,15 @@ class User extends CI_Controller {
             }
         }
         header('Content-type: application/json');
-        echo json_encode($jsonArray);
+
+
+
+
+        //echo json_encode($jsonArray);
         /*$user_details = $select->result_array();
         $data['userDetails'] = $user_details;*/
 
-        $this->load->view('user');
+        //$this->load->view('user');
     }
 
 
