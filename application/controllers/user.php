@@ -1,6 +1,7 @@
 <?php
 
-class User extends CI_Controller {
+class User extends CI_Controller
+{
 
 
     function __construct()
@@ -31,20 +32,31 @@ class User extends CI_Controller {
 
         $this->db->select("id");
         $this->db->where('username=', $data['username']);
-        $query=$this->db->get("user");
-        $id_employee= $query->result_array()[0]['id'];
+        $query = $this->db->get("user");
+        $id_employee = $query->result_array()[0]['id'];
 
 
-        /*$this->db->select("*");
+        $this->db->select("*");
         $this->db->where("id_employee=", $id_employee);
-        $select=$this->db->get("salary");*/
+        $select = $this->db->get("salary");
 
-        $select = $this->db->query('SELECT * FROM salary WHERE id_employee="' . $id_employee . '"');
-        foreach($select->result_array() as $row){
-            echo $row['s_amount'];
-        }
-
+        //$select = $this->db->query('SELECT * FROM salary WHERE id_employee="' . $id_employee . '"');
         $jsonArray = array();
+        if ($select->num_rows() > 0) {
+            foreach ($select->result_array() as $row) {
+                $jsonArrayItem = array();
+                $jsonArrayItem['payment_id'] = $row['payment_id'];
+                $jsonArrayItem['s_date'] = $row['s_date'];
+                $jsonArrayItem['s_amount'] = $row['s_amount'];
+                //append the above created object into the main array.
+                array_push($jsonArray, $jsonArrayItem);
+            }
+        }
+        //header('Content-type: application/json');
+
+        //print_r($jsonArray);
+        //echo json_encode($jsonArray);
+
 
         //$row = $select->fetch_array();
         //echo '<pre>';
@@ -53,27 +65,11 @@ class User extends CI_Controller {
         //echo $row;
         //echo '</pre>';
 
-        if ($select->num_rows() > 0) {
-            //Converting the results into an associative array
-            while($row = $select->fetch_assoc()) {
 
-                $jsonArrayItem = array();
-                $jsonArrayItem['s_date'] = $row['s_date'];
-                $jsonArrayItem['s_amount'] = $row['s_amount'];
-                //append the above created object into the main array.
-                array_push($jsonArray, $jsonArrayItem);
-            }
-        }
-        header('Content-type: application/json');
-
-
-
-
-        //echo json_encode($jsonArray);
         /*$user_details = $select->result_array();
         $data['userDetails'] = $user_details;*/
 
-        //$this->load->view('user');
+        $this->load->view('user');
     }
 
 

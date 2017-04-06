@@ -9,7 +9,15 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/css/mystyle.css">
 
     <script type="text/javascript" src="<?php echo base_url();?>/web/bootstrap-3.3.7-dist/js/ajax.js" ></script>
-    <script type="text/javascript" src="<?php echo base_url();?>/web/bootstrap-3.3.7-dist/js/login.js" ></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js"></script>
+
+
+    <script src="//www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="//www.amcharts.com/lib/3/serial.js"></script>
+    <script src="//www.amcharts.com/lib/3/themes/light.js"></script>
+
+    <script type="text/javascript" src="<?php echo base_url();?>/web/bootstrap-3.3.7-dist/js/user.js" ></script>
+
 
 </head>
 <body>
@@ -30,14 +38,9 @@
 
         <p>Scriem aici !!!</p>
 
-        <div id="chart-container">FusionCharts will render here</div>
-        <script src="js/jquery-2.1.4.js"></script>
-        <script src="js/fusioncharts.js"></script>
-        <script src="js/fusioncharts.charts.js"></script>
-        <script src="js/themes/fusioncharts.theme.zune.js"></script>
-        <script src="js/user.js"></script>
 
 
+        <div id="chartdiv"></div>
 
     </div>
     <div class="common">
