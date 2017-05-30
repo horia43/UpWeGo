@@ -2,6 +2,7 @@
 
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <title>User details</title>
     <link rel="shortcut icon" href="https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/boy-512.png">
@@ -21,6 +22,7 @@
 
 </head>
 <body>
+
 <div id="container">
     <div style="width=100%; height:180px; background-color:#404856; color:white; font-weight: bold; overflow: hidden;">
         <div id="h1">Date created</div>
@@ -32,9 +34,18 @@
         <p>Zi de nastere</p>
         <p>Email</p>
     </div>
+
     <div class="common">
 
 
+        <script type="text/javascript">
+
+            //alert(response.json.message);
+            alert("Hi there!");
+            var jsonData = <?php echo $json; ?>
+            alert("Hi there!");
+            alert(jsonData);
+        </script>
 
         <p>Scriem aici !!!</p>
 

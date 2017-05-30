@@ -53,11 +53,14 @@ class User extends CI_Controller
             }
         }
         //header('Content-type: application/json');
-
-        //print_r($jsonArray);
+        /*echo '<pre>';
+        print_r($jsonArray);
+        echo '</pre>';*/
         //echo json_encode($jsonArray);
-
-
+        $jsonArray= json_encode($jsonArray);
+        $data = array (
+            'json' => $jsonArray
+        );
         //$row = $select->fetch_array();
         //echo '<pre>';
         //var_dump($row);
@@ -69,7 +72,7 @@ class User extends CI_Controller
         /*$user_details = $select->result_array();
         $data['userDetails'] = $user_details;*/
 
-        $this->load->view('user');
+        $this->load->view('user',$data);
     }
 
 
