@@ -48,11 +48,17 @@ $(document).ready(function () {
     //alert(jsonData[0]['payment_id']);
 
     var chartValues=jsonData;
-    for (var i = 0; i < chartValues.length; i++) {
+    for (var i = 0; i < chartValues.length; i++) {      // eliminare payment_id din json
         delete chartValues[i].payment_id;
     };
 
-    alert(JSON.stringify(chartValues));
+    chartValues.sort(function(a, b) {                   //sortare in functie de data
+        return a.s_date > b.s_date;
+    });
+    chartValues.sort();
+
+
+    alert(JSON.stringify(chartValues));                 // testare / vizualizare json
 
     AmCharts.addInitHandler(function (chart) {
 

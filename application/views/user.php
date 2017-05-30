@@ -7,6 +7,7 @@
     <title>User details</title>
     <link rel="shortcut icon" href="https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/boy-512.png">
 
+    <link rel="stylesheet" href="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/css/mystyle.css">
 
     <script type="text/javascript" src="<?php echo base_url();?>/web/bootstrap-3.3.7-dist/js/ajax.js" ></script>
@@ -43,6 +44,14 @@
 
 
         <p>Scriem aici !!!</p>
+        <div class="styled-select yellow rounded ">
+            <select class="form-control">
+                <option>2017</option>
+                <option>2016</option>
+                <option>2015</option>
+                <option>2014</option>
+            </select>
+        </div>
 
 
 
