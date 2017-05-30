@@ -75,6 +75,10 @@ class User extends CI_Controller
         $this->load->view('user',$data);
     }
 
+    function changeChart(){
+        $yearPicked= $this->input->post('yearPicker');
+    }
+
 
     /*public function tralala(){
         $this->load->view('second');

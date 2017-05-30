@@ -22,6 +22,7 @@
 
     <script type="text/javascript">
         var jsonData = <?php echo $json; ?>;
+        var base_url = '<?=base_url()?>';
     </script>
 </head>
 <body>
@@ -45,7 +46,7 @@
 
         <p>Scriem aici !!!</p>
         <div class="styled-select yellow rounded ">
-            <select class="form-control">
+            <select id="yearPicker" name="yearPicker" class="form-control">
                 <option>2017</option>
                 <option>2016</option>
                 <option>2015</option>
