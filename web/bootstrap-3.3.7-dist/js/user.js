@@ -38,7 +38,14 @@
 /**
  * Plugin to auto-truncate the axis labels
  */
+function bar () {
+    alert(JSON.stringify(jsonData));
+    jsonData = "assign new string";
+    alert(jsonData);
+}
 $(document).ready(function () {
+    alert(JSON.stringify(jsonData));
+    alert(jsonData[0]['payment_id']);
     AmCharts.addInitHandler(function (chart) {
 
         // Add handler for when the chart is inited
@@ -87,7 +94,6 @@ $(document).ready(function () {
     /**
      * Create the chart
      */
-
     var chart = AmCharts.makeChart("chartdiv", {
         "type": "serial",
         "theme": "light",

@@ -19,7 +19,9 @@
 
     <script type="text/javascript" src="<?php echo base_url();?>/web/bootstrap-3.3.7-dist/js/user.js" ></script>
 
-
+    <script type="text/javascript">
+        var jsonData = <?php echo $json; ?>;
+    </script>
 </head>
 <body>
 
@@ -38,14 +40,7 @@
     <div class="common">
 
 
-        <script type="text/javascript">
 
-            //alert(response.json.message);
-            alert("Hi there!");
-            var jsonData = <?php echo $json; ?>
-            alert("Hi there!");
-            alert(jsonData);
-        </script>
 
         <p>Scriem aici !!!</p>
 
