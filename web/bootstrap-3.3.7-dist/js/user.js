@@ -44,8 +44,16 @@ function bar () {
     alert(jsonData);
 }
 $(document).ready(function () {
-    alert(JSON.stringify(jsonData));
-    alert(jsonData[0]['payment_id']);
+    //alert(JSON.stringify(jsonData));
+    //alert(jsonData[0]['payment_id']);
+
+    var chartValues=jsonData;
+    for (var i = 0; i < chartValues.length; i++) {
+        delete chartValues[i].payment_id;
+    };
+
+    alert(JSON.stringify(chartValues));
+
     AmCharts.addInitHandler(function (chart) {
 
         // Add handler for when the chart is inited
@@ -94,7 +102,27 @@ $(document).ready(function () {
     /**
      * Create the chart
      */
+
+
     var chart = AmCharts.makeChart("chartdiv", {
+        "type": "serial",
+        "theme": "light",
+        "dataProvider": chartValues,
+        "graphs": [{
+            "fillAlphas": 0.9,
+            "lineAlpha": 0.2,
+            "type": "column",
+            "valueField": "s_amount"
+        }],
+        "categoryField": "s_date",
+        "valueAxes": [{
+            "title": "A very long axis title that does not fit the chart height, and needs to be truncated."
+        }]
+    });
+
+
+
+    /*var chart = AmCharts.makeChart("chartdiv", {
         "type": "serial",
         "theme": "light",
         "dataProvider": [{
@@ -138,5 +166,5 @@ $(document).ready(function () {
         "valueAxes": [{
             "title": "A very long axis title that does not fit the chart height, and needs to be truncated."
         }]
-    });
+    });*/
 });
