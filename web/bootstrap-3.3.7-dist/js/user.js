@@ -85,6 +85,7 @@ $(document).ready(function () {
                     //var NewChartData = [];
                     //NewChartData.push(JSON.parse(response.data));
                     //alert(response.data);
+                    chartValues.sort();
                     var NewChartData = JSON.parse(chartValues);
                     //alert(JSON.stringify(NewChartDataArray));
                     /*var NewChartData=[];
