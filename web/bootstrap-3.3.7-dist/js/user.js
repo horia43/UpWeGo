@@ -59,7 +59,7 @@ $(document).ready(function () {
     chartValues.sort();
 
 
-    alert(JSON.stringify(chartValues));                 // testare / vizualizare json
+    //alert(JSON.stringify(chartValues));                 // testare / vizualizare json
 
 
     $("#yearPicker").change(function () {
@@ -79,28 +79,33 @@ $(document).ready(function () {
 
 
                 if (response.success) {
-                    //alert("S-au intors datele");
-                    //alert(response.data);
 
-                    var chartValues = response.data;
-                    var json = JSON.stringify(eval("(" + response.data + ")"));
-                    alert(json);
+                    //var chartValues = response.data;
+                    //var json = JSON.stringify(eval("(" + response.data + ")"));
+                    //var NewChartData = [];
+                    //NewChartData.push(JSON.parse(response.data));
 
-                    for (var i = 0; i < response.data.length; i++) {      // eliminare payment_id din json
-                        delete json[i].payment_id;
+                    var NewChartDataArray;
+                    for(i=0; i<response.data.length; i++)
+                    {
+                        var D = response.data[i];
+                        D = D.replace("{","");
+                        D = D.replace("}","");
+                        D = "{" + D + "}";
+
+                        NewChartDataArray.push(JSON.parse(D));
                     }
-                    delete response.data.payment_id;
-                    alert(response.data);
 
-                    alert(json);
+
 
                     //Setting the new data to the graph
-                    //chart.dataProvider = chartValues;
+                    chart.dataProvider = NewChartData;
 
                     //Updating the graph to show the new data
                     chart.validateData();
                     chart.animateAgain();
-
+                    //alert(NewChartData);
+                    //alert(JSON.stringify(NewChartData));
 
                 } else {
                     alert("There was a problem requesting the change");

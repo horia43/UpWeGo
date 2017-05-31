@@ -132,7 +132,7 @@ class User extends CI_Controller
             if ($select->num_rows() > 0) {
                 foreach ($select->result_array() as $row) {
                     $jsonArrayItem = array();
-                    $jsonArrayItem['payment_id'] = $row['payment_id'];
+                    //$jsonArrayItem['payment_id'] = $row['payment_id'];
                     $jsonArrayItem['s_date'] = $row['s_date'];
                     $jsonArrayItem['s_amount'] = $row['s_amount'];
                     //append the above created object into the main array.
