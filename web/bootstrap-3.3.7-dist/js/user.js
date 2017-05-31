@@ -72,14 +72,15 @@ $(document).ready(function () {
 
         $.ajax({
             url:$('#form2').attr("action"), // pun " , " intre elementele trimise / parametrii
-            data:$('#form2').val(),    // data=  ce trimit eu la script ( php )
+            data:$('#form2').serializeArray(),    // data=  ce trimit eu la script ( php )
             dataType: 'json',
             success:function(response){    //success e un event care se executa cand request-ul catre php s-a terminat cu succes
 
 
                 if(response.success)
                 {
-                    alert("S-au intors datele");
+                    //alert("S-au intors datele");
+                    alert(JSON.stringify(jsonData));
                 }else{
                     alert("There was a problem requesting the change");
                 }

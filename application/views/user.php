@@ -45,7 +45,7 @@
 
 
         <p>Scriem aici !!!</p>
-        <form id="form2" method="post" action="<?php echo site_url('login/index') ?>">
+        <form id="form2" action="<?php echo site_url('user/changeChart') ?>">
             <div class="styled-select yellow rounded ">
                 <select id="yearPicker" name="yearPicker" class="form-control">
                     <option>2017</option>
