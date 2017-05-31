@@ -17,6 +17,8 @@
     <script src="//www.amcharts.com/lib/3/amcharts.js"></script>
     <script src="//www.amcharts.com/lib/3/serial.js"></script>
     <script src="//www.amcharts.com/lib/3/themes/light.js"></script>
+    <script src="//www.amcharts.com/lib/3/themes/black.js"></script>
+
 
     <script type="text/javascript" src="<?php echo base_url();?>/web/bootstrap-3.3.7-dist/js/user.js" ></script>
 

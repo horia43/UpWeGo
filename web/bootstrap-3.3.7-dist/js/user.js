@@ -38,7 +38,7 @@
 /**
  * Plugin to auto-truncate the axis labels
  */
-function bar () {
+function bar() {
     alert(JSON.stringify(jsonData));
     jsonData = "assign new string";
     alert(jsonData);
@@ -47,12 +47,13 @@ $(document).ready(function () {
     //alert(JSON.stringify(jsonData));
     //alert(jsonData[0]['payment_id']);
 
-    var chartValues=jsonData;
+    var chartValues = jsonData;
     for (var i = 0; i < chartValues.length; i++) {      // eliminare payment_id din json
         delete chartValues[i].payment_id;
-    };
+    }
+    ;
 
-    chartValues.sort(function(a, b) {                   //sortare in functie de data
+    chartValues.sort(function (a, b) {                   //sortare in functie de data
         return a.s_date > b.s_date;
     });
     chartValues.sort();
@@ -61,35 +62,54 @@ $(document).ready(function () {
     alert(JSON.stringify(chartValues));                 // testare / vizualizare json
 
 
-    $("#yearPicker").change( function() {
+    $("#yearPicker").change(function () {
         changeChart();
     });
 
-    function changeChart(){
+    function changeChart() {
         //var message=$('.error'); // ca sa nu scriu tot timpul $('.error')
 
         //alert(base_url+"user/index");
 
         $.ajax({
-            url:$('#form2').attr("action"), // pun " , " intre elementele trimise / parametrii
-            data:$('#form2').serializeArray(),    // data=  ce trimit eu la script ( php )
+            url: $('#form2').attr("action"), // pun " , " intre elementele trimise / parametrii
+            data: $('#form2').serializeArray(),    // data=  ce trimit eu la script ( php )
             dataType: 'json',
-            success:function(response){    //success e un event care se executa cand request-ul catre php s-a terminat cu succes
+            success: function (response) {    //success e un event care se executa cand request-ul catre php s-a terminat cu succes
 
 
-                if(response.success)
-                {
+                if (response.success) {
                     //alert("S-au intors datele");
-                    alert(JSON.stringify(jsonData));
-                }else{
+                    //alert(response.data);
+
+                    var chartValues = response.data;
+                    var json = JSON.stringify(eval("(" + response.data + ")"));
+                    alert(json);
+
+                    for (var i = 0; i < response.data.length; i++) {      // eliminare payment_id din json
+                        delete json[i].payment_id;
+                    }
+                    delete response.data.payment_id;
+                    alert(response.data);
+
+                    alert(json);
+
+                    //Setting the new data to the graph
+                    //chart.dataProvider = chartValues;
+
+                    //Updating the graph to show the new data
+                    chart.validateData();
+                    chart.animateAgain();
+
+
+                } else {
                     alert("There was a problem requesting the change");
                 }
             },
 
-            type:'POST'
+            type: 'POST'
         });
     }
-
 
 
     AmCharts.addInitHandler(function (chart) {
@@ -154,55 +174,54 @@ $(document).ready(function () {
         }],
         "categoryField": "s_date",
         "valueAxes": [{
-            "title": "A very long axis title that does not fit the chart height, and needs to be truncated."
+            "title": "Salaries over the year."
         }]
     });
 
 
-
     /*var chart = AmCharts.makeChart("chartdiv", {
-        "type": "serial",
-        "theme": "light",
-        "dataProvider": [{
-            "country": "USA",
-            "visits": 2025
-        }, {
-            "country": "China",
-            "visits": 1882
-        }, {
-            "country": "Japan",
-            "visits": 1809
-        }, {
-            "country": "Germany",
-            "visits": 1322
-        }, {
-            "country": "UK",
-            "visits": 1122
-        }, {
-            "country": "Netherlands",
-            "visits": 665
-        }, {
-            "country": "Russia",
-            "visits": 580
-        }, {
-            "country": "South Korea",
-            "visits": 443
-        }, {
-            "country": "Canada",
-            "visits": 441
-        }, {
-            "country": "Brazil",
-            "visits": 395
-        }],
-        "graphs": [{
-            "fillAlphas": 0.9,
-            "lineAlpha": 0.2,
-            "type": "column",
-            "valueField": "visits"
-        }],
-        "categoryField": "country",
-        "valueAxes": [{
-            "title": "A very long axis title that does not fit the chart height, and needs to be truncated."
-        }]
-    });*/
+     "type": "serial",
+     "theme": "light",
+     "dataProvider": [{
+     "country": "USA",
+     "visits": 2025
+     }, {
+     "country": "China",
+     "visits": 1882
+     }, {
+     "country": "Japan",
+     "visits": 1809
+     }, {
+     "country": "Germany",
+     "visits": 1322
+     }, {
+     "country": "UK",
+     "visits": 1122
+     }, {
+     "country": "Netherlands",
+     "visits": 665
+     }, {
+     "country": "Russia",
+     "visits": 580
+     }, {
+     "country": "South Korea",
+     "visits": 443
+     }, {
+     "country": "Canada",
+     "visits": 441
+     }, {
+     "country": "Brazil",
+     "visits": 395
+     }],
+     "graphs": [{
+     "fillAlphas": 0.9,
+     "lineAlpha": 0.2,
+     "type": "column",
+     "valueField": "visits"
+     }],
+     "categoryField": "country",
+     "valueAxes": [{
+     "title": "A very long axis title that does not fit the chart height, and needs to be truncated."
+     }]
+     });*/
 });
