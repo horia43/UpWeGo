@@ -22,7 +22,7 @@
 
     <script type="text/javascript">
         var jsonData = <?php echo $json; ?>;
-        var base_url = '<?=base_url()?>';
+        var base_url = "<?php echo base_url();?>";
     </script>
 </head>
 <body>
@@ -45,15 +45,16 @@
 
 
         <p>Scriem aici !!!</p>
-        <div class="styled-select yellow rounded ">
-            <select id="yearPicker" name="yearPicker" class="form-control">
-                <option>2017</option>
-                <option>2016</option>
-                <option>2015</option>
-                <option>2014</option>
-            </select>
-        </div>
-
+        <form id="form2" method="post" action="<?php echo site_url('login/index') ?>">
+            <div class="styled-select yellow rounded ">
+                <select id="yearPicker" name="yearPicker" class="form-control">
+                    <option>2017</option>
+                    <option>2016</option>
+                    <option>2015</option>
+                    <option>2014</option>
+                </select>
+            </div>
+        </form>
 
 
         <div id="chartdiv"></div>

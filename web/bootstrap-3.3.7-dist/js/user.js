@@ -67,21 +67,21 @@ $(document).ready(function () {
 
     function changeChart(){
         //var message=$('.error'); // ca sa nu scriu tot timpul $('.error')
-        $.ajax({
-            url:base_url+"user/changeChart", // pun " , " intre elementele trimise / parametrii
 
-            data:$('#yearPicker').val(),    // data=  ce trimit eu la script ( php )
+        //alert(base_url+"user/index");
+
+        $.ajax({
+            url:$('#form2').attr("action"), // pun " , " intre elementele trimise / parametrii
+            data:$('#form2').val(),    // data=  ce trimit eu la script ( php )
             dataType: 'json',
             success:function(response){    //success e un event care se executa cand request-ul catre php s-a terminat cu succes
 
 
                 if(response.success)
                 {
-
-
+                    alert("S-au intors datele");
                 }else{
-
-
+                    alert("There was a problem requesting the change");
                 }
             },
 
