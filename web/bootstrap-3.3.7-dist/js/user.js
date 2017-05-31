@@ -80,12 +80,14 @@ $(document).ready(function () {
 
                 if (response.success) {
 
-                    //var chartValues = response.data;
+                    var chartValues = response.data;
                     //var json = JSON.stringify(eval("(" + response.data + ")"));
                     //var NewChartData = [];
                     //NewChartData.push(JSON.parse(response.data));
-
-                    var NewChartDataArray;
+                    //alert(response.data);
+                    var NewChartData = JSON.parse(chartValues);
+                    //alert(JSON.stringify(NewChartDataArray));
+                    /*var NewChartData=[];
                     for(i=0; i<response.data.length; i++)
                     {
                         var D = response.data[i];
@@ -95,7 +97,7 @@ $(document).ready(function () {
 
                         NewChartDataArray.push(JSON.parse(D));
                     }
-
+*/
 
 
                     //Setting the new data to the graph
