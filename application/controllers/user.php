@@ -118,21 +118,18 @@ class User extends CI_Controller
             $id_employee = $query->result_array()[0]['id'];
 
             $yearPicked = $this->input->post('yearPicker');
-
+            $month='01';
             $default_json=array();                                      // creez un json cu date default pt lunile anului si salariile = 0
-            for($i="01"; $i<"12" ; $i++){
+            for($i=1; $i<13 ; $i++){
                 $jsonArrayItem = array();
-                $jsonArrayItem['s_date'] = $yearPicked."-".$i;
+                $jsonArrayItem['s_date'] = $yearPicked."-".sprintf("%02d", $month);
                 $jsonArrayItem['s_amount'] = 0;                        // Am nevoie sa fie caracter ? "0"
                 array_push($default_json, $jsonArrayItem);
+                $month++;
             }
-            /*$default_json=array(
-                array(
-                  "s_date"      =>$yearPicked."-".$i,
-                  "s_amount"    =>0
-                ));*/
+            
             $default_json = json_encode($default_json);
-            echo $default_json;
+
 
             $this->db->select("*");
             $this->db->where("id_employee=", $id_employee);
