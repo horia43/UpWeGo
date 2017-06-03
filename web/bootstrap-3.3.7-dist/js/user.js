@@ -56,6 +56,7 @@ $(document).ready(function () {
     chartValues.sort(function (a, b) {                   //sortare in functie de data
         return a.s_date > b.s_date;
     });
+
     chartValues.sort();
 
 
@@ -85,8 +86,12 @@ $(document).ready(function () {
                     //var NewChartData = [];
                     //NewChartData.push(JSON.parse(response.data));
                     //alert(response.data);
-                    chartValues.sort();
                     var NewChartData = JSON.parse(chartValues);
+                    NewChartData.sort(function (a, b) {                   //sortare in functie de data
+                        return a.s_date > b.s_date;
+                    });
+                    NewChartData.sort();
+
                     //alert(JSON.stringify(NewChartDataArray));
                     /*var NewChartData=[];
                     for(i=0; i<response.data.length; i++)
