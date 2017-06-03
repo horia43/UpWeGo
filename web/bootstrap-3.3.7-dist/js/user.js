@@ -51,7 +51,7 @@ $(document).ready(function () {
     for (var i = 0; i < chartValues.length; i++) {      // eliminare payment_id din json
         delete chartValues[i].payment_id;
     }
-    ;
+
 
     chartValues.sort(function (a, b) {                   //sortare in functie de data
         return a.s_date > b.s_date;
@@ -71,7 +71,6 @@ $(document).ready(function () {
         //var message=$('.error'); // ca sa nu scriu tot timpul $('.error')
 
         //alert(base_url+"user/index");
-
         $.ajax({
             url: $('#form2').attr("action"), // pun " , " intre elementele trimise / parametrii
             data: $('#form2').serializeArray(),    // data=  ce trimit eu la script ( php )
@@ -83,11 +82,14 @@ $(document).ready(function () {
 
                     var chartValues = response.data;
 
+
                     //var json = JSON.stringify(eval("(" + response.data + ")"));
                     //var NewChartData = [];
                     //NewChartData.push(JSON.parse(response.data));
-                    //alert(response.data);
+                    //alert(chartValues);
                     var NewChartData = JSON.parse(chartValues);
+                    //alert(NewChartData);
+
                     NewChartData.sort(function (a, b) {                   //sortare in functie de data
                         return a.s_date > b.s_date;
                     });
@@ -108,7 +110,7 @@ $(document).ready(function () {
 
 
                     //Setting the new data to the graph
-                    chart.dataProvider = chartValues;
+                    chart.dataProvider = NewChartData;
 
                     //Updating the graph to show the new data
                     chart.validateData();
