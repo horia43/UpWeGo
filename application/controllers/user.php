@@ -84,7 +84,7 @@ class User extends CI_Controller
         echo json_encode($response);
         */
         //if ($this->input->post($yearPicked) == null) {
-            $this->load->view('user', $data);
+        $this->load->view('user', $data);
         //}
 
     }
@@ -118,16 +118,19 @@ class User extends CI_Controller
             $id_employee = $query->result_array()[0]['id'];
 
             $yearPicked = $this->input->post('yearPicker');
-            $month='01';
-            $default_json=array();                                      // creez un json cu date default pt lunile anului si salariile = 0
-            for($i=1; $i<13 ; $i++){
+
+
+
+            $month = '01';
+            $default_json = array();                                      // creez un json cu date default pt lunile anului si salariile = 0
+            for ($i = 1; $i < 13; $i++) {
                 $jsonArrayItem = array();
-                $jsonArrayItem['s_date'] = $yearPicked."-".sprintf("%02d", $month);
+                $jsonArrayItem['s_date'] = $yearPicked . "-" . sprintf("%02d", $month);
                 $jsonArrayItem['s_amount'] = 0;                        // Am nevoie sa fie caracter ? "0"
                 array_push($default_json, $jsonArrayItem);
                 $month++;
             }
-            
+
             $default_json = json_encode($default_json);
 
 
@@ -152,15 +155,24 @@ class User extends CI_Controller
             }
 
             $jsonArray = json_encode($jsonArray);
+
+           /* for ($i = 0; $i < 13; ++$i) {
+                for ($j = 0; $j < $select->num_rows(); ++$j) {
+                    if($default_json[i]['s_date']==$jsonArray[j]['s_date']) {
+                        $default_json[i]['s_amount'] = $jsonArray[j]['s_amount'];
+                    }
+                }
+            }*/
+
+
             $data = array(                              /// nu e folosit deci nu conteaza acum
                 'json' => $jsonArray
             );
 
             $response = array(
                 "success" => true, // e o cheie de tip string success
-                "data"      =>$jsonArray
+                "data" => $jsonArray
             );
-
 
 
         } catch (Exception $e) {

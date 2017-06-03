@@ -82,6 +82,7 @@ $(document).ready(function () {
                 if (response.success) {
 
                     var chartValues = response.data;
+
                     //var json = JSON.stringify(eval("(" + response.data + ")"));
                     //var NewChartData = [];
                     //NewChartData.push(JSON.parse(response.data));
@@ -107,7 +108,7 @@ $(document).ready(function () {
 
 
                     //Setting the new data to the graph
-                    chart.dataProvider = NewChartData;
+                    chart.dataProvider = chartValues;
 
                     //Updating the graph to show the new data
                     chart.validateData();
