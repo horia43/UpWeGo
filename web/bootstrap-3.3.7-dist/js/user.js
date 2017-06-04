@@ -185,15 +185,30 @@ $(document).ready(function () {
         "theme": "light",
         "dataProvider": chartValues,
         "graphs": [{
+            "balloonText": "[[category]]: <b>[[value]] RON </b>",
             "fillAlphas": 0.9,
             "lineAlpha": 0.2,
             "type": "column",
-            "valueField": "s_amount"
+            "valueField": "s_amount",
+            "balloon": {
+                "drop": true
+            }
         }],
         "categoryField": "s_date",
         "valueAxes": [{
-            "title": "Salaries over the year."
-        }]
+            "title": "Salaries over the year.",
+            "gridColor": "#0000FF",
+            "gridAlpha": 1.2,
+            "dashLength": 10
+        }],
+        "startDuration": 1,
+        "chartCursor": {
+            "categoryBalloonEnabled": true,
+            "cursorAlpha": 0,
+            "zoomable": true,
+            "limitToGraph": "g1"
+        },
+        "mouseWheelZoomEnabled": true
     });
 
 
