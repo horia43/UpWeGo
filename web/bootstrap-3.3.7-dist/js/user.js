@@ -48,7 +48,7 @@ $(document).ready(function () {
     //alert(jsonData[0]['payment_id']);
 
     var chartValues = jsonData;
-    for (var i = 0; i < chartValues.length; i++) {      // eliminare payment_id din json
+    /*for (var i = 0; i < chartValues.length; i++) {      // eliminare payment_id din json
         delete chartValues[i].payment_id;
     }
 
@@ -58,8 +58,8 @@ $(document).ready(function () {
     });
 
     chartValues.sort();
-
-
+*/
+    changeChart();
     //alert(JSON.stringify(chartValues));                 // testare / vizualizare json
 
 
@@ -179,17 +179,17 @@ $(document).ready(function () {
      * Create the chart
      */
 
-
     var chart = AmCharts.makeChart("chartdiv", {
         "type": "serial",
         "theme": "light",
         "dataProvider": chartValues,
         "graphs": [{
-            "balloonText": "[[category]]: <b>[[value]] RON </b>",
-            "fillAlphas": 0.9,
+            "balloonText": "[[category]]: </br><b>[[value]] RON </b>",
+            "fillAlphas": 0.8,
             "lineAlpha": 0.2,
             "type": "column",
             "valueField": "s_amount",
+            "fillColors":"#24742F",
             "balloon": {
                 "drop": true
             }
@@ -197,11 +197,22 @@ $(document).ready(function () {
         "categoryField": "s_date",
         "valueAxes": [{
             "title": "Salaries over the year.",
-            "gridColor": "#0000FF",
+            "gridColor": "#24742F",
             "gridAlpha": 1.2,
             "dashLength": 10
         }],
         "startDuration": 1,
+        "chartScrollbar": {
+            "autoGridCount": true,
+            "graph": "g1",
+            "scrollbarHeight": 50
+        },
+/*        "backgroundAlpha":1,
+        "backgroundColor":"#08ffb2",*/
+        "categoryAxis": {
+            "gridPosition": "start",
+            "labelRotation": 45
+        },
         "chartCursor": {
             "categoryBalloonEnabled": true,
             "cursorAlpha": 0,
