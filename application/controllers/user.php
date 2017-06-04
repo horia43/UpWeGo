@@ -120,20 +120,6 @@ class User extends CI_Controller
             $yearPicked = $this->input->post('yearPicker');
 
 
-
-            $month = '01';
-            $default_json = array();                                      // creez un json cu date default pt lunile anului si salariile = 0
-            for ($i = 1; $i < 13; $i++) {
-                $jsonArrayItem = array();
-                $jsonArrayItem['s_date'] = $yearPicked . "-" . sprintf("%02d", $month);
-                $jsonArrayItem['s_amount'] = 0;                        // Am nevoie sa fie caracter ? "0"
-                array_push($default_json, $jsonArrayItem);
-                $month++;
-            }
-
-            $default_json = json_encode($default_json);
-
-
             $this->db->select("*");
             $this->db->where("id_employee=", $id_employee);
             $this->db->like("s_date", $yearPicked);
@@ -147,14 +133,35 @@ class User extends CI_Controller
                 foreach ($select->result_array() as $row) {
                     $jsonArrayItem = array();
                     //$jsonArrayItem['payment_id'] = $row['payment_id'];
-                    $jsonArrayItem['s_date'] = $row['s_date'];
-                    $jsonArrayItem['s_amount'] = $row['s_amount'];
+                    $jsonArrayItem['s_date']    = $row['s_date'];
+                    $jsonArrayItem['s_amount']  = $row['s_amount'];
                     //append the above created object into the main array.
                     array_push($jsonArray, $jsonArrayItem);
                 }
             }
 
-            $jsonArray = json_encode($jsonArray);
+            $month = '01';
+            $default_json = array();                                      // creez un json cu date default pt lunile anului si salariile = 0
+            for ($i = 1; $i < 13; $i++) {
+                $dateItem =$yearPicked . "-" . sprintf("%02d", $month);
+                $jsonArrayItem = array(
+                    "s_date"    =>  $dateItem,
+                    "s_amount"  =>  10000
+                );
+                /*$jsonArrayItem['s_date']    = $dateItem;
+                $jsonArrayItem['s_amount']  = 10000;*/                        // Am nevoie sa fie caracter ? "0"
+                array_push($default_json, $jsonArrayItem);
+                $month++;
+            }
+
+            function cmp($a, $b)
+            {
+                return strcmp($a["s_date"], $b["s_date"]);
+            }
+            usort($jsonArray,"cmp");
+            $default_json   = json_encode($default_json);
+            $jsonArray      = json_encode($jsonArray);
+            //$jsonArray=array_sort($jsonArray, 's_date', SORT_ASC);
 
            /* for ($i = 0; $i < 13; ++$i) {
                 for ($j = 0; $j < $select->num_rows(); ++$j) {
@@ -165,9 +172,6 @@ class User extends CI_Controller
             }*/
 
 
-            $data = array(                              /// nu e folosit deci nu conteaza acum
-                'json' => $jsonArray
-            );
 
             $response = array(
                 "success" => true, // e o cheie de tip string success

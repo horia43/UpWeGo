@@ -80,20 +80,21 @@ $(document).ready(function () {
 
                 if (response.success) {
 
+
                     var chartValues = response.data;
 
 
                     //var json = JSON.stringify(eval("(" + response.data + ")"));
                     //var NewChartData = [];
                     //NewChartData.push(JSON.parse(response.data));
-                    //alert(chartValues);
+                    alert(chartValues);
                     var NewChartData = JSON.parse(chartValues);
                     //alert(NewChartData);
-
-                    NewChartData.sort(function (a, b) {                   //sortare in functie de data
+                    /*NewChartData.sort(function (a, b) {                   //sortare in functie de data
                         return a.s_date > b.s_date;
                     });
-                    NewChartData.sort();
+                    NewChartData.sort();*/
+
 
                     //alert(JSON.stringify(NewChartDataArray));
                     /*var NewChartData=[];
@@ -120,6 +121,7 @@ $(document).ready(function () {
 
                 } else {
                     alert("There was a problem requesting the change");
+                    //alert(response.msg);
                 }
             },
 
