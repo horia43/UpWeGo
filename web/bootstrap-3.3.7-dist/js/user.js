@@ -115,7 +115,8 @@ $(document).ready(function () {
 
                     //Updating the graph to show the new data
                     chart.validateData();
-                    chart.animateAgain();
+                    //chart.animateAgain();
+                    playAnimation('bounce', 1);
                     //alert(NewChartData);
                     //alert(JSON.stringify(NewChartData));
 
@@ -129,6 +130,12 @@ $(document).ready(function () {
         });
     }
 
+    function playAnimation(effect, duration) {
+        console.log("clicked animation");
+        chart.startEffect = effect;
+        chart.startDuration = duration;
+        chart.animateAgain();
+    }
 
     AmCharts.addInitHandler(function (chart) {
 
@@ -199,7 +206,7 @@ $(document).ready(function () {
             "title": "Salaries over the year.",
             "gridColor": "#24742F",
             "gridAlpha": 1.2,
-            "dashLength": 10
+            "dashLength": 4
         }],
         "startDuration": 1,
         "chartScrollbar": {
