@@ -126,6 +126,39 @@ class User extends CI_Controller
             $select = $this->db->get("salary");
 
 
+            //propunere formatare date
+
+            $salaries = array();
+
+            for($i=1; $i<=12; $i++){
+                $date = sprintf("%s-%02d", $yearPicked, $i);        // date = 2017-01/02
+                $salaries[$date] = array(                           // salaries["2017-01"] = { "s_date" : "2017-01" , "s_amount" : 0 }
+                    "s_date"    =>  $date,                          // salaries["2017-02"] = { "s_date" : "2017-02" , "s_amount" : 0 }
+                    "s_amount"  =>  0
+                );
+            }
+
+
+            if ($select->num_rows() > 0) {
+            foreach ($select->result_array() as $row) {                                 //$row["s_date"] == "2017-01", il numim $data , valoare extrasa din db
+                    $salaries [$row['s_date']] ["s_amount"] = $row['s_amount'];           //$salaries [$data] ["s_amount"] = $row["amount"]  in salaries,
+                }                                                                       //la obiectul retinut la indexul data , schimba ammopunt cu valoarea din db
+            }
+
+
+            if ($select->num_rows() > 0) {
+                foreach ($select->result_array() as $row) {
+                    $salaries[$row['s_date']] = array(
+                        "s_date"    =>  $row['s_date'],
+                        "s_amount"  =>  $row['s_amount']
+                    );
+                }
+            }
+            $salaries_json = json_encode(array_values($salaries));
+
+
+
+
 
 
 
@@ -204,7 +237,7 @@ class User extends CI_Controller
 
             $response = array(
                 "success" => true, // e o cheie de tip string success
-                "data" => $default_json
+                "data" => $salaries_json
             );
 
 

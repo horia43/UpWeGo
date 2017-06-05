@@ -116,7 +116,7 @@ $(document).ready(function () {
                     //Updating the graph to show the new data
                     chart.validateData();
                     //chart.animateAgain();
-                    playAnimation('bounce', 1);
+                    playAnimation('easeInSine', 3.5);
                     //alert(NewChartData);
                     //alert(JSON.stringify(NewChartData));
 
