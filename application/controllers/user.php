@@ -129,9 +129,12 @@ class User extends CI_Controller
             //propunere formatare date
 
             $salaries = array();
+            $months=array("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG","SEP","OCT","NOV","DEC");
 
             for($i=1; $i<=12; $i++){
-                $date = sprintf("%s-%02d", $yearPicked, $i);        // date = 2017-01/02
+                //$date = substr(sprintf("%s-%02d", $yearPicked, $i),5);        // date = 2017-01/02/03/04/05/...11/12
+                //$date = substr(sprintf("%s-%d", $yearPicked, $i),5);        // date = 2017-01/02/03/04/05/...11/12
+                $date=$months[$i];                                            //date=Jan,Feb, etc.
                 $salaries[$date] = array(                           // salaries["2017-01"] = { "s_date" : "2017-01" , "s_amount" : 0 }
                     "s_date"    =>  $date,                          // salaries["2017-02"] = { "s_date" : "2017-02" , "s_amount" : 0 }
                     "s_amount"  =>  0
@@ -139,15 +142,23 @@ class User extends CI_Controller
             }
 
 
-            if ($select->num_rows() > 0) {
+            /*if ($select->num_rows() > 0) {
             foreach ($select->result_array() as $row) {                                 //$row["s_date"] == "2017-01", il numim $data , valoare extrasa din db
                     $salaries [$row['s_date']] ["s_amount"] = $row['s_amount'];           //$salaries [$data] ["s_amount"] = $row["amount"]  in salaries,
-                }                                                                       //la obiectul retinut la indexul data , schimba ammopunt cu valoarea din db
-            }
-
+                }                                                                       //la obiectul retinut la indexul data , schimba ammount cu valoarea din db
+            }*/
+            /*if ($select->num_rows() > 0) {
+                foreach ($select->result_array() as $row) {
+                    $salaries[$row['s_date']] = array(
+                        "s_date"    =>  $row['s_date'],
+                        "s_amount"  =>  $row['s_amount']
+                    );
+                }
+            }*/
 
             if ($select->num_rows() > 0) {
                 foreach ($select->result_array() as $row) {
+                    $row["s_date"]=substr($row["s_date"],6);        // * //
                     $salaries[$row['s_date']] = array(
                         "s_date"    =>  $row['s_date'],
                         "s_amount"  =>  $row['s_amount']

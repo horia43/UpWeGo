@@ -52,10 +52,29 @@ $(document).ready(function () {
         delete chartValues[i].payment_id;
     }
 
+     function(obj) {
+     // Get month number from date-string and then substract 1
+     var monthNum = parseInt(obj.month.slice(-2)) - 1;
+     // Get month name from the array
+     obj.month = monthsName[monthNum];
+     // Return the object
+     return obj;
+     }
+     function sortSalaryByDate(a, b) {                   //sortare in functie de data
+     if(a.s_date > b.s_date){
+     return 1;
+     }
+     if(a.s_date < b.s_date){
+     return -1;
+     }
+     return 0;
+     }
+
 
     chartValues.sort(function (a, b) {                   //sortare in functie de data
         return a.s_date > b.s_date;
     });
+
 
     chartValues.sort();
 */
@@ -110,13 +129,21 @@ $(document).ready(function () {
 */
 
 
+                    var monthsName = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG","SEP","OCT","NOV","DEC"];
+                    /*var ExpectedData = NewChartData.map(function(item){
+                        return {
+                            month: monthsName[parseInt(item.s_date.split('-')[1], 10) -1],
+                            val: item.s_amount
+
+                        };
+                    });*/
                     //Setting the new data to the graph
                     chart.dataProvider = NewChartData;
 
                     //Updating the graph to show the new data
                     chart.validateData();
                     //chart.animateAgain();
-                    playAnimation('easeInSine', 3.5);
+                    playAnimation('easeInSine', 1.5);
                     //alert(NewChartData);
                     //alert(JSON.stringify(NewChartData));
 
