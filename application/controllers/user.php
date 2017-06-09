@@ -129,7 +129,7 @@ class User extends CI_Controller
             //propunere formatare date
 
             $salaries = array();
-            $months=array("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG","SEP","OCT","NOV","DEC");
+            $months=array("Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August","Septembrie","Octombrie","Noiembrie","Decembrie");
 
             for($i=1; $i<=12; $i++){
                 //$date = substr(sprintf("%s-%02d", $yearPicked, $i),5);        // date = 2017-01/02/03/04/05/...11/12
