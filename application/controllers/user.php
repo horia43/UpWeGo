@@ -265,7 +265,8 @@ class User extends CI_Controller
 
     function downloadPDF(){
 
-        $this->load->library('Pdf');
+        $this->load->library('tcpdf/pdf');
+        $this->load->helper('url');
 
         $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
         $pdf->SetTitle('My Title');
@@ -279,8 +280,16 @@ class User extends CI_Controller
         $pdf->AddPage();
 
         $pdf->Write(5, 'Some sample text');
-        $pdf->Output('My-File-Name.pdf', 'I');
+        $pdf->Output('pdf-example.pdf', 'I');
 
+
+
+        /*$response = array(
+            "success" => true//, // e o cheie de tip string success
+            //"msg" => $e->getMessage() // preiau mesajul "umpleti campul"
+        );
+        echo json_encode($response);*/
+        //exit;
 
     }
 

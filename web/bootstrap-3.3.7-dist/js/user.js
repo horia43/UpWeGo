@@ -87,7 +87,7 @@ $(document).ready(function () {
     });
 
     $('#downloadPDF').click(function () {
-        //download_pdf();
+        download_pdf();
     });
 
     function changeChart() {
@@ -244,10 +244,10 @@ $(document).ready(function () {
 
 
     function download_pdf() {
+        alert("Bravo, ai apasat acest buton !");
         $.ajax({
             url: base_url + "user/downloadPDF",
             data: document.getElementsByTagName('body')[0].innerHTML,    // data=  ce trimit eu la script ( php )
-            dataType: 'json',
             success: function (response) {
                 alert("Hope your download will start shortly.");
             },
@@ -255,7 +255,9 @@ $(document).ready(function () {
             type: 'POST'
         });
     }
+});
 
+/*
 
     var bodyHtml = document.getElementsByTagName('body')[0].innerHTML;
     var clickBtnValue = $(this).val();
@@ -264,3 +266,4 @@ $(document).ready(function () {
     $.post(ajaxurl, data, function (response) {
         // Response div goes here.
         alert("action performed successfully");
+*/
