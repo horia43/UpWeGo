@@ -57,7 +57,7 @@
                 </select>
             </div>
         </form>
-
+        <button type="button" id="downloadPDF">Download</button>
 
         <div id="chartdiv"></div>
 

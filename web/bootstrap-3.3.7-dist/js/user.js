@@ -49,8 +49,8 @@ $(document).ready(function () {
 
     var chartValues = jsonData;
     /*for (var i = 0; i < chartValues.length; i++) {      // eliminare payment_id din json
-        delete chartValues[i].payment_id;
-    }
+     delete chartValues[i].payment_id;
+     }
 
      function(obj) {
      // Get month number from date-string and then substract 1
@@ -71,13 +71,13 @@ $(document).ready(function () {
      }
 
 
-    chartValues.sort(function (a, b) {                   //sortare in functie de data
-        return a.s_date > b.s_date;
-    });
+     chartValues.sort(function (a, b) {                   //sortare in functie de data
+     return a.s_date > b.s_date;
+     });
 
 
-    chartValues.sort();
-*/
+     chartValues.sort();
+     */
     changeChart();
     //alert(JSON.stringify(chartValues));                 // testare / vizualizare json
 
@@ -86,12 +86,17 @@ $(document).ready(function () {
         changeChart();
     });
 
+    $('#downloadPDF').click(function () {
+        //download_pdf();
+    });
+
     function changeChart() {
         //var message=$('.error'); // ca sa nu scriu tot timpul $('.error')
 
         //alert(base_url+"user/index");
+        //alert($('#form2').attr("action"));
         $.ajax({
-            url: $('#form2').attr("action"), // pun " , " intre elementele trimise / parametrii
+            url: base_url + "user/changeChart",//$('#form2').attr("action"), // pun " , " intre elementele trimise / parametrii
             data: $('#form2').serializeArray(),    // data=  ce trimit eu la script ( php )
             dataType: 'json',
             success: function (response) {    //success e un event care se executa cand request-ul catre php s-a terminat cu succes
@@ -110,33 +115,13 @@ $(document).ready(function () {
                     var NewChartData = JSON.parse(chartValues);
                     //alert(NewChartData);
                     /*NewChartData.sort(function (a, b) {                   //sortare in functie de data
-                        return a.s_date > b.s_date;
-                    });
-                    NewChartData.sort();*/
+                     return a.s_date > b.s_date;
+                     });
+                     NewChartData.sort();*/
 
 
                     //alert(JSON.stringify(NewChartDataArray));
-                    /*var NewChartData=[];
-                    for(i=0; i<response.data.length; i++)
-                    {
-                        var D = response.data[i];
-                        D = D.replace("{","");
-                        D = D.replace("}","");
-                        D = "{" + D + "}";
 
-                        NewChartDataArray.push(JSON.parse(D));
-                    }
-*/
-
-
-                    var monthsName = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG","SEP","OCT","NOV","DEC"];
-                    /*var ExpectedData = NewChartData.map(function(item){
-                        return {
-                            month: monthsName[parseInt(item.s_date.split('-')[1], 10) -1],
-                            val: item.s_amount
-
-                        };
-                    });*/
                     //Setting the new data to the graph
                     chart.dataProvider = NewChartData;
 
@@ -156,6 +141,7 @@ $(document).ready(function () {
             type: 'POST'
         });
     }
+
 
     function playAnimation(effect, duration) {
         console.log("clicked animation");
@@ -223,7 +209,7 @@ $(document).ready(function () {
             "lineAlpha": 0.2,
             "type": "column",
             "valueField": "s_amount",
-            "fillColors":"#24742F",
+            "fillColors": "#24742F",
             "balloon": {
                 "drop": true
             }
@@ -241,8 +227,8 @@ $(document).ready(function () {
             "graph": "g1",
             "scrollbarHeight": 50
         },
-/*        "backgroundAlpha":1,
-        "backgroundColor":"#08ffb2",*/
+        /*        "backgroundAlpha":1,
+         "backgroundColor":"#08ffb2",*/
         "categoryAxis": {
             "gridPosition": "start",
             "labelRotation": 45
@@ -257,49 +243,24 @@ $(document).ready(function () {
     });
 
 
-    /*var chart = AmCharts.makeChart("chartdiv", {
-     "type": "serial",
-     "theme": "light",
-     "dataProvider": [{
-     "country": "USA",
-     "visits": 2025
-     }, {
-     "country": "China",
-     "visits": 1882
-     }, {
-     "country": "Japan",
-     "visits": 1809
-     }, {
-     "country": "Germany",
-     "visits": 1322
-     }, {
-     "country": "UK",
-     "visits": 1122
-     }, {
-     "country": "Netherlands",
-     "visits": 665
-     }, {
-     "country": "Russia",
-     "visits": 580
-     }, {
-     "country": "South Korea",
-     "visits": 443
-     }, {
-     "country": "Canada",
-     "visits": 441
-     }, {
-     "country": "Brazil",
-     "visits": 395
-     }],
-     "graphs": [{
-     "fillAlphas": 0.9,
-     "lineAlpha": 0.2,
-     "type": "column",
-     "valueField": "visits"
-     }],
-     "categoryField": "country",
-     "valueAxes": [{
-     "title": "A very long axis title that does not fit the chart height, and needs to be truncated."
-     }]
-     });*/
-});
+    function download_pdf() {
+        $.ajax({
+            url: base_url + "user/downloadPDF",
+            data: document.getElementsByTagName('body')[0].innerHTML,    // data=  ce trimit eu la script ( php )
+            dataType: 'json',
+            success: function (response) {
+                alert("Hope your download will start shortly.");
+            },
+
+            type: 'POST'
+        });
+    }
+
+
+    var bodyHtml = document.getElementsByTagName('body')[0].innerHTML;
+    var clickBtnValue = $(this).val();
+    var ajaxurl = 'ajax.php',
+        data = {'action': clickBtnValue};
+    $.post(ajaxurl, data, function (response) {
+        // Response div goes here.
+        alert("action performed successfully");
