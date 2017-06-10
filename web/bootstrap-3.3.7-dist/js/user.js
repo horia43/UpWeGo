@@ -218,8 +218,18 @@ $(document).ready(function () {
         $.ajax({
             url: base_url + "user/downloadPDF",
             data: document.getElementsByTagName('body')[0].innerHTML,    // data=  ce trimit eu la script ( php )
+            //data: $('#form2').serializeArray(),    // data=  ce trimit eu la script ( php )
+            dataType: 'json',
             success: function (response) {
-                alert("Hope your download will start shortly.");
+                if (response.success){
+                    alert("Hope your download will start shortly.");
+                    alert(response.data+"true");
+                }
+                else{
+                    alert("fraier");
+                    alert(response.data+"false");
+                }
+                //alert(document.getElementsByTagName('body')[0].innerHTML);
             },
 
             type: 'POST'

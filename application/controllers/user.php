@@ -265,7 +265,9 @@ class User extends CI_Controller
 
     function downloadPDF(){
 
-        /*$this->load->library('tcpdf/pdf');
+
+
+       /* $this->load->library('tcpdf/pdf');
         $this->load->helper('url');
 
         $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
@@ -281,27 +283,43 @@ class User extends CI_Controller
 
         $pdf->Write(5, 'Some sample text');
         $pdf->Output('pdf-example.pdf', 'I');*/
+        require_once(APPPATH.'libraries/tcpdf/tcpdf.php');
+        //$this->load->library('Pdf');
+        //$pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetTitle("Acesta este titlul");
+        $pdf->SetHeaderData('','',PDF_HEADER_TITLE,PDF_HEADER_STRING);
+        $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN,'',PDF_FONT_SIZE_MAIN));
+        $pdf->setFooterFont(Array(PDF_FONT_NAME_MAIN,'',PDF_FONT_SIZE_MAIN));
+        $pdf->SetDefaultMonospacedFont('helvetica');
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+        $pdf->SetMargins(PDF_MARGIN_LEFT,'5',)
+
+        $response = array(
+               "success" => true,//, // e o cheie de tip string success
+               "data" => "Am trimis true!" // preiau mesajul "umpleti campul"
+               //"msg" => $e->getMessage() // preiau mesajul "umpleti campul"
+           );
+           echo json_encode($response);
+           exit;
 
 
-        $this->load->library('Pdf');
-        $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
-        $pdf->SetTitle('Pdf Example');
-        $pdf->SetHeaderMargin(30);
-        $pdf->SetTopMargin(20);
-        $pdf->setFooterMargin(20);
-        $pdf->SetAutoPageBreak(true);
-        $pdf->SetAuthor('Author');
-        $pdf->SetDisplayMode('real', 'default');
-        $pdf->Write(5, 'CodeIgniter TCPDF Integration');
-        $pdf->Output('pdfexample.pdf', 'I');
+            $this->load->library('Pdf');
+            $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
+            $pdf->SetTitle('Pdf Example');
+            $pdf->SetHeaderMargin(30);
+            $pdf->SetTopMargin(20);
+            $pdf->setFooterMargin(20);
+            $pdf->SetAutoPageBreak(true);
+            $pdf->SetAuthor('Author');
+            $pdf->SetDisplayMode('real', 'default');
+            $pdf->Write(5, 'CodeIgniter TCPDF Integration');
+            $pdf->Output('pdfexample.pdf', 'I');
 
 
 
-        /*$response = array(
-            "success" => true//, // e o cheie de tip string success
-            //"msg" => $e->getMessage() // preiau mesajul "umpleti campul"
-        );
-        echo json_encode($response);*/
+
         //exit;
 
     }

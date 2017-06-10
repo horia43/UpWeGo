@@ -56,8 +56,10 @@
                     <option>2014</option>
                 </select>
             </div>
+
         </form>
         <button type="button" id="downloadPDF" name="downloadPDF" class="btn btn-danger" style="outline:0;">Download PDF</button>
+        <!--<input type="submit" id="downloadPDF" name="downloadPDF" class="btn btn-danger" style="outline:0;" value="Download PDF"/>-->
 
         <div id="chartdiv"></div>
 
