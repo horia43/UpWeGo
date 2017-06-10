@@ -3,46 +3,16 @@
  */
 
 
-/*
- $(function(){
- $.ajax({
- url: 'http://localhost/chart_data.php',
- type: 'GET',
- success : function(data) {
- chartData = data;
- var chartProperties = {
- "caption": "Top 10 wicket takes ODI Cricket in 2015",
- "xAxisName": "Player",
- "yAxisName": "Wickets Taken",
- "rotatevalues": "1",
- "theme": "zune"
- };
- apiChart = new FusionCharts({
- type: 'column2d',
- renderAt: 'chart-container',
- width: '550',
- height: '350',
- dataFormat: 'json',
- dataSource: {
- "chart": chartProperties,
- "data": chartData
- }
- });
- apiChart.render();
- }
- });
- });
- */
 
 
 /**
  * Plugin to auto-truncate the axis labels
  */
-function bar() {
+/*function bar() {
     alert(JSON.stringify(jsonData));
     jsonData = "assign new string";
     alert(jsonData);
-}
+}*/
 $(document).ready(function () {
     //alert(JSON.stringify(jsonData));
     //alert(jsonData[0]['payment_id']);
@@ -111,7 +81,7 @@ $(document).ready(function () {
                     //var json = JSON.stringify(eval("(" + response.data + ")"));
                     //var NewChartData = [];
                     //NewChartData.push(JSON.parse(response.data));
-                    alert(chartValues);
+                    //alert(chartValues);
                     var NewChartData = JSON.parse(chartValues);
                     //alert(NewChartData);
                     /*NewChartData.sort(function (a, b) {                   //sortare in functie de data

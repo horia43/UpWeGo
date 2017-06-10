@@ -57,11 +57,12 @@
                 </select>
             </div>
         </form>
-        <button type="button" id="downloadPDF">Download</button>
+        <button type="button" id="downloadPDF" name="downloadPDF" class="btn btn-danger" style="outline:0;">Download PDF</button>
 
         <div id="chartdiv"></div>
 
     </div>
+
     <div class="common">
         <p>Nume Prenume</p>
         <p>Zi nastere</p>

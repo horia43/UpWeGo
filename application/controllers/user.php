@@ -265,7 +265,7 @@ class User extends CI_Controller
 
     function downloadPDF(){
 
-        $this->load->library('tcpdf/pdf');
+        /*$this->load->library('tcpdf/pdf');
         $this->load->helper('url');
 
         $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
@@ -280,7 +280,20 @@ class User extends CI_Controller
         $pdf->AddPage();
 
         $pdf->Write(5, 'Some sample text');
-        $pdf->Output('pdf-example.pdf', 'I');
+        $pdf->Output('pdf-example.pdf', 'I');*/
+
+
+        $this->load->library('Pdf');
+        $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->SetTitle('Pdf Example');
+        $pdf->SetHeaderMargin(30);
+        $pdf->SetTopMargin(20);
+        $pdf->setFooterMargin(20);
+        $pdf->SetAutoPageBreak(true);
+        $pdf->SetAuthor('Author');
+        $pdf->SetDisplayMode('real', 'default');
+        $pdf->Write(5, 'CodeIgniter TCPDF Integration');
+        $pdf->Output('pdfexample.pdf', 'I');
 
 
 
