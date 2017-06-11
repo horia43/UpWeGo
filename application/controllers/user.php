@@ -283,6 +283,7 @@ class User extends CI_Controller
 
         $pdf->Write(5, 'Some sample text');
         $pdf->Output('pdf-example.pdf', 'I');*/
+        //require_once(APPPATH.'libraries\tcpdf\tcpdf.php');
         require_once(APPPATH.'libraries/tcpdf/tcpdf.php');
         //$this->load->library('Pdf');
         //$pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
@@ -294,7 +295,26 @@ class User extends CI_Controller
         $pdf->setFooterFont(Array(PDF_FONT_NAME_MAIN,'',PDF_FONT_SIZE_MAIN));
         $pdf->SetDefaultMonospacedFont('helvetica');
         $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-        $pdf->SetMargins(PDF_MARGIN_LEFT,'5',)
+        $pdf->SetMargins(PDF_MARGIN_LEFT,'5',PDF_MARGIN_RIGHT);
+        $pdf->setPrintHeader(false);
+        $pdf->setPrintFooter(false);
+        $pdf->setAutoPageBreak(TRUE,10);
+        $pdf->SetFont('helvetica','',12);
+
+        $content='';
+        $content.=  '
+        <div>
+                            <h2>Hello,Horia</h2>
+                            <p>Thank you for joining our team, everything is almost set up.</p>
+                            <p>You can login with the following credentials after you have activated your account by pressing the url below.</p>
+                            
+                            <p>Activation URL: </p>
+                            <p><i>Random Link</i></p>
+        </div>
+                    ';
+        $pdf->AddPage();
+        $pdf->writeHTML($content);
+        $pdf->Output("sample.pdf","I");
 
         $response = array(
                "success" => true,//, // e o cheie de tip string success

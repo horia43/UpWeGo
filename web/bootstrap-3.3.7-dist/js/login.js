@@ -44,8 +44,8 @@ $(document).ready(function () {
                     }
                 } else {
                     alert(response.msg);
-                    //document.getElementsByTagName("input")[1].value = '';
-                    window.location.href = "login";
+                    document.getElementsByTagName("input")[1].value = '';
+                    //window.location.href = "login";
                     //$("#form1")[0].reset();
                     //document.getElementsByClassName("userpass")[0].value='';
                     //document.getElementsByTagName("input")[1].style.border='5px dashed red';
