@@ -212,15 +212,21 @@ $(document).ready(function () {
         "mouseWheelZoomEnabled": true
     });
 
-
     function download_pdf() {
-        alert("Bravo, ai apasat acest buton !");
+        //alert("Bravo, ai apasat acest buton !");
         $.ajax({
             url: base_url + "user/downloadPDF",
-            data: document.getElementsByTagName('body')[0].innerHTML,    // data=  ce trimit eu la script ( php )
+            //data: document.getElementsByTagName('body')[0].innerHTML,    // data=  ce trimit eu la script ( php )
             //data: $('#form2').serializeArray(),    // data=  ce trimit eu la script ( php )
-            dataType: 'json',
+            //dataType: 'json',
             success: function (response) {
+                window.testDATA = response;
+                var pdf_64 = b64EncodeUnicode(response);
+                //console.log(pdf_64);
+                var dataURI = "data:application/pdf;base64," +pdf_64;
+                console.log(dataURI);
+                window.open(dataURI);
+                /*
                 if (response.success){
                     alert("Hope your download will start shortly.");
                     alert(response.data+"true");
@@ -228,7 +234,7 @@ $(document).ready(function () {
                 else{
                     alert("fraier");
                     alert(response.data+"false");
-                }
+                }*/
                 //alert(document.getElementsByTagName('body')[0].innerHTML);
             },
 
@@ -237,6 +243,15 @@ $(document).ready(function () {
     }
 });
 
+function b64EncodeUnicode(str) {
+    // first we use encodeURIComponent to get percent-encoded UTF-8,
+    // then we convert the percent encodings into raw bytes which
+    // can be fed into btoa.
+    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+        function toSolidBytes(match, p1) {
+            return String.fromCharCode('0x' + p1);
+        }));
+}
 /*
 
     var bodyHtml = document.getElementsByTagName('body')[0].innerHTML;

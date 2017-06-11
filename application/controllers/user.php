@@ -284,10 +284,10 @@ class User extends CI_Controller
         $pdf->Write(5, 'Some sample text');
         $pdf->Output('pdf-example.pdf', 'I');*/
         //require_once(APPPATH.'libraries\tcpdf\tcpdf.php');
-        require_once(APPPATH.'libraries/tcpdf/tcpdf.php');
+        //require_once(APPPATH.'libraries/tcpdf/tcpdf.php');
         //$this->load->library('Pdf');
         //$pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
-        $pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        /*$pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetTitle("Acesta este titlul");
         $pdf->SetHeaderData('','',PDF_HEADER_TITLE,PDF_HEADER_STRING);
@@ -312,10 +312,48 @@ class User extends CI_Controller
                             <p><i>Random Link</i></p>
         </div>
                     ';
-        $pdf->AddPage();
-        $pdf->writeHTML($content);
-        $pdf->Output("sample.pdf","I");
+        $pdf->AddPage();*/
+        /*$pdf->writeHTML($content);
+        $pdf->Output("sample.pdf","I");*/
 
+
+        $this->load->library('Pdf');
+
+        $pdf = new Pdf();
+        $pdf->SetTitle('My Title is best test ever!!!');
+        $pdf->SetHeaderMargin(30);
+        $pdf->SetTopMargin(20);
+        $pdf->setFooterMargin(20);
+        $pdf->SetAutoPageBreak(true);
+        $pdf->SetAuthor('Author');
+        $pdf->SetDisplayMode('real', 'default');
+
+        $pdf->AddPage();
+
+        // set text shadow effect
+                $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
+
+        // Set some content to print
+        $html = <<<EOD
+<h1>Welcome to <a href="http://www.tcpdf.org" style="text-decoration:none;background-color:#CC0000;color:black;">&nbsp;<span style="color:black;">TC</span><span style="color:white;">PDF</span>&nbsp;</a>!</h1>
+<i>This is the first example of TCPDF library.</i>
+<p>This text is printed using the <i>writeHTMLCell()</i> method but you can also use: <i>Multicell(), writeHTML(), Write(), Cell() and Text()</i>.</p>
+<p>Please check the source code documentation and other examples for further information.</p>
+<p style="color:#CC0000;">TO IMPROVE AND EXPAND TCPDF I NEED YOUR SUPPORT, PLEASE <a href="http://sourceforge.net/donate/index.php?group_id=128076">MAKE A DONATION!</a></p>
+EOD;
+        
+        // Print text using writeHTMLCell()
+        $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+
+        $pdf->Output('My-File-Name.pdf', 'I');
+        //echo var_dump($pdf);
+
+
+
+
+
+
+        exit;
         $response = array(
                "success" => true,//, // e o cheie de tip string success
                "data" => "Am trimis true!" // preiau mesajul "umpleti campul"

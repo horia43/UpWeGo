@@ -59,6 +59,8 @@
 
         </form>
         <button type="button" id="downloadPDF" name="downloadPDF" class="btn btn-danger" style="outline:0;">Download PDF</button>
+
+        <a href="http://gorillaz/UpWeGo/user/downloadPDF" download="awsomeeeee">CLICK MEEEEE</a>
         <!--<input type="submit" id="downloadPDF" name="downloadPDF" class="btn btn-danger" style="outline:0;" value="Download PDF"/>-->
 
         <div id="chartdiv"></div>
