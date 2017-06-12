@@ -13,7 +13,6 @@
     jsonData = "assign new string";
     alert(jsonData);
 }*/
-var NewChartData;
 
 $(document).ready(function () {
     //alert(JSON.stringify(jsonData));
