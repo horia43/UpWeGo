@@ -209,7 +209,17 @@ $(document).ready(function () {
             "zoomable": true,
             "limitToGraph": "g1"
         },
-        "mouseWheelZoomEnabled": true
+        "mouseWheelZoomEnabled": true,
+        "listeners": [{
+            "event": "clickGraphItem",
+            "method": function (event) {
+                //alert(event.item.category);
+                //document.getElementById('downloadFlyer').click();
+                //$("#downloadFlyer").trigger("click");
+                $("#downloadFlyer")[0].click();
+
+            }
+        }]
     });
 
     function download_pdf() {

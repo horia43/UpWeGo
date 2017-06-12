@@ -343,8 +343,8 @@ class User extends CI_Controller
 EOD;
         
         // Print text using writeHTMLCell()
-        $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
-
+        //$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+        $pdf->writeHTML($html);
         $pdf->Output('My-File-Name.pdf', 'I');
         //echo var_dump($pdf);
 
