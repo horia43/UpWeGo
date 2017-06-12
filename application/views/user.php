@@ -23,12 +23,12 @@
     <script type="text/javascript" src="<?php echo base_url();?>/web/bootstrap-3.3.7-dist/js/user.js" ></script>
 
     <script type="text/javascript">
-        var jsonData = <?php echo $json; ?>;
+        var jsonData =  <?php echo $json; ?>;
         var base_url = "<?php echo base_url();?>";
+        var user="<?php echo $username;?>";
     </script>
 </head>
 <body>
-
 <div id="container">
     <div style="width=100%; height:180px; background-color:#404856; color:white; font-weight: bold; overflow: hidden;">
         <div id="h1">Date created</div>

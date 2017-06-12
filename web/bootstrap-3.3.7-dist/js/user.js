@@ -18,7 +18,8 @@ $(document).ready(function () {
     //alert(JSON.stringify(jsonData));
     //alert(jsonData[0]['payment_id']);
 
-    var chartValues = jsonData;
+    var chartValues;// = jsonData;
+    var username=user;
     /*for (var i = 0; i < chartValues.length; i++) {      // eliminare payment_id din json
      delete chartValues[i].payment_id;
      }
@@ -75,7 +76,7 @@ $(document).ready(function () {
                 if (response.success) {
 
 
-                    var chartValues = response.data;
+                    chartValues = response.data;
 
 
                     //var json = JSON.stringify(eval("(" + response.data + ")"));
@@ -224,8 +225,10 @@ $(document).ready(function () {
         }]
     });
     function download_CSV() {
-
-        alert(chartValues);
+        var filename=username + "-" +$("#yearPicker")[0].value + ".csv";
+        //alert (chartValues);
+        var NewChartData = JSON.parse(chartValues);
+        //alert(NewChartData[0]["s_date"]);
 
         /*exportToCsv('export.csv', [
             ['name','description'],

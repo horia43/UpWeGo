@@ -59,9 +59,8 @@ class User extends CI_Controller
         }
 
         $jsonArray = json_encode($jsonArray);
-        $data = array(
-            'json' => $jsonArray
-        );
+        $data['json'] =$jsonArray;
+
         /*header('Content-type: application/json');
         echo '<pre>';
         print_r($jsonArray);
