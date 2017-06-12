@@ -13,6 +13,8 @@
     jsonData = "assign new string";
     alert(jsonData);
 }*/
+var NewChartData;
+
 $(document).ready(function () {
     //alert(JSON.stringify(jsonData));
     //alert(jsonData[0]['payment_id']);
@@ -56,10 +58,9 @@ $(document).ready(function () {
         changeChart();
     });
 
-    $('#downloadPDF').click(function () {
-        download_pdf();
+    $('#exportCSV').click(function () {
+        download_CSV();
     });
-
     function changeChart() {
         //var message=$('.error'); // ca sa nu scriu tot timpul $('.error')
 
@@ -90,7 +91,7 @@ $(document).ready(function () {
                      NewChartData.sort();*/
 
 
-                    //alert(JSON.stringify(NewChartDataArray));
+                    //alert(JSON.stringify(NewChartData));
 
                     //Setting the new data to the graph
                     chart.dataProvider = NewChartData;
@@ -184,6 +185,8 @@ $(document).ready(function () {
                 "drop": true
             }
         }],
+        /*"depth3D": 20,
+        "angle": 30,*/
         "categoryField": "s_date",
         "valueAxes": [{
             "title": "Salaries over the year.",
@@ -221,8 +224,19 @@ $(document).ready(function () {
             }
         }]
     });
+    function download_CSV() {
 
-    function download_pdf() {
+        alert(chartValues);
+
+        /*exportToCsv('export.csv', [
+            ['name','description'],
+            ['david','123'],
+            ['jona','""'],
+            ['a','b'],
+
+        ])*/
+    }
+    /*function download_pdf() {
         //alert("Bravo, ai apasat acest buton !");
         $.ajax({
             url: base_url + "user/downloadPDF",
@@ -236,7 +250,7 @@ $(document).ready(function () {
                 var dataURI = "data:application/pdf;base64," +pdf_64;
                 console.log(dataURI);
                 window.open(dataURI);
-                /*
+                /!*
                 if (response.success){
                     alert("Hope your download will start shortly.");
                     alert(response.data+"true");
@@ -244,14 +258,55 @@ $(document).ready(function () {
                 else{
                     alert("fraier");
                     alert(response.data+"false");
-                }*/
+                }*!/
                 //alert(document.getElementsByTagName('body')[0].innerHTML);
             },
 
             type: 'POST'
         });
-    }
+    }*/
 });
+
+function exportToCsv(filename, rows) {
+    var processRow = function (row) {
+        var finalVal = '';
+        for (var j = 0; j < row.length; j++) {
+            var innerValue = row[j] === null ? '' : row[j].toString();
+            if (row[j] instanceof Date) {
+                innerValue = row[j].toLocaleString();
+            };
+            var result = innerValue.replace(/"/g, '""');
+            if (result.search(/("|,|\n)/g) >= 0)
+                result = '"' + result + '"';
+            if (j > 0)
+                finalVal += ',';
+            finalVal += result;
+        }
+        return finalVal + '\n';
+    };
+
+    var csvFile = '';
+    for (var i = 0; i < rows.length; i++) {
+        csvFile += processRow(rows[i]);
+    }
+
+    var blob = new Blob([csvFile], { type: 'text/csv;charset=utf-8;' });
+    if (navigator.msSaveBlob) { // IE 10+
+        navigator.msSaveBlob(blob, filename);
+    } else {
+        var link = document.createElement("a");
+        if (link.download !== undefined) { // feature detection
+            // Browsers that support HTML5 download attribute
+            var url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", filename);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }
+}
 
 function b64EncodeUnicode(str) {
     // first we use encodeURIComponent to get percent-encoded UTF-8,
@@ -262,6 +317,7 @@ function b64EncodeUnicode(str) {
             return String.fromCharCode('0x' + p1);
         }));
 }
+
 /*
 
     var bodyHtml = document.getElementsByTagName('body')[0].innerHTML;

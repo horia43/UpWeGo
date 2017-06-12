@@ -58,7 +58,7 @@
             </div>
 
         </form>
-        <button type="button" id="downloadPDF" name="downloadPDF" class="btn btn-warning" style="outline:0;">Download PDF</button>
+        <button type="button" id="exportCSV" name="exportCSV" class="btn btn-warning" style="outline:0;">Export data as CSV</button>
 
         <a id="downloadFlyer" href="http://gorillaz/UpWeGo/user/downloadPDF" class="btn btn-danger" target="_blank"> <!--download="awsomeeeee"-->Download PDF</a>
         <!--<input type="submit" id="downloadPDF" name="downloadPDF" class="btn btn-danger" style="outline:0;" value="Download PDF"/>-->
