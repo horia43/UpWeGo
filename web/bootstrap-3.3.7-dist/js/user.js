@@ -226,17 +226,26 @@ $(document).ready(function () {
     });
     function download_CSV() {
         var filename=username + "-" +$("#yearPicker")[0].value + ".csv";
+        var rows =['Month','Salary'];
         //alert (chartValues);
         var NewChartData = JSON.parse(chartValues);
+        var months=["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August","Septembrie","Octombrie","Noiembrie","Decembrie"];
+        var x=[[]];
+        for(var i=0; i<12; ++i){
+            x[i]=[months[i],NewChartData[i]["s_amount"]];
+        //    rows+='['+months[i]+','+NewChartData[i]["s_amount"]+'],';
+        }
         //alert(NewChartData[0]["s_date"]);
-
-        /*exportToCsv('export.csv', [
-            ['name','description'],
-            ['david','123'],
-            ['jona','""'],
-            ['a','b'],
-
-        ])*/
+        //var y=JSON.stringify(x);
+        //alert(y);
+        //alert(x[0]+x[1]+x[2]);
+        //exportToCsv(filename,y);
+        exportToCsv(filename, [
+            rows,
+            x[0],x[1],x[3],x[4],
+            x[5],x[6],x[7],x[8],
+            x[9],x[10],x[11]
+        ])
     }
     /*function download_pdf() {
         //alert("Bravo, ai apasat acest buton !");
