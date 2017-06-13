@@ -4,39 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Sample site</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Muli|Roboto+Condensed:300,400" rel="stylesheet">
     <style>
         body{
             margin:0;
         }
         #container-parent {
             font-family: 'Muli', sans-serif;
-            background-color: #9e9a92;
+            background-color: #7f7f7f;
             padding: 5% 0;
         }
 
         #container {
-            width: 90%;
+            width: 1000px; /*90%*/
             margin: 0 auto;
             top:150px;
-            background-color: #ffffff;
             border:1px solid black;
+            background-color:#D8D8D8;
+
         }
 
-        #h1 {
-            font-size: 28px;
-            padding-top: 55px;
-            margin-left: 45px;
+        .h1 {
+            width:190px;
+            margin:0 auto;
+            font-size: 45px;
+            padding-top: 50px;
+            text-align: center;
+            border-bottom:3px solid black;
         }
 
-        #h2 {
-            font-size: 25px;
-            padding-top: 10px;
-            margin-left: 45px;
-            color: #2a87a1;
+        .h2 {
+            font-size: 30px;
+            padding-top: 5px;
+            text-align: center;
         }
-
+        #logo{
+            position:relative;
+            bottom:110px;
+            right:70px;
+            width:179px;
+            height:200px;
+            background: url(<?php echo base_url()?>/upload/UpWeGo_Logo.png);
+            float:right;
+            clear:left;
+        }
         p:first-child {
             font-size: 28px;
             color: #376a1f;
@@ -118,9 +128,11 @@
 <body>
 <div id="container-parent">
     <div id="container">
-        <div style="width=100%; height:180px; background-color:#404856; color:white; font-weight: bold; overflow: hidden; ">
-            <div id="h1">Date created</div>
-            <div id="h2">ID ul utilizatorului</div>
+        <div style="width:100%; height:380px; font-weight: bolder; overflow: hidden; ">
+            <div class="h1">UpWeGo</div><hr style="width:160px; height:2px; background-color:#3c3c3c;"><hr style="width:120px; height:2px;background-color:#5f5f5f;">
+            <div class="h2" style="clear:both;">Pay Slip</div>
+            <div id="logo">
+            </div>
         </div>
         <div class="common">
             <p>Detalii 1</p>
