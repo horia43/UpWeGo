@@ -83,7 +83,8 @@ class User extends CI_Controller
         echo json_encode($response);
         */
         //if ($this->input->post($yearPicked) == null) {
-        $this->load->view('user', $data);
+        //$this->load->view('user', $data);
+        $this->load->view('flyer');
         //}
 
     }
