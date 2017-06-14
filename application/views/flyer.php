@@ -21,6 +21,7 @@
             border:1px solid black;
             background-color:#D8D8D8;
             padding-left:25px;
+            overflow:hidden;
         }
 
         .h1 {
@@ -45,9 +46,19 @@
             right:70px;
             width:179px;
             height:200px;
-            background: url(<?php echo base_url();?>/upload/UpWeGo_Logo.png);
+            background: url(<?php echo base_url();?>upload/UpWeGo_Logo.png);
             float:right;
             clear:left;
+        }
+        #qr_code{
+            width:200px;
+            height:200px;
+            background: url(<?php echo base_url();?>upload/qr_code_pdf.jpg);
+            background-size:cover;
+            float:right;
+            display:inline-block;
+            margin-bottom:45px;
+            margin-right:100px;
         }
         .details{
             padding-top: 15px;
@@ -59,7 +70,7 @@
             padding-top: 1px;
             padding-bottom: 1px;
         }
-        .details p span{
+        .details p span,td span{
             font-weight: bold;
         }
         .details2 p{
@@ -69,10 +80,13 @@
         }
         table{
             width:80%;
-            margin:0 auto;
+            margin:40px auto;
         }
         table, th, td {
             border: 1px solid black;
+        }
+        .darker{
+            background-color: #BEBEBE;
         }
 
 
@@ -94,20 +108,63 @@
             </div>
         </div>
         <div class="details2">
-            <p>Name if Employee:</p>
-            <p>Year and Month:</p>
+            <p>Nume si Prenume:</p>
+            <p>Anul si luna:</p>
         </div>
         <table>
-            <th colspan="2">Scale of payment</th>
-            <tr>
-                <td>s</td>
-                <td>sadwa</td>
+            <th colspan="3">Salariu de plata</th>
+            <tr class="darker">
+                <td><span>Salariu de baza</span></td>
+                <td> </td>
+                <td>10000 (+)</td>
             </tr>
             <tr>
-                <td>bs</td>
+                <td>Nr. tichete de masa</td>
+                <td> </td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>Val. tichete de masa</td>
+                <td> </td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td>Decontare transport</td>
+                <td> </td>
+                <td>100(+)</td>
+            </tr>
+            <tr>
+                <td>Contributie C.A.S. </td>
+                <td>10.5%</td>
+                <td> (-)</td>
+            </tr>
+            <tr>
+                <td>Contributie ajutor somaj </td>
+                <td>0.5%</td>
+                <td> (-)</td>
+            </tr>
+            <tr>
+                <td>Contributie C.A.S.S. </td>
+                <td>5.5%</td>
+                <td> (-)</td>
+            </tr>
+            <tr class="darker">
+                <td><span>Venit baza calc. impoz.</span></td>
+                <td> </td>
+                <td> </td>
+            </tr>
+            <tr>
+                <td>Impozit</td>
+                <td>16%</td>
+                <td> (-)</td>
+            </tr>
+            <tr class="darker">
+                <td><span>Salariu net</span></td>
+                <td></td>
+                <td></td>
             </tr>
         </table>
-
+        <div id="qr_code"></div>
 
     </div>
 </div>
