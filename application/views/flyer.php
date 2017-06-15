@@ -63,10 +63,10 @@
 
 </head>
 <body>
-<div id="container-parent" style="font-family: 'Muli', sans-serif; background-color: #7f7f7f; padding: 5% 0;">
-    <div id="container" style="width: 90%; /*90%*/ top:150px; border:1px solid #000000; background-color:#D8D8D8; padding-left:25px; overflow:hidden;">
+<div id="container-parent" style="font-family: 'Muli', sans-serif; background-color: #7f7f7f;">
+    <div id="container" style="width: 90%; /*90%*/ border:2px solid #000000; background-color:#D8D8D8; overflow:hidden;">
         <div style="width:100%; height:auto; overflow: hidden; ">
-            <div class="h1" style="width:190px; font-size: 35px; padding-top: 50px; text-align: center; font-weight: bolder;">UpWeGo</div>
+            <div class="h1" style="width:190px; font-size: 35px; text-align: center; font-weight: bolder;">UpWeGo</div>
             <table style=" width:100%;">
                 <tr>
                     <td style="width:32%;"></td>
@@ -79,74 +79,94 @@
                     <td></td>
                 </tr>
             </table>
-            <div class="h2" style="clear:both; font-size: 25px; padding-top: 5px; text-align: center; font-weight: bolder;">Pay Slip</div>
-            <img src="<?php echo base_url();?>upload/UpWeGo_Logo.png"/>
-            <div class="details">
-                <p><span>Adress:</span> Calea Septembrie 13 , nr. 113	, Bucuresti	sector 5</p>
-                <p><span>Phone:</span> 021 224 75 21</p>
-                <p><span>Fax:</span> 021 224 75 20</p>
-                <p><a href="www.upwego.com">www.upwego.com</a></p>
-            </div>
-        </div>
-        <div class="details2">
-            <p>Nume si Prenume:</p>
-            <p>Anul si luna:</p>
-        </div>
+            <div class="h2" style="clear:both; font-size: 25px; text-align: center; font-weight: bolder;">Pay Slip</div>
+            <table style=" width:100%; padding-top:25px;">
+                <tr>
+                    <td style="width:51%; font-size: 10px;">
+                        <span><b>Adress:</b> Calea Septembrie 13 , nr. 113	, Bucuresti	sector 5</span><br>
+                        <span><b>Phone:</b> 021 224 75 21</span><br>
+                        <span><b>Fax:</b> 021 224 75 20</span><br>
+                        <span><a href="www.upwego.com">www.upwego.com</a></span><br><br><br>
+                        <span><b>Nume si Prenume:</b></span><br>
+                        <span><b>Anul si luna:</b></span><br>
+                    </td>
+                    <td style="width:20%;"></td>
+                    <td  style="width:28%;"><img id="logo" width="120px" height="120px;" src="http://gorillaz/UpWeGo/upload/UpWeGo_Logo.png" />
+                    </td>
+                </tr>
+            </table>
+        </div><br>
         <table>
-            <thead colspan="3">Salariu de plata</thead>
-            <tr class="darker">
-                <td><span>Salariu de baza</span></td>
-                <td> </td>
-                <td>10000 (+)</td>
-            </tr>
             <tr>
-                <td>Nr. tichete de masa</td>
-                <td> </td>
-                <td>20</td>
-            </tr>
-            <tr>
-                <td>Val. tichete de masa</td>
-                <td> </td>
-                <td>200</td>
-            </tr>
-            <tr>
-                <td>Decontare transport</td>
-                <td> </td>
-                <td>100(+)</td>
-            </tr>
-            <tr>
-                <td>Contributie C.A.S. </td>
-                <td>10.5%</td>
-                <td> (-)</td>
-            </tr>
-            <tr>
-                <td>Contributie ajutor somaj </td>
-                <td>0.5%</td>
-                <td> (-)</td>
-            </tr>
-            <tr>
-                <td>Contributie C.A.S.S. </td>
-                <td>5.5%</td>
-                <td> (-)</td>
-            </tr>
-            <tr class="darker">
-                <td><span>Venit baza calc. impoz.</span></td>
-                <td> </td>
-                <td> </td>
-            </tr>
-            <tr>
-                <td>Impozit</td>
-                <td>16%</td>
-                <td> (-)</td>
-            </tr>
-            <tr class="darker">
-                <td><span>Salariu net</span></td>
-                <td></td>
-                <td></td>
+                <td width="15%"></td>
+                <td width="70%">
+                    <table border="1">
+                        <tr>
+                            <th colspan="3" style="text-align:center;"><b>Salariu de plata</b></th>
+                        </tr>
+                        <tr class="darker">
+                            <td><span>Salariu de baza</span></td>
+                            <td> </td>
+                            <td style="text-align:right;">10000 (+)</td>
+                        </tr>
+                        <tr>
+                            <td>Nr. tichete de masa</td>
+                            <td> </td>
+                            <td style="text-align:right;">20</td>
+                        </tr>
+                        <tr>
+                            <td>Val. tichete de masa</td>
+                            <td> </td>
+                            <td style="text-align:right;">200</td>
+                        </tr>
+                        <tr>
+                            <td>Decontare transport</td>
+                            <td> </td>
+                            <td style="text-align:right;">100(+)</td>
+                        </tr>
+                        <tr>
+                            <td>Contributie C.A.S. </td>
+                            <td style="text-align:right;">10.5%</td>
+                            <td style="text-align:right;"> (-)</td>
+                        </tr>
+                        <tr>
+                            <td>Contributie ajutor somaj </td>
+                            <td style="text-align:right;">0.5%</td>
+                            <td style="text-align:right;"> (-)</td>
+                        </tr>
+                        <tr>
+                            <td>Contributie C.A.S.S. </td>
+                            <td style="text-align:right;">5.5%</td>
+                            <td style="text-align:right;"> (-)</td>
+                        </tr>
+                        <tr class="darker">
+                            <td><span>Venit baza calc. impoz.</span></td>
+                            <td> </td>
+                            <td style="text-align:right;"> </td>
+                        </tr>
+                        <tr>
+                            <td>Impozit</td>
+                            <td style="text-align:right;">16%</td>
+                            <td style="text-align:right;"> (-)</td>
+                        </tr>
+                        <tr class="darker">
+                            <td><span>Salariu net</span></td>
+                            <td></td>
+                            <td style="text-align:right;"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="14%"></td>
             </tr>
         </table>
-        <div id="qr_code"></div>
-
+        <p></p>
+        <table>
+            <tr>
+                <td width="70%"></td>
+                <td width="29%"><img id="qr_code" width="120px" height="120px;" src="http://gorillaz/UpWeGo/upload/qr_code_pdf.jpg" /></td>
+            </tr>
+        </table>
+        <p></p>
     </div>
 </div>
 </body>
