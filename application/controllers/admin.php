@@ -63,7 +63,7 @@ class Admin extends CI_Controller
             //$this->load->view('ListUsers',$data);
         } else {
             //If no session, redirect to login page
-            redirect('login', 'refresh');
+            redirect('welcome', 'refresh');
         }
 
         $this->load->database();
@@ -156,7 +156,7 @@ class Admin extends CI_Controller
             //$this->load->view('ListUsers',$data);
         } else {
             //If no session, redirect to login page
-            redirect('login', 'refresh');
+            redirect('welcome', 'refresh');
         }
 
         if($this->input->get('items')!=NULL){

@@ -4,70 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Salary flyer</title>
-    <style>
-        .h2 {
-            font-size: 30px;
-            padding-top: 5px;
-            text-align: center;
-            font-weight: bolder;
-        }
-        #logo{
-            position:relative;
-            bottom:110px;
-            right:70px;
-            width:179px;
-            height:200px;
-            background: url(<?php echo base_url();?>upload/UpWeGo_Logo.png);
-            float:right;
-            clear:left;
-        }
-        #qr_code{
-            width:200px;
-            height:200px;
-            background: url(<?php echo base_url();?>upload/qr_code_pdf.jpg);
-            background-size:cover;
-            float:right;
-            display:inline-block;
-            margin-bottom:45px;
-            margin-right:100px;
-        }
-        .details{
-            padding-top: 15px;
-        }
-        .details p {
-            font-size: 13px;
-            margin-top: 1px;
-            margin-bottom: 1px;
-            padding-top: 1px;
-            padding-bottom: 1px;
-        }
-        .details p span,td span{
-            font-weight: bold;
-        }
-        .details2 p{
-            font-weight: bold;
-            margin-top:10px;
-            margin-bottom:0px;
-        }
-        table{
-            width:80%;
-            margin:40px auto;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        .darker{
-            background-color: #BEBEBE;
-        }
-    </style>
 
 </head>
 <body>
 <div id="container-parent" style="font-family: 'Muli', sans-serif; background-color: #7f7f7f;">
-    <div id="container" style="width: 90%; /*90%*/ border:2px solid #000000; background-color:#D8D8D8; overflow:hidden;">
-        <div style="width:100%; height:auto; overflow: hidden; ">
-            <div class="h1" style="width:190px; font-size: 35px; text-align: center; font-weight: bolder;">UpWeGo</div>
-            <table style=" width:100%;">
+    <div id="container" style="border:2px solid #000000; background-color:#D8D8D8;">
+        <div>
+            <div class="h1" style="font-size: 35px; text-align: center; font-weight: bolder;">UpWeGo</div>
+            <table style="width:100%;">
                 <tr>
                     <td style="width:32%;"></td>
                     <td style="width:33%; border-top:5px solid black;"></td>
@@ -98,65 +42,65 @@
         </div><br>
         <table>
             <tr>
-                <td width="15%"></td>
-                <td width="70%">
+                <td width="10%"></td>
+                <td width="79%">
                     <table border="1">
                         <tr>
-                            <th colspan="3" style="text-align:center;"><b>Salariu de plata</b></th>
+                            <th colspan="3" style="text-align:center; background-color: #9d9d9d;"><b>Salariu de plata</b></th>
                         </tr>
-                        <tr class="darker">
-                            <td><span>Salariu de baza</span></td>
+                        <tr style="background-color: #BEBEBE;">
+                            <td><b> Salariu de baza</b></td>
                             <td> </td>
-                            <td style="text-align:right;">10000 (+)</td>
+                            <td style="text-align:right;"><b>10000 (+)</b></td>
                         </tr>
                         <tr>
-                            <td>Nr. tichete de masa</td>
+                            <td> Nr. tichete de masa</td>
                             <td> </td>
                             <td style="text-align:right;">20</td>
                         </tr>
                         <tr>
-                            <td>Val. tichete de masa</td>
+                            <td> Val. tichete de masa</td>
                             <td> </td>
                             <td style="text-align:right;">200</td>
                         </tr>
                         <tr>
-                            <td>Decontare transport</td>
+                            <td> Decontare transport</td>
                             <td> </td>
                             <td style="text-align:right;">100(+)</td>
                         </tr>
                         <tr>
-                            <td>Contributie C.A.S. </td>
+                            <td> Contributie C.A.S. </td>
                             <td style="text-align:right;">10.5%</td>
                             <td style="text-align:right;"> (-)</td>
                         </tr>
                         <tr>
-                            <td>Contributie ajutor somaj </td>
+                            <td> Contributie ajutor somaj </td>
                             <td style="text-align:right;">0.5%</td>
                             <td style="text-align:right;"> (-)</td>
                         </tr>
                         <tr>
-                            <td>Contributie C.A.S.S. </td>
+                            <td> Contributie C.A.S.S. </td>
                             <td style="text-align:right;">5.5%</td>
                             <td style="text-align:right;"> (-)</td>
                         </tr>
-                        <tr class="darker">
-                            <td><span>Venit baza calc. impoz.</span></td>
+                        <tr style="background-color: #BEBEBE;">
+                            <td><b> Venit baza calc. impoz.</b></td>
                             <td> </td>
-                            <td style="text-align:right;"> </td>
+                            <td style="text-align:right;"><b>500</b></td>
                         </tr>
                         <tr>
-                            <td>Impozit</td>
+                            <td> Impozit</td>
                             <td style="text-align:right;">16%</td>
                             <td style="text-align:right;"> (-)</td>
                         </tr>
-                        <tr class="darker">
-                            <td><span>Salariu net</span></td>
+                        <tr style="background-color: #BEBEBE;">
+                            <td><b> Salariu net</b></td>
                             <td></td>
-                            <td style="text-align:right;"></td>
+                            <td style="text-align:right;"><b>500</b></td>
                         </tr>
                     </table>
                 </td>
-                <td width="14%"></td>
+                <td width="10%"></td>
             </tr>
         </table>
         <p></p>
