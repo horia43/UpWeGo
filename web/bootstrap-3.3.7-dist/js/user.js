@@ -219,6 +219,8 @@ $(document).ready(function () {
                 //alert(event.item.category);
                 //document.getElementById('downloadFlyer').click();
                 //$("#downloadFlyer").trigger("click");
+                var a = $("#downloadFlyer")[0]; //or grab it by tagname etc
+                a.href += "?yearPicker="+$("#yearPicker")[0].value+"&month="+event.item.category;
                 $("#downloadFlyer")[0].click();
 
             }

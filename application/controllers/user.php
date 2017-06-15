@@ -284,12 +284,12 @@ class User extends CI_Controller
         $this->load->library('Pdf');
 
         $pdf = new Pdf();
-        $pdf->SetTitle('My Title is best test ever!!!');
+        $pdf->SetTitle('Pay Slip');
         $pdf->SetHeaderMargin(30);
         $pdf->SetTopMargin(0);
         $pdf->setFooterMargin(20);
         $pdf->SetAutoPageBreak(true);
-        $pdf->SetAuthor('Author');
+        $pdf->SetAuthor('UpWeGo');
         $pdf->SetDisplayMode('real', 'default');
 
         $pdf->AddPage();
@@ -311,11 +311,18 @@ class User extends CI_Controller
             redirect('welcome', 'refresh');
         }
         $this->load->database();
+
+
         //$password = $this->input->post('password');
 
-       /* $this->db->select("firstname,lastname");
-        $this->db->where('username=', $username);
-        $select = $this->db->get("user");*/
+        $this->db->select("firstname,lastname");
+        $this->db->where('username=', $data['username']);
+
+        $select = $this->db->get("user");
+        $firstname = $select->result_array()[0]['firstname'];
+        $lastname  = $select->result_array()[0]['lastname'];
+        $year= $this->input->get('yearPicker');
+        $month= $this->input->get('month');
 
         // set text shadow effect
                 //$pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
@@ -347,8 +354,8 @@ class User extends CI_Controller
                         <span><b>Phone:</b> 021 224 75 21</span><br>
                         <span><b>Fax:</b> 021 224 75 20</span><br>
                         <span><a href="www.upwego.com">www.upwego.com</a></span><br><br><br>
-                        <span><b>Nume si Prenume:</b></span><br>
-                        <span><b>Anul si luna:</b></span><br>
+                        <span><b>Nume si Prenume:</b> $lastname $firstname</span><br>
+                        <span><b>Anul si luna:</b></span> $year $month<br>
                     </td>
                     <td style="width:20%;"></td>
                     <td  style="width:28%;"><img id="logo" width="120px" height="120px;" src="http://gorillaz/UpWeGo/upload/UpWeGo_Logo.png" />
@@ -372,7 +379,7 @@ class User extends CI_Controller
                         <tr>
                             <td> Nr. tichete de masa</td>
                             <td> </td>
-                            <td style="text-align:right;">$data['username']</td>
+                            <td style="text-align:right;">20</td>
                         </tr>
                         <tr>
                             <td> Val. tichete de masa</td>
