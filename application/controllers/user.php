@@ -343,6 +343,7 @@ class User extends CI_Controller
         $impozit=   round($venit_imp*0.16,0,PHP_ROUND_HALF_UP);
         $net    =   $salary-$cas-$somaj-$cass-$impozit;
 
+        $filename=$data['username']."_".$year.$month.".pdf";
 
 
 
@@ -477,7 +478,7 @@ EOD;
         //$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
         //$pdf->writeHTML($html);
         $pdf->writeHTML($html, true, false, true, false, '');
-        $pdf->Output('My-File-Name.pdf', 'I');
+        $pdf->Output($filename, 'I');
         //echo var_dump($pdf);
 
     }

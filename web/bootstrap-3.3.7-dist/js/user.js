@@ -219,9 +219,11 @@ $(document).ready(function () {
                 //alert(event.item.category);
                 //document.getElementById('downloadFlyer').click();
                 //$("#downloadFlyer").trigger("click");
-                var a = $("#downloadFlyer")[0]; //or grab it by tagname etc
+                var a = $("#downloadFlyer")[0];
+                var x = a.href;
                 a.href += "?yearPicker="+$("#yearPicker")[0].value+"&month="+event.item.category;
                 $("#downloadFlyer")[0].click();
+                a.href = x;
 
             }
         }]
