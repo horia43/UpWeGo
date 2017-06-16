@@ -230,9 +230,8 @@ class Admin extends CI_Controller
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } else {
 
-                $secret_key="key-587313660811b72439cdd67c897ea689";  // apparently it's the same
-                //$domain = "sandbox9ca54d91dbdf46b4b961f7700fa16fc4.mailgun.org";
-                $domain = "mg.gorillaz.com";
+                $secret_key="key-1a09ec0d388ee909db72392f91315f3f";  // apparently it's the same
+                $domain = "sandbox3e9b9f50dadb48a09d73f35a82204c0c.mailgun.org";
 
                 //$html= $this->load->view('pinql', '', true);
 
