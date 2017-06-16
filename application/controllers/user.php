@@ -293,7 +293,6 @@ class User extends CI_Controller
         $pdf->SetDisplayMode('real', 'default');
 
         $pdf->AddPage();
-        $salariu=10600;
 
         if ($this->session->userdata('logged_in') && !$this->session->userdata('logged_in')['isAdmin']) //// dar in teorie nu am nevoie decat de username ca sa il afisez pe undeva :) Majoritatea lor sunt doar pentru testare
         {
@@ -315,14 +314,37 @@ class User extends CI_Controller
 
         //$password = $this->input->post('password');
 
-        $this->db->select("firstname,lastname");
+        $this->db->select("firstname,lastname,id");
         $this->db->where('username=', $data['username']);
-
         $select = $this->db->get("user");
-        $firstname = $select->result_array()[0]['firstname'];
-        $lastname  = $select->result_array()[0]['lastname'];
+
+        $firstname      = $select->result_array()[0]['firstname'];
+        $lastname       = $select->result_array()[0]['lastname'];
+        $id_employee    = $select->result_array()[0]['id'];
         $year= $this->input->get('yearPicker');
         $month= $this->input->get('month');
+        $months=array("Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August","Septembrie","Octombrie","Noiembrie","Decembrie");
+        for($i=0; $i<12;++$i){
+            if($months[$i]==$month){
+                $date=sprintf("%s-%02d", $year, $i+1);
+                break;
+            }
+        }
+        $this->db->select("*");
+        $this->db->where("id_employee=", $id_employee);
+        $this->db->where("s_date=", $date);
+        $select = $this->db->get("salary");
+
+        $salary=$select->result_array()[0]['s_amount'];
+        $cas    =   round($salary*0.105,0,PHP_ROUND_HALF_UP);
+        $somaj  =   round($salary*0.005,0,PHP_ROUND_HALF_UP);
+        $cass   =   round($salary*0.055,0,PHP_ROUND_HALF_UP);
+        $venit_imp =round($salary-$cas-$somaj-$cass+200+100,0,PHP_ROUND_HALF_UP);  // tichete masa + transport
+        $impozit=   round($venit_imp*0.16,0,PHP_ROUND_HALF_UP);
+        $net    =   $salary-$cas-$somaj-$cass-$impozit;
+
+
+
 
         // set text shadow effect
                 //$pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
@@ -365,8 +387,8 @@ class User extends CI_Controller
         </div><br>
         <table>
             <tr>
-                <td width="10%"></td>
-                <td width="79%">
+                <td width="9%"></td>
+                <td width="81%">
                     <table border="1">
                         <tr>
                             <th colspan="3" style="text-align:center; background-color: #9d9d9d;"><b>Salariu de plata</b></th>
@@ -374,7 +396,7 @@ class User extends CI_Controller
                         <tr style="background-color: #BEBEBE;">
                             <td><b> Salariu de baza</b></td>
                             <td> </td>
-                            <td style="text-align:right;"><b>$salariu (+)</b></td>
+                            <td style="text-align:right;"><b>$salary RON(+)</b></td>
                         </tr>
                         <tr>
                             <td> Nr. tichete de masa</td>
@@ -384,46 +406,56 @@ class User extends CI_Controller
                         <tr>
                             <td> Val. tichete de masa</td>
                             <td> </td>
-                            <td style="text-align:right;">200</td>
+                            <td style="text-align:right;">200 RON</td>
                         </tr>
                         <tr>
                             <td> Decontare transport</td>
                             <td> </td>
-                            <td style="text-align:right;">100(+)</td>
+                            <td style="text-align:right;">100 RON</td>
                         </tr>
                         <tr>
                             <td> Contributie C.A.S. </td>
                             <td style="text-align:right;">10.5%</td>
-                            <td style="text-align:right;"> (-)</td>
+                            <td style="text-align:right;"> $cas RON(-)</td>
                         </tr>
                         <tr>
                             <td> Contributie ajutor somaj </td>
                             <td style="text-align:right;">0.5%</td>
-                            <td style="text-align:right;"> (-)</td>
+                            <td style="text-align:right;"> $somaj RON(-)</td>
                         </tr>
                         <tr>
                             <td> Contributie C.A.S.S. </td>
                             <td style="text-align:right;">5.5%</td>
-                            <td style="text-align:right;"> (-)</td>
+                            <td style="text-align:right;"> $cass RON(-)</td>
+                        </tr>
+                        <tr>
+                            <td> Baza imp. tichete masa </td>
+                            <td style="text-align:right;"></td>
+                            <td style="text-align:right;">200 RON</td>
+                        </tr>
+                        <tr>
+                            <td> Baza imp. decont. transp. </td>
+                            <td style="text-align:right;"></td>
+                            <td style="text-align:right;">100 RON</td>
                         </tr>
                         <tr style="background-color: #BEBEBE;">
                             <td><b> Venit baza calc. impoz.</b></td>
                             <td> </td>
-                            <td style="text-align:right;"><b>500</b></td>
+                            <td style="text-align:right;"><b> $venit_imp RON</b></td>
                         </tr>
                         <tr>
                             <td> Impozit</td>
                             <td style="text-align:right;">16%</td>
-                            <td style="text-align:right;"> (-)</td>
+                            <td style="text-align:right;"> $impozit RON(-)</td>
                         </tr>
                         <tr style="background-color: #BEBEBE;">
                             <td><b> Salariu net</b></td>
                             <td></td>
-                            <td style="text-align:right;"><b>500</b></td>
+                            <td style="text-align:right;"><b> $net RON</b></td>
                         </tr>
                     </table>
                 </td>
-                <td width="10%"></td>
+                <td width="9%"></td>
             </tr>
         </table>
         <p></p>
