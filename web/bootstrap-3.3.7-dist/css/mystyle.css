@@ -41,12 +41,12 @@ body { padding-right: 0 !important; }
     padding:3px;
     outline:none;
 }
-#logIn{
+#logIn, #activate{
     margin:100px auto;
     width:50%;
     text-align:center;
 }
-#logIn >button{
+#logIn >button, #activate >button{
     width:90px;
     outline:none;
     border-radius:10px;

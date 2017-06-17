@@ -8,11 +8,14 @@
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/css/mystyle.css">
     <script type="text/javascript" src="<?php echo base_url();?>/web/bootstrap-3.3.7-dist/js/ajax.js" ></script>
+    <script>
+        var base_url = "<?php echo base_url();?>";
+    </script>
 
 </head>
 <body>
 <div id="myForm">
-    <form id="form3" action="<?php echo site_url('login/index') ?>">
+    <form id="form3">
         <div class="data">
             <p>Current password:</p>
             <p>New password:</p>

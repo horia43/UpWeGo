@@ -201,5 +201,18 @@ class Login extends CI_Controller
         }
 
     }
+    function activation(){
+        try {
+
+            $this->load->database();
+            $username = $this->input->post('current_pass');
+            $password = $this->input->post('new_pass');
+            $password = $this->input->post('new_pass2');
+            
+
+        }catch (Exception $e){
+
+        }
+    }
 }
 
