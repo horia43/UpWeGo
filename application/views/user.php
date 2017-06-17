@@ -60,7 +60,7 @@
         </form>
         <button type="button" id="exportCSV" name="exportCSV" class="btn btn-warning" style="outline:0;">Export data as CSV</button>
 
-        <a id="downloadFlyer" href="<?php base_url();?>user/downloadPDF" class="btn btn-danger" target="_blank" style="visibility: hidden;"> <!--download="awsomeeeee"-->Download PDF</a>
+        <a id="downloadFlyer" href="<?php base_url();?>user/downloadPDF" class="btn btn-danger" target="_blank" style="visibility: hidden;" download> <!--download="awsomeeeee"-->Download PDF</a>
         <!--<input type="submit" id="downloadPDF" name="downloadPDF" class="btn btn-danger" style="outline:0;" value="Download PDF"/>-->
 
         <div id="chartdiv"></div>

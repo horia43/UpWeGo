@@ -30,6 +30,7 @@ class Login extends CI_Controller
     {
         parent::__construct();
     }
+
     public function index()
     {
 
@@ -41,16 +42,14 @@ class Login extends CI_Controller
             $password = $this->input->post('password');
 
 
-
             $this->db->select("password");
             $this->db->where('username=', $username);
             $select = $this->db->get("user");
             if ($select->num_rows() == 0) {
                 throw new Exception("Invalid input data. Session expired. Re-enter login data.xxxx");
-            }
-            elseif ($select->num_rows() > 1) {
+            } elseif ($select->num_rows() > 1) {
                 throw new Exception("Error in Database. Please contact our support.");
-            }elseif($select->num_rows() == 1) {
+            } elseif ($select->num_rows() == 1) {
                 $pass = $select->result_array()[0]['password'];
 
 
@@ -91,7 +90,7 @@ class Login extends CI_Controller
                         throw new Exception("Error in Database. Please contact our support.");
                     } elseif ($query->num_rows() == 1) {
 
-                        if($query->result_array()[0]['active']==0){
+                        if ($query->result_array()[0]['active'] == 0) {
                             throw new Exception("Please activate your account first using the link sent in the email.");
                         }
                         $isAdmin = $query->result_array()[0]['admin']; /// Select from first result, the 'admin' property
@@ -130,36 +129,36 @@ class Login extends CI_Controller
                     } else {
                         throw new Exception("There is a problem our developer didn't think about. Please contact our support.");
                     }
-                }else{
+                } else {
                     throw new Exception("Parola nu e buna");
                 }
             }
-        /*
-            $link = @mysqli_connect('localhost', 'root', 'Sta19Hor', 'upwego');
-            if (!$link) {
-                throw new Exception(' Cannot connect to DB');
-            }
-            if (empty($_POST["username"])) {
-                throw new Exception("Umpleti campul 1");  // orice mesaj de eroare prind aici o sa il abordez in catch
-            }
-            if (($_POST["password"]) == '') {
-                throw new Exception("Umpleti campul 2");  // orice mesaj de eroare prind aici o sa il abordez in catch
-            }
-            $query = mysqli_query($link, "SELECT * FROM user WHERE username='".$_POST['username']."'");
-            if (mysqli_num_rows($query) < 1) {
-                throw new Exception("Username or password not valid!!!");
-            } else {
-                $query = mysqli_query($link,"SELECT * FROM user WHERE username='".$_POST['username']."' AND password='".$_POST['password']."'");
-                if (mysqli_num_rows($query) == 0) {
-                    throw new Exception("Username or password not valid");
-                } else {
-                    $response = array(
-                        'success' => true
-                    );
+            /*
+                $link = @mysqli_connect('localhost', 'root', 'Sta19Hor', 'upwego');
+                if (!$link) {
+                    throw new Exception(' Cannot connect to DB');
                 }
-                $link->close();
-            }
-        */
+                if (empty($_POST["username"])) {
+                    throw new Exception("Umpleti campul 1");  // orice mesaj de eroare prind aici o sa il abordez in catch
+                }
+                if (($_POST["password"]) == '') {
+                    throw new Exception("Umpleti campul 2");  // orice mesaj de eroare prind aici o sa il abordez in catch
+                }
+                $query = mysqli_query($link, "SELECT * FROM user WHERE username='".$_POST['username']."'");
+                if (mysqli_num_rows($query) < 1) {
+                    throw new Exception("Username or password not valid!!!");
+                } else {
+                    $query = mysqli_query($link,"SELECT * FROM user WHERE username='".$_POST['username']."' AND password='".$_POST['password']."'");
+                    if (mysqli_num_rows($query) == 0) {
+                        throw new Exception("Username or password not valid");
+                    } else {
+                        $response = array(
+                            'success' => true
+                        );
+                    }
+                    $link->close();
+                }
+            */
         } catch (Exception $e) {
             $response = array(
                 "success" => false, // e o cheie de tip string success
@@ -168,10 +167,17 @@ class Login extends CI_Controller
         }
         echo json_encode($response);
     }
+
     public function verify()
     {
-        if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])){
-            // Verify data
+        if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])) {
+            $this->load->view('verify');
+        } else {
+            echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #ffd3db;color: #c40022;border: 3px solid;padding: 20px;margin-bottom: 20px;">
+                    Invalid approach, please use the link that has been send to your email.</div>';
+        }
+    }
+    /*        // Verify data
             $email = $_GET['email']; // Set email variable
             $hash = $_GET['hash']; // Set hash variable
             $this->load->database();
@@ -182,37 +188,61 @@ class Login extends CI_Controller
             $this->db->where('active=', 0);
             $select = $this->db->get("user");
 
-            if($select->num_rows()==1){
+            if ($select->num_rows() == 1) {
                 $this->load->view('verify');
-
-                /*$data = array(
-                    'active' => 1
-                );
-                $this->db->where('email=', $email);
-                $this->db->where('password=', $hash);
-                $this->db->update('user', $data);*/
-            }else{
-                echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #ffd3db;border-color: #de7083;color: #c40022;border: 3px solid;padding: 20px;margin-bottom: 20px;">
+            } else {
+                echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #ffd3db;color: #c40022;border: 3px solid;padding: 20px;margin-bottom: 20px;">
                     The url is either invalid or you already have activated your account.</div>';
             }
-        }else{
-            echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #ffd3db;border-color: #de7083;color: #c40022;border: 3px solid;padding: 20px;margin-bottom: 20px;">
+        } else {
+            echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #ffd3db;color: #c40022;border: 3px solid;padding: 20px;margin-bottom: 20px;">
                     Invalid approach, please use the link that has been send to your email.</div>';
         }
 
-    }
-    function activation(){
+    }*/
+
+    function activation()
+    {
         try {
+            if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])) {
+                $this->load->database();
+                $password = $this->input->post('current_pass');
+                $new_pass = $this->input->post('new_pass');
+                $new_pass2 = $this->input->post('new_pass2');
 
-            $this->load->database();
-            $username = $this->input->post('current_pass');
-            $password = $this->input->post('new_pass');
-            $password = $this->input->post('new_pass2');
-            
+                $email = $_GET['email']; // Set email variable
+                $hash = $_GET['hash']; // Set hash variable
 
-        }catch (Exception $e){
+                $this->db->select('email,password');
+                $this->db->where('email=', $email);
+                $this->db->where('password=', $hash);
+                $this->db->where('active=', 0);
+                $select = $this->db->get("user");
+                if ($select->num_rows() == 1) { //&& password_verify($password, $hash) && $new_pass == $new_pass2) {
+                    $data = array(
+                        'active' => 1
+                    );
+                    $this->db->where('email=', $email);
+                    $this->db->where('password=', $hash);
+                    $this->db->update('user', $data);
+
+                    echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #cdffc0;color: #0dc435;border: 3px solid;padding: 20px;margin-bottom: 20px;">
+                    Your account has been activated.</div>';
+                } else {
+                    echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #ffd3db;color: #c40022;border: 3px solid;padding: 20px;margin-bottom: 20px;">
+                    The url is either invalid or you already have activated your account.</div>';
+
+                }
+            }else {
+                echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #ffd3db; color: #c40022;border: 3px solid;padding: 20px;margin-bottom: 20px;">
+                    Invalid approach, please use the link that has been send to your email.</div>';
+            }
+
+        } catch
+        (Exception $e) {
 
         }
     }
+
 }
 
