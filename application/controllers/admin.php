@@ -237,7 +237,8 @@ class Admin extends CI_Controller
 
                 $pass=rand(1000,500000);
                 $hash = password_hash($pass, PASSWORD_BCRYPT);
-                $link= 'http://gorillaz/UpWeGo/verify.php?email='.$this->input->post("email").'&hash='.$hash;
+                //$link= 'http://gorillaz/UpWeGo/verify.php?email='.$this->input->post("email").'&hash='.$hash;
+                $link= base_url().'login/verify?email='.$this->input->post("email").'&hash='.$hash;
 
 
                 /*if(password_verify($pass,$hash)){

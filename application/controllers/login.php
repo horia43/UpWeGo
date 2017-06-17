@@ -57,7 +57,7 @@ class Login extends CI_Controller
                 if (password_verify($password, $pass)) {
 
 
-                    $query = $this->db->query('SELECT username,password,admin,email FROM user WHERE username="' . $username . '" AND password="' . $pass . '"');
+                    $query = $this->db->query('SELECT username,password,admin,email,active FROM user WHERE username="' . $username . '" AND password="' . $pass . '"');
 
                     /*
                      * $query = $this->db->get_where('user', array('username' => $username, 'password' => $password));
@@ -91,6 +91,9 @@ class Login extends CI_Controller
                         throw new Exception("Error in Database. Please contact our support.");
                     } elseif ($query->num_rows() == 1) {
 
+                        if($query->result_array()[0]['active']==0){
+                            throw new Exception("Please activate your account first using the link sent in the email.");
+                        }
                         $isAdmin = $query->result_array()[0]['admin']; /// Select from first result, the 'admin' property
                         $email = $query->result_array()[0]['email'];
                         if ($isAdmin) {
@@ -164,6 +167,39 @@ class Login extends CI_Controller
             );
         }
         echo json_encode($response);
+    }
+    public function verify()
+    {
+        if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])){
+            // Verify data
+            $email = $_GET['email']; // Set email variable
+            $hash = $_GET['hash']; // Set hash variable
+            $this->load->database();
+
+            $this->db->select('email,password');
+            $this->db->where('email=', $email);
+            $this->db->where('password=', $hash);
+            $this->db->where('active=', 0);
+            $select = $this->db->get("user");
+
+            if($select->num_rows()==1){
+                $this->load->view('verify');
+
+                /*$data = array(
+                    'active' => 1
+                );
+                $this->db->where('email=', $email);
+                $this->db->where('password=', $hash);
+                $this->db->update('user', $data);*/
+            }else{
+                echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #ffd3db;border-color: #de7083;color: #c40022;border: 3px solid;padding: 20px;margin-bottom: 20px;">
+                    The url is either invalid or you already have activated your account.</div>';
+            }
+        }else{
+            echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #ffd3db;border-color: #de7083;color: #c40022;border: 3px solid;padding: 20px;margin-bottom: 20px;">
+                    Invalid approach, please use the link that has been send to your email.</div>';
+        }
+
     }
 }
 
