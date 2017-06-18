@@ -5,7 +5,7 @@
 
 $(document).ready(function () {
 
-    $("#activate").click(function () {
+    $("#btn_activate").click(function () {
         submitAction();
     });
     /*$("#username").keyup(function(event){
@@ -28,6 +28,8 @@ $(document).ready(function () {
             success: function (response) {    //success e un event care se executa cand request-ul catre php s-a terminat cu succes
                 //console.log(response);     // rezultatul a ceea ce face output scriptul de php
                 if (response.success) {
+                    alert(response.msg);
+
                     alert("REDIRECTING TO NEXT PAGE");
                     if (response.isAdmin) {
                         //window.location.href = "welcome/createSession";

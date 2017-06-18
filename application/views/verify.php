@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/css/mystyle.css">
     <script type="text/javascript" src="<?php echo base_url();?>/web/bootstrap-3.3.7-dist/js/ajax.js" ></script>
+    <script type="text/javascript" src="<?php echo base_url();?>/web/bootstrap-3.3.7-dist/js/verify.js" ></script>
+
     <script>
         var base_url = "<?php echo base_url();?>";
     </script>
