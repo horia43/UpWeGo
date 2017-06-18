@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     function submitAction() {
         $.ajax({
-            url: base_url + "login/activation",
+            url: base_url + "login/verify",
 
             data: $('#form3').serializeArray(),    // data=  ce trimit eu la script ( php )
             dataType: 'json',

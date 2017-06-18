@@ -201,16 +201,80 @@ class Login extends CI_Controller
 
     }*/
 
+
+//    public function verify()
+//    {
+//        if ($this->input->post()) {
+//            try {
+//                if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])) {
+//                    $this->load->database();
+//                    $password = $this->input->post('current_pass');
+//                    $new_pass = $this->input->post('new_pass');
+//                    $new_pass2 = $this->input->post('new_pass2');
+//
+//                    $email = $_GET['email']; // Set email variable
+//                    $hash = $_GET['hash']; // Set hash variable
+//
+//                    $this->db->select('email,password');
+//                    $this->db->where('email=', $email);
+//                    $this->db->where('password=', $hash);
+//                    $this->db->where('active=', 0);
+//                    $select = $this->db->get("user");
+//                    if ($select->num_rows() == 1) {
+//                        if(!password_verify($password, $hash)){
+//                            throw new Exception("Current password invalid.");
+//                        }
+//                        if($new_pass == $new_pass2){
+//                            throw new Exception("Passwords don't match.");
+//                        }
+//                        $data = array(
+//                            'active' => 1
+//                        );
+//                        $this->db->where('email=', $email);
+//                        $this->db->where('password=', $hash);
+//                        $this->db->update('user', $data);
+//
+//                        $response = array(
+//                            "success" => true, // e o cheie de tip string success
+//                            "msg" => "Activated"// preiau mesajul "umpleti campul"
+//                        );
+//                        echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #cdffc0;color: #0dc435;border: 3px solid;padding: 20px;margin-bottom: 20px;">
+//                    Your account has been activated.</div>';
+//                    } else {
+//                        throw new Exception("The url is either invalid or you already have activated your account.");
+//                        /*echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #ffd3db;color: #c40022;border: 3px solid;padding: 20px;margin-bottom: 20px;">
+//                        The url is either invalid or you already have activated your account.</div>';*/
+//
+//                    }
+//                }else {
+//                    throw new Exception("Invalid approach, please use the link that has been send to your email.");
+//                    /* echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #ffd3db; color: #c40022;border: 3px solid;padding: 20px;margin-bottom: 20px;">
+//                         Invalid approach, please use the link that has been send to your email.</div>';*/
+//                }
+//
+//            } catch
+//            (Exception $e) {
+//                $response = array(
+//                    "success" => false, // e o cheie de tip string success
+//                    "msg" => $e->getMessage()// preiau mesajul "umpleti campul"
+//                );
+//
+//                /*echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #ffd3db; color: #c40022;border: 3px solid;padding: 20px;margin-bottom: 20px;">
+//                        '.$e->getMessage().'</div>';*/
+//
+//            }
+//            echo json_encode($response);
+//
+//        }else{
+//            $this->load->view('verify');
+//        }
+//
+//    }
+
     function activation()
     {
         try {
-            $response = array(
-                "success" => true, // e o cheie de tip string success
-                "msg" => $this->input->get('email')// preiau mesajul "umpleti campul"
-            );
-            echo json_encode($response);
-            exit;
-            if ($this->input->get('email') && !empty($this->input->get('email')) AND $this->input->get('hash') && !empty($this->input->get('hash'))) {
+            if (isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])) {
                 $this->load->database();
                 $password = $this->input->post('current_pass');
                 $new_pass = $this->input->post('new_pass');
