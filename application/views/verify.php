@@ -27,6 +27,8 @@
             <p><input class="userpass" id="current_pass" type="password" name="current_pass" placeholder="Insert password given by email"></p>
             <p><input class="userpass" id="new_pass" type="password" name="new_pass" placeholder="Insert your new password here"></p>
             <p><input class="userpass" id="new_pass2" type="password" name="new_pass2" placeholder="Retype your password here"></p>
+            <input type="hidden" name="email" value="<?php echo htmlspecialchars($_GET['email']);?>">
+            <input type="hidden" name="hash" value="<?php echo htmlspecialchars($_GET['hash']);?>">
         </div>
         <!--<div class="select"><select>
                 <option disabled selected>-- Select an option --</option>
