@@ -28,7 +28,7 @@ $(document).ready(function () {
             success: function (response) {    //success e un event care se executa cand request-ul catre php s-a terminat cu succes
                 //console.log(response);     // rezultatul a ceea ce face output scriptul de php
                 if (response.success) {
-
+                    alert(response.msg);
                     $("#active_msg").empty();
                     var active_msg = document.getElementById("active_msg");
 
@@ -40,7 +40,7 @@ $(document).ready(function () {
                     //var div='<div class="statusmsg_yes">' + response.msg + '</div>';
                     //document.body.innerHTML+=div;
                     window.setTimeout(function () {
-                        location.href = "welcome";
+                        location.href = "/UpWeGo";
                     }, 5000);
                     /*if (response.isAdmin) {
                         //window.location.href = "welcome/createSession";

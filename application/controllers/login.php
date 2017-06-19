@@ -231,6 +231,9 @@ class Login extends CI_Controller
                         if($new_pass != $new_pass2){
                             throw new Exception("Passwords don't match.");
                         }
+                        if(strlen($new_pass)<6 || strlen($new_pass2)<6){
+                            throw new Exception("Please fill in a password that has at least 6 characters.");
+                        }
                         $new_pass=password_hash($new_pass, PASSWORD_BCRYPT);
                         $data = array(
                             'password'  =>  $new_pass,
@@ -244,8 +247,6 @@ class Login extends CI_Controller
                             "success" => true, // e o cheie de tip string success
                             "msg" => "Activated"// preiau mesajul "umpleti campul"
                         );
-                        echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #cdffc0;color: #0dc435;border: 3px solid;padding: 20px;margin-bottom: 20px;">
-                    Your account has been activated.</div>';
                     } else {
                         throw new Exception("The url is either invalid or you already have activated your account.");
                         /*echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #ffd3db;color: #c40022;border: 3px solid;padding: 20px;margin-bottom: 20px;">
