@@ -28,9 +28,10 @@ $(document).ready(function () {
             success: function (response) {    //success e un event care se executa cand request-ul catre php s-a terminat cu succes
                 //console.log(response);     // rezultatul a ceea ce face output scriptul de php
                 if (response.success) {
-                    alert(response.msg);
 
-                    alert("REDIRECTING TO NEXT PAGE");
+                    var div='<div class="statusmsg_yes">' + response.msg + '</div>';
+                    document.body.innerHTML+=div;
+
                     if (response.isAdmin) {
                         //window.location.href = "welcome/createSession";
                         window.location.href = "admin";
@@ -42,11 +43,16 @@ $(document).ready(function () {
                         window.location.href = "user";
                     }
                 } else {
+
+
                     alert(response.msg);
+                    //location.reload();
+                    var div='<div class="statusmsg_no">' + response.msg + '</div>';
+                    document.body.innerHTML+=div;
                     //document.getElementsByTagName("input")[1].value = '';
-                    var username = document.getElementsByTagName("input")[0].value;
-                    window.location.href = "welcome";
-                    document.getElementsByTagName("input")[0].value = username;
+                    // var username = document.getElementsByTagName("input")[0].value;
+                    // window.location.href = "welcome";
+                    // document.getElementsByTagName("input")[0].value = username;
                     //$("#form1")[0].reset();
                     //document.getElementsByClassName("userpass")[0].value='';
                     //document.getElementsByTagName("input")[1].style.border='5px dashed red';

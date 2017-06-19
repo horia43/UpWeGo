@@ -345,6 +345,9 @@ class User extends CI_Controller
 
         $filename=$data['username']."_".$year.$month.".pdf";
 
+        $logo=base_url().'upload/UpWeGo_Logo.png';
+        $qr_code_pdf=base_url().'upload/qr_code_pdf.jpg';
+
 
 
         // set text shadow effect
@@ -381,7 +384,7 @@ class User extends CI_Controller
                         <span><b>Anul si luna:</b></span> $year $month<br>
                     </td>
                     <td style="width:20%;"></td>
-                    <td  style="width:28%;"><img id="logo" width="120px" height="120px;" src="http://gorillaz/UpWeGo/upload/UpWeGo_Logo.png" />
+                    <td  style="width:28%;"><img id="logo" width="120px" height="120px;" src="$logo" />
                     </td>
                 </tr>
             </table>
@@ -463,7 +466,7 @@ class User extends CI_Controller
         <table>
             <tr>
                 <td width="70%"></td>
-                <td width="29%"><img id="qr_code" width="120px" height="120px;" src="http://gorillaz/UpWeGo/upload/qr_code_pdf.jpg" /></td>
+                <td width="29%"><img id="qr_code" width="120px" height="120px;" src="$qr_code_pdf" /></td>
             </tr>
         </table>
         <p></p>
