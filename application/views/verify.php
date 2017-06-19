@@ -39,6 +39,9 @@
         <div id="activate"><button id="btn_activate" type="button">Activate account</button></div>
     </form>
 </div>
+<div id="active_msg">
+
+</div>
 
 </body>
 </html>

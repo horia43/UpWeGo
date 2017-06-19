@@ -29,26 +29,45 @@ $(document).ready(function () {
                 //console.log(response);     // rezultatul a ceea ce face output scriptul de php
                 if (response.success) {
 
-                    var div='<div class="statusmsg_yes">' + response.msg + '</div>';
-                    document.body.innerHTML+=div;
+                    $("#active_msg").empty();
+                    var active_msg = document.getElementById("active_msg");
 
-                    if (response.isAdmin) {
+                    var divElement = document.createElement('div');
+                    divElement.className = 'statusmsg_yes';
+                    divElement.innerHTML=response.msg;
+                    active_msg.appendChild(divElement);
+
+                    //var div='<div class="statusmsg_yes">' + response.msg + '</div>';
+                    //document.body.innerHTML+=div;
+                    window.setTimeout(function () {
+                        location.href = "welcome";
+                    }, 5000);
+                    /*if (response.isAdmin) {
                         //window.location.href = "welcome/createSession";
                         window.location.href = "admin";
-                        /*window.location.href = "http://localhost/ex1/2.html";*/
-                        /*window.location.href = "http://localhost/ex1/2.html";*/
+                        /!*window.location.href = "http://localhost/ex1/2.html";*!/
+                        /!*window.location.href = "http://localhost/ex1/2.html";*!/
                     } else {
                         //window.location.href = "welcome/createSession";
                         //window.location.href = "admin";
                         window.location.href = "user";
-                    }
+                    }*/
                 } else {
 
 
-                    alert(response.msg);
+                    //alert(response.msg);
                     //location.reload();
-                    var div='<div class="statusmsg_no">' + response.msg + '</div>';
-                    document.body.innerHTML+=div;
+                    $("#active_msg").empty();
+                    var active_msg = document.getElementById("active_msg");
+
+                    var divElement = document.createElement('div');
+                    divElement.className = 'statusmsg_no';
+                    //document.getElementById('results').innerHTML
+                    divElement.innerHTML=response.msg;
+                    active_msg.appendChild(divElement);
+
+                    //var div='<div class="statusmsg_no">' + response.msg + '</div>';
+                    //document.body.innerHTML+=div;
                     //document.getElementsByTagName("input")[1].value = '';
                     // var username = document.getElementsByTagName("input")[0].value;
                     // window.location.href = "welcome";

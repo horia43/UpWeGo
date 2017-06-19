@@ -228,11 +228,13 @@ class Login extends CI_Controller
                         if(!password_verify($password, $hash)){
                             throw new Exception("First field does not meet the requirements.");
                         }
-                        if($new_pass == $new_pass2){
+                        if($new_pass != $new_pass2){
                             throw new Exception("Passwords don't match.");
                         }
+                        $new_pass=password_hash($new_pass, PASSWORD_BCRYPT);
                         $data = array(
-                            'active' => 1
+                            'password'  =>  $new_pass,
+                            'active'    => 1
                         );
                         $this->db->where('email=', $email);
                         $this->db->where('password=', $hash);
