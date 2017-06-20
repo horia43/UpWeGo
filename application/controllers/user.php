@@ -135,8 +135,8 @@ class User extends CI_Controller
                 //$date = substr(sprintf("%s-%02d", $yearPicked, $i),5);        // date = 2017-01/02/03/04/05/...11/12
                 //$date = substr(sprintf("%s-%d", $yearPicked, $i),5);        // date = 2017-01/02/03/04/05/...11/12
                 $date=$months[$i-1];                                            //date=Jan,Feb, etc.
-                $salaries[$date] = array(                           // salaries["2017-01"] = { "s_date" : "2017-01" , "s_amount" : 0 }
-                    "s_date"    =>  $date,                          // salaries["2017-02"] = { "s_date" : "2017-02" , "s_amount" : 0 }
+                $salaries[$date] = array(                           // salaries["2017-01"] = { "s_date" : "2017-01" , "s_amount" : 0 }    // salaries["Ianuarie"] = { "s_date" : "Ianuarie" , "s_amount" : 0 }
+                    "s_date"    =>  $date,                          // salaries["2017-02"] = { "s_date" : "2017-02" , "s_amount" : 0 }    // salaries["Februarie"] = { "s_date" : "Februarie" , "s_amount" : 0 }
                     "s_amount"  =>  0
                 );
             }
@@ -158,7 +158,7 @@ class User extends CI_Controller
 
             if ($select->num_rows() > 0) {
                 foreach ($select->result_array() as $row) {
-                    $row["s_date"]=$months[substr($row["s_date"],6)-1];        // * //
+                    $row["s_date"]=$months[intval(substr($row["s_date"],-2))-1];        // * //   $row['s_date'] = $months[0] vreau , asa ca fac substr("2014-01",6)-1 => intval (01) = 1 , intval (10)=10  -1 pt indexul din months
                     $salaries[$row['s_date']] = array(
                         "s_date"    =>  $row['s_date'],
                         "s_amount"  =>  $row['s_amount']
