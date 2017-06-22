@@ -82,7 +82,7 @@ $(document).ready(function () {
                     //var json = JSON.stringify(eval("(" + response.data + ")"));
                     //var NewChartData = [];
                     //NewChartData.push(JSON.parse(response.data));
-                    alert(chartValues);
+                    //alert(chartValues);
                     var NewChartData = JSON.parse(chartValues);
                     //alert(NewChartData);
                     /*NewChartData.sort(function (a, b) {                   //sortare in functie de data

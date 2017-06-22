@@ -11,7 +11,7 @@
     <script type="text/javascript" src="<?php echo base_url();?>/web/bootstrap-3.3.7-dist/js/login.js" ></script>
 
 </head>
-<body>
+<body style="background-image:url('https://i.ytimg.com/vi/XxpxJty6K04/maxresdefault.jpg'); background-size:cover; ">
     <div id="myForm">
         <form id="form1" action="<?php echo site_url('login/index') ?>">
             <div class="data">
