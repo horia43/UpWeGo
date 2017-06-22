@@ -31,16 +31,25 @@ $(document).ready(function () {
             success: function (response) {    //success e un event care se executa cand request-ul catre php s-a terminat cu succes
                 //console.log(response);     // rezultatul a ceea ce face output scriptul de php
                 if (response.success) {
-                    alert("REDIRECTING TO NEXT PAGE");
+                    //alert("REDIRECTING TO NEXT PAGE");
                     if (response.isAdmin) {
                         //window.location.href = "welcome/createSession";
-                        window.location.href = "admin";
+                        $('#myForm').addClass("bounceOutRight");
+
+                        window.setTimeout(function () {
+                            location.href = "admin";
+                        }, 1000);
+                        //window.location.href = "admin";
                         /*window.location.href = "http://localhost/ex1/2.html";*/
                         /*window.location.href = "http://localhost/ex1/2.html";*/
                     } else {
                         //window.location.href = "welcome/createSession";
                         //window.location.href = "admin";
-                        window.location.href = "user";
+                        $('#myForm').addClass("bounceOutRight");
+                        window.setTimeout(function () {
+                            location.href = "user";
+                        }, 1000);
+                        //window.location.href = "user";
                     }
                 } else {
                     alert(response.msg);

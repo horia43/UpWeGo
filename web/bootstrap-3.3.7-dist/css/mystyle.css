@@ -5,15 +5,35 @@
     width: 400px;
     height: 500px;
     background-color: #F9FFF1;
+
+    animation-duration: 2s;
 }
 
-body {
-    background-color: #DDFFB3;
-    margin-left: 20px;
-    margin-top: 20px;
+#loginBody {
+    background: linear-gradient(150deg, #155181, #1f677f, #348c7d, #41a17c,#0fecdd);
+    background-size: 600% 600%;
+    animation: BackgroundGradient 25s ease infinite;
 }
+@keyframes BackgroundGradient {
+    0% {background-position: 0% 50% ;}
+    50% {background-position: 100% 50% ;}
+    100% {background-position: 0% 50% ;}
+}
+/*#loginBody {
+    background: radial-gradient(#155181 20%, #1f677f 20%, #348c7d 20%, #41a17c 20%,#0fecdd 20%);
+    background-size: 200% 200%;
+    animation: BackgroundGradient 25s ease infinite;
+}
+@keyframes BackgroundGradient {
+    0% {background-size: 200% 200%;}
+    50% {background-size: 300% 300%;}
+    100% {background-size: 400% 400%;}
+}*/
 
 body {
+    margin-left:20px;
+    margin-top:20px;
+    background-color: #9bf3d4;
     padding-right: 0 !important;
 }
 
