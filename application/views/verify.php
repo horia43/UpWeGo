@@ -19,9 +19,9 @@
 <div id="myForm">
     <form id="form3">
         <div class="data">
-            <p>Current password:</p>
-            <p>New password:</p>
-            <p>Retype password:</p>
+            <p>Parola curenta:</p>
+            <p>Parola noua:</p>
+            <p>Repetati parola:</p>
         </div>
         <div class="inputs">
             <p><input class="userpass" id="current_pass" type="password" name="current_pass" placeholder="Insert password given by email"></p>

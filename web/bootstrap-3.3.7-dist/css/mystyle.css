@@ -210,7 +210,11 @@ fieldset input {
     text-align: center;
     padding: 5px;
 }
+#table1 tr th{
+    font-weight: bold;
+    text-align: center;
 
+}
 .pagination > li > a {
     z-index: 3;
     color: darkgreen;

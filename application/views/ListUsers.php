@@ -28,19 +28,20 @@
 <p>Eu am parola <?php echo $password ?>   </p>
 <p>Eu am email-ul <?php echo $email; ?>   </p>
 
-<table id="table1" border="1">
+<table id="table1" class="table-striped table-hover" border="1">
     <thead>
-    <tr>
-        <!--<th>Test Picture</th>-->
-        <th>Profile Picture</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Add salary</th>
-        <th>Edit User</th>
-        <th>Delete User</th>
-    </tr>
+    <tr><th colspan="8"><h2>Lista Angajati</h2></th></tr>
+        <tr>
+            <!--<th>Test Picture</th>-->
+            <th>Profile Picture</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Add salary</th>
+            <th>Edit User</th>
+            <th>Delete User</th>
+        </tr>
     </thead>
     <tbody>
     <?php foreach($myUsers as  $user): ?>
