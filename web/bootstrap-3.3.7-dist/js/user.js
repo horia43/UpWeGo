@@ -231,6 +231,7 @@ $(document).ready(function () {
     function download_CSV() {
         var filename=username + "-" +$("#yearPicker")[0].value + ".csv";
         var rows =['Month','Salary'];
+        var sep=['sep=,'];
         //alert (chartValues);
         var NewChartData = JSON.parse(chartValues);
         var months=["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August","Septembrie","Octombrie","Noiembrie","Decembrie"];
@@ -245,10 +246,11 @@ $(document).ready(function () {
         //alert(x[0]+x[1]+x[2]);
         //exportToCsv(filename,y);
         exportToCsv(filename, [
+            sep,
             rows,
-            x[0],x[1],x[3],x[4],
-            x[5],x[6],x[7],x[8],
-            x[9],x[10],x[11]
+            x[0],x[1],x[2], x[3],
+            x[4],x[5],x[6],x[7],
+            x[8],x[9],x[10],x[11]
         ])
     }
     /*function download_pdf() {
