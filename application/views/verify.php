@@ -36,7 +36,7 @@
                 <option>ADMIN</option>
             </select>
         </div>-->
-        <div id="activate"><button id="btn_activate" type="button">Activate account</button></div>
+        <div id="activate"><button id="btn_activate" class="button button1" type="button">Activate account</button></div>
     </form>
 </div>
 <div id="active_msg">

@@ -15,21 +15,33 @@
 <body id="loginBody" style="/*background-image:url('https://i.ytimg.com/vi/XxpxJty6K04/maxresdefault.jpg'); background-size:cover; */">
     <div id="myForm" style="filter:blur(0px);" class="animated bounceInLeft">
         <form id="form1" action="<?php echo site_url('login/index') ?>">
-            <div class="data">
+
+            <div class="group">
+                <label for="user" class="label">Utilizator</label>
+                <input id="user" type="text" class="input" name="username" placeholder="Numele contului" style="color:white;">
+            </div>
+            <div class="group">
+                <label for="pass" class="label">Parola</label>
+                <input id="pass" type="password" class="input" data-type="password" name="password" placeholder="Scrie aici parola">
+            </div>
+
+
+
+            <!--<div class="data">
                 <p>User:</p>
                 <p>Password:</p>
             </div>
             <div class="inputs">
                 <p><input class="userpass" id="username" type="text" name="username" placeholder="Insert your name here"></p>
                 <p><input class="userpass" id="password" type="password" name="password" placeholder="Insert your password here"></p>
-            </div>
+            </div>-->
             <!--<div class="select"><select>
                     <option disabled selected>-- Select an option --</option>
                     <option>USER</option>
                     <option>ADMIN</option>
                 </select>
             </div>-->
-            <div id="logIn"><button id="btn1" type="button">Log in</button></div>
+            <div id="logIn"><button id="btn1" class="button button1" type="button"">Autentificare</button></div>
         </form>
     </div>
 
