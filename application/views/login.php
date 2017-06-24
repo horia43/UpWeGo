@@ -13,16 +13,26 @@
 
 </head>
 <body id="loginBody" style="/*background-image:url('https://i.ytimg.com/vi/XxpxJty6K04/maxresdefault.jpg'); background-size:cover; */">
+    <ul class="fly-in-text hidden">
+        <li>S</li>
+        <li>a</li>
+        <li>l</li>
+        <li>u</li>
+        <li>t</li>
+        <li>,</li>
+        <li id="u_name" class="hidden2">
+    </ul>
     <div id="myForm" style="filter:blur(0px);" class="animated bounceInLeft">
+        <h1>Formular de logare</h1>
         <form id="form1" action="<?php echo site_url('login/index') ?>">
 
             <div class="group">
                 <label for="user" class="label">Utilizator</label>
-                <input id="user" type="text" class="input" name="username" placeholder="Numele contului" style="color:white;">
+                <input id="username" type="text" class="input" name="username" placeholder="Numele contului" style="color:white;">
             </div>
             <div class="group">
                 <label for="pass" class="label">Parola</label>
-                <input id="pass" type="password" class="input" data-type="password" name="password" placeholder="Scrie aici parola">
+                <input id="password" type="password" class="input" data-type="password" name="password" placeholder="Scrie aici parola">
             </div>
 
 

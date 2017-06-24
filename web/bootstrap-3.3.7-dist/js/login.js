@@ -11,6 +11,7 @@ $(document).ready(function () {
         submitAction();
 
     });
+
     /*$("#username").keyup(function(event){
         if(event.keyCode == 13){
             $("#btn1").click();
@@ -31,14 +32,27 @@ $(document).ready(function () {
             success: function (response) {    //success e un event care se executa cand request-ul catre php s-a terminat cu succes
                 //console.log(response);     // rezultatul a ceea ce face output scriptul de php
                 if (response.success) {
+                    var username=$("#username").val();
                     //alert("REDIRECTING TO NEXT PAGE");
                     if (response.isAdmin) {
                         //window.location.href = "welcome/createSession";
-                        $('#myForm').addClass("bounceOutRight");
 
+                        $('#myForm').addClass("bounceOutRight");
+                        $(function(){
+                            setTimeout(function(){
+                                $('.fly-in-text').removeClass('hidden');
+                                $("#u_name").html(username);
+                            },500);
+                        });
+                        $(function(){
+                            setTimeout(function(){
+                                $('#u_name').removeClass("hidden2");
+                                $('#u_name').addClass("animated bounceInDown");
+                            },2000);
+                        });
                         window.setTimeout(function () {
                             location.href = "admin";
-                        }, 1000);
+                        }, 4500);
                         //window.location.href = "admin";
                         /*window.location.href = "http://localhost/ex1/2.html";*/
                         /*window.location.href = "http://localhost/ex1/2.html";*/
@@ -46,9 +60,21 @@ $(document).ready(function () {
                         //window.location.href = "welcome/createSession";
                         //window.location.href = "admin";
                         $('#myForm').addClass("bounceOutRight");
+                        $(function(){
+                            setTimeout(function(){
+                                $('.fly-in-text').removeClass('hidden');
+                                $("#u_name").html(username);
+                            },500);
+                        });
+                        $(function(){
+                            setTimeout(function(){
+                                $('#u_name').removeClass("hidden2");
+                                $('#u_name').addClass("animated bounceInDown");
+                            },2000);
+                        });
                         window.setTimeout(function () {
                             location.href = "user";
-                        }, 1000);
+                        }, 4500);
                         //window.location.href = "user";
                     }
                 } else {

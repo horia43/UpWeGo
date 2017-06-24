@@ -2,8 +2,8 @@
     margin: 80px auto;
     border: 1px solid #F9F9F8;
     border-radius: 15px;
-    width: 400px;
-    height: 500px;
+    width: 430px;
+    height: 560px;
     background-color: rgba(61, 76, 116, 0.35);
 
 
@@ -14,12 +14,42 @@
     background: linear-gradient(150deg, #155181, #1f677f, #348c7d, #41a17c,#0fecdd);
     background-size: 600% 600%;
     animation: BackgroundGradient 25s ease infinite;
+    overflow: hidden;
 }
 @keyframes BackgroundGradient {
     0% {background-position: 0% 50% ;}
     50% {background-position: 100% 50% ;}
     100% {background-position: 0% 50% ;}
 }
+.fly-in-text{
+    list-style: none;
+    position: absolute;
+    left: 50%;
+    top:40%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.fly-in-text li{
+    display:inline-block;
+    margin-right: 30px;
+    font-family: Open Sans, Arial;
+    font-weight: 300;
+    font-size: 4em;
+    color:#fff;
+    opacity: 1;
+    transition: all 1.5s ease;
+}
+.hidden2{
+    visibility: hidden;
+}
+.fly-in-text.hidden li{
+    opacity:0;
+}
+.fly-in-text.hidden li:nth-child(1){ transform: translateX(-200px) translateY(-200px);}
+.fly-in-text.hidden li:nth-child(2){ transform: translateX(20px) translateY(100px);}
+.fly-in-text.hidden li:nth-child(3){ transform: translateX(-150px) translateY(-80px);}
+.fly-in-text.hidden li:nth-child(4){ transform: translateX(10px) translateY(-200px);}
+.fly-in-text.hidden li:nth-child(5){ transform: translateX(-300px) translateY(200px);}
+.fly-in-text.hidden li:nth-child(6){ transform: translateX(30px) translateY(-20px);}
 /*#loginBody {
     background: radial-gradient(#155181 20%, #1f677f 20%, #348c7d 20%, #41a17c 20%,#0fecdd 20%);
     background-size: 200% 200%;
@@ -63,7 +93,13 @@ body {
 #myForm div > p {
     padding: 10px 10px;
 }
-
+#myForm > h1 {
+    text-align: center;
+    color: #e2e2e2;
+    font-size: 30px;
+    font-family: Arial;
+    margin-top:80px;
+}
 #myForm .data, .inputs {
 
     margin-top: 125px;
@@ -96,7 +132,7 @@ body {
 
 #logIn, #activate {
     margin: 100px auto;
-    width: 50%;
+    width: 180px;
     text-align: center;
 }
 
@@ -127,6 +163,7 @@ body {
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
+    outline: 0px;
 }
 .button1 {
     background-color: #008CBA;
@@ -277,7 +314,7 @@ input::-webkit-inner-spin-button {
     background-color: #eec111;
 }
 #form1{
-    padding:150px 70px 50px 70px;
+    padding:35px 70px 50px 70px;
 }
 .group{
     margin-bottom:25px;
@@ -307,33 +344,17 @@ input::-webkit-inner-spin-button {
     box-sizing: border-box;
     padding-bottom:5px;
 }
-.group .input{
+.group .input {
     border: none;
     padding: 15px 20px;
     border-radius: 25px;
-    background: rgba(255,255,255,.1);
+    background: rgba(255, 255, 255, .1);
     width: 100%;
     color: #fff;
     display: block;
     box-sizing: border-box;
-    outline:0;
-
-    /*    -webkit-appearance: textfield;
-        background-color: white;
-        -webkit-rtl-ordering: logical;
-        user-select: text;*/
+    outline: 0;
     cursor: auto;
-/*    text-rendering: auto;
-    color: initial;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    margin: 0em 0em 0em 0em;
-    font: 13.3333px Arial;*/
 }
 
 
