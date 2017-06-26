@@ -67,7 +67,6 @@ body {
     background-color: #9bf3d4;
     padding-right: 0 !important;
 }
-
 .statusmsg_yes {
     margin: 50px auto;
     width: 450px;
@@ -89,15 +88,49 @@ body {
     padding: 20px;
     margin-bottom: 20px;
 }
-
+.listaAngajati{
+    text-align: center;
+    color: #eefffc;
+    font-family: 'Bree Serif', serif;
+    font-size: 50px;
+    line-height: 48px;
+    height: 48px;
+}
+.shade {
+    position: relative;
+    margin: -21px 0 0;
+    padding: 0;
+    display: block;
+    background: #37bfb9;
+    width: 100%;
+    height: 28px;
+    opacity: 0.45;
+    text-align: center;
+}
+#letter {
+    text-shadow: 0px 0px 5px rgb(60, 209, 203);
+    font-weight: 400;
+    display: block;
+    width: 100%;
+    min-width: 1270px;
+    color: #dcffff;
+    /*font-family: 'Mrs Saint Delafield', cursive;*/
+    /*font-family: 'Pinyon Script', cursive;*/
+    /*font-family: 'Rochester', cursive;*/
+    font-family: 'Mr De Haviland', cursive;
+    font-size: 115px;
+    line-height: 115px;
+    text-align:center;
+    margin-bottom: -15px;
+    animation-duration: 3s;
+}
 #myForm div > p {
     padding: 10px 10px;
 }
 #myForm > h1 {
     text-align: center;
-    color: #e2e2e2;
+
     font-size: 30px;
-    font-family: Arial;
     margin-top:80px;
 }
 #myForm .data, .inputs {
@@ -216,7 +249,8 @@ fieldset input {
     display: inline-block;
     font-size: 14px;
     font-weight: bold;
-    margin: 0;
+    margin: 0px 5px;
+    width:125px;
     padding: 10px 25px;
     text-align: center;
     text-decoration: none;
@@ -228,6 +262,7 @@ fieldset input {
     color:#2c928c;
 }
 #table1 tr:hover a:hover{
+    background-color: #b0fffd;
      color: #000000;
  }
 
@@ -236,15 +271,17 @@ fieldset input {
 }
 #table1 th{
     background-color: #37bfb9;
+    min-width:100px;
 }
 #table1 td, #table1 th {
     text-align: center;
     padding: 5px;
     border:2px solid black;
 }
-#table1 h2{
-    font-weight: bold;
-    text-align: center;
+.center{
+    width:100%;
+    text-align:center;
+    min-width: 1270px;
 }
 .pagination > li > a {
     z-index: 3;

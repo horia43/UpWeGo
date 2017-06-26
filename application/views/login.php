@@ -22,7 +22,7 @@
         <li>,</li>
         <li id="u_name" class="hidden2">
     </ul>
-    <div id="myForm" style="filter:blur(0px);" class="animated bounceInLeft">
+    <div id="myForm" class="animated bounceInLeft">
         <h1>Formular de logare</h1>
         <form id="form1" action="<?php echo site_url('login/index') ?>">
 
