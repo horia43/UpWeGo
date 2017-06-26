@@ -98,11 +98,11 @@ body {
 }
 .shade {
     position: relative;
-    margin: -21px 0 0;
+    margin: -21px auto;
     padding: 0;
     display: block;
     background: #37bfb9;
-    width: 100%;
+    width: 300px;
     height: 28px;
     opacity: 0.45;
     text-align: center;
@@ -273,6 +273,9 @@ fieldset input {
     background-color: #37bfb9;
     min-width:100px;
 }
+#table1 td{
+    min-width: 100px;
+}
 #table1 td, #table1 th {
     text-align: center;
     padding: 5px;
@@ -337,7 +340,35 @@ fieldset input {
     border-color: black;
 
 }
+.addUser {
 
+    background-color: #2c928c;
+    background-size: 200px 200px;
+    border-radius: 50%;
+    border:0;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 33px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    transition-duration:0.5s;
+    margin:5px 15px 5px 0px;
+    box-shadow: 0px 3px 10px 2px #dcffff;
+}
+.addUser:hover {
+    background-color: #dcffff;
+    color:#2c928c;
+    box-shadow: 0px 3px 10px 5px #2c928c;
+
+}
+.addUser2{
+    position: relative;
+    top: 20px;
+    left: 0px;
+    font-size: 25px;
+    color:#dcffff;
+    text-decoration: underline;
+}
 #rows_per_page, #goto_page {
     width: 60px;
 }

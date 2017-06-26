@@ -34,15 +34,27 @@
 <div id="letter" class="animated fadeInDown">
     UpWeGo
 </div>
+
 <table id="table1" class="table-striped" border="1">
     <thead>
         <tr>
-            <th colspan="10" >
-                <h1 class="listaAngajati">
+            <th colspan="10">
+                <div style="width:25%;float:left;margin:0;">&nbsp;</div>
+
+                <div style="width:51%;float:left;margin-top:15px;">
+                    <h1 class="listaAngajati" style="width:400px; margin:0 auto; height: 100%">
                         Lista Angajati
                         <span class="shade">&nbsp;</span>
-                </h1>
+                    </h1>
+                </div>
+
+                <div style="width:24%;float:right;margin:0px;">
+                    <span class="addUser2">Adauga utilizator:</span><button type="button" class="addUser" style="float:right;"
+                            onclick="window.location='<?php echo site_url("admin/pageadduser");?>'" title="Adauga utilizator">+</button>
+                </div>
+
             </th>
+
         </tr>
         <tr>
             <!--<th>Test Picture</th>-->
@@ -154,7 +166,7 @@
         <?php endif ?>
     </ul>
 </div>
-<div style="text-align:center; min-width: 1270px;">
+<div style="text-align:center; min-width: 1270px; margin-bottom:50px;">
     <div style="margin:auto; width:200px;">
 
         <div class="input-group" style="margin-bottom:7px; margin-left: 50px;">
@@ -205,9 +217,7 @@
 -->
 
 
-<button type="button" style="margin-left:350px; margin-top:20px; width:100px; height:30px; background-color:#ECFFC7;
-        border-color:white; outline:none;"
-        onclick="window.location='<?php echo site_url("admin/pageadduser");?>'">Add User</button>
+
 
 
 <!--
