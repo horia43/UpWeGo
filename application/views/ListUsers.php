@@ -28,7 +28,7 @@
 <p>Eu am parola <?php echo $password ?>   </p>
 <p>Eu am email-ul <?php echo $email; ?>   </p>
 
-<table id="table1" class="table-striped table-hover" border="1">
+<table id="table1" class="table-striped" border="1">
     <thead>
     <tr><th colspan="8"><h2>Lista Angajati</h2></th></tr>
         <tr>
