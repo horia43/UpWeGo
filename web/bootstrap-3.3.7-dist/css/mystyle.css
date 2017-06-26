@@ -129,9 +129,11 @@ body {
 }
 #myForm > h1 {
     text-align: center;
-
+    font-family: Arial;
+    font-weight: 100;
     font-size: 30px;
     margin-top:80px;
+    color:#e2e2e2;
 }
 #myForm .data, .inputs {
 
@@ -352,13 +354,14 @@ fieldset input {
     padding: 10px 20px 10px 20px;
     text-decoration: none;
     transition-duration:0.5s;
-    margin:5px 15px 5px 0px;
-    box-shadow: 0px 3px 10px 2px #dcffff;
+    margin:5px 10px 5px 0px;
+    box-shadow: 0px 0px 20px 5px #dcffff;
+    outline:0;
 }
 .addUser:hover {
     background-color: #dcffff;
     color:#2c928c;
-    box-shadow: 0px 3px 10px 5px #2c928c;
+    box-shadow: 0px 0px 20px 5px #2c928c;
 
 }
 .addUser2{
