@@ -11,9 +11,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/js/adduser.js"></script>
 
-
+    <script>
+        var base_url = "<?php echo base_url();?>";
+    </script>
 </head>
 <body>
+<div style="height:80px; min-width: 1270px;">
+    <button class="button button1 to_home" type="button">
+        <span class="glyphicon glyphicon-home"></span> Acasa
+    </button>
+    <button type="button" class="button button1 log_out">
+        <span class="glyphicon glyphicon-log-out"></span> Delogare
+    </button>
+</div>
 <div style="border:3px solid #2E4209; border-radius:5px; margin:0 auto; width:700px; height:350px; margin-top:120px;">
 
     <form method="post" enctype="multipart/form-data">

@@ -66,10 +66,10 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (response) {
                 if(response.success){
-                    window.location.href = "welcome";
+                    location.href = "/UpWeGo";
                 }else{
                     alert("Ceva nu a mers bine, inapoi la login");
-                    window.location.href = "welcome";
+                    location.href = "/UpWeGo";
                 }
             },
             type: 'POST'

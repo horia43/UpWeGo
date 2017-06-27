@@ -32,7 +32,29 @@ $(document).keydown(function(e){
 });*/
 $(document).ready(function () {
 
+    $(".to_home").click(function () {
+        location.href='/UpWeGo/admin';
+    });
+    $(".log_out").click(function () {
+        logout();
+    });
+    function logout() {
+        alert("aia apasat");
 
+        $.ajax({
+            url: base_url + "login/logout",
+            dataType: 'json',
+            success: function (response) {
+                if(response.success){
+                    location.href = "/UpWeGo";
+                }else{
+                    alert("Ceva nu a mers bine, inapoi la login");
+                    location.href = "/UpWeGo";
+                }
+            },
+            type: 'POST'
+        });
+    }
 
     var sistem_list = [
         {display: "Programator IT", value: "Programator-IT" },
