@@ -278,6 +278,28 @@ class Login extends CI_Controller
 
     }
 
+
+    public function logout()
+    {
+        try{
+            $this->session->unset_userdata('logged_in');
+            session_destroy();
+            $response = array(
+                "success"   => true,
+                "msg"       => "merge"
+            );
+        }catch (Exception $e){
+            $response = array(
+                "success"   => false,
+                "msg"       => "nu merge.."
+            );
+        }
+        echo json_encode($response);
+
+        //$this->load->view('login');
+        //redirect('welcome', 'refresh');
+    }
+
 //    function activation()
 //    {
 //        try {

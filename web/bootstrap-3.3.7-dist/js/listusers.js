@@ -53,8 +53,28 @@ $(document).ready(function () {
         location.href='admin';
     });
     $(".log_out").click(function () {
-        location.href='welcome';
+        logout();
     });
+
+
+
+
+
+    function logout() {
+        $.ajax({
+            url: base_url + "login/logout",
+            dataType: 'json',
+            success: function (response) {
+                if(response.success){
+                    window.location.href = "welcome";
+                }else{
+                    alert("Ceva nu a mers bine, inapoi la login");
+                    window.location.href = "welcome";
+                }
+            },
+            type: 'POST'
+        });
+    }
     /*if (parameterExists("page") == true && parseInt(findGetParameter("page")) > parseInt(document.getElementById('pageCount').textContent)) {   // only for manual changing the url
         var x=findGetParameter("page");
         alert(x.match(/^\d+$/));

@@ -535,14 +535,6 @@ class Admin extends CI_Controller
         $this->load->view("edituser", $data);
     }
 
-
-    function logout()
-    {
-        $this->session->unset_userdata('logged_in');
-        session_destroy();
-        redirect('home', 'refresh');
-    }
-
 }
 
 ?>
