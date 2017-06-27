@@ -35,20 +35,20 @@ $(document).ready(function () {
 
 
     var sistem_list = [
-        {display: "Programator IT", value: "Programator IT" },
+        {display: "Programator IT", value: "Programator-IT" },
         {display: "Tester", value: "Tester" },
-        {display: "Manager Proiect", value: "Manager Proiect" }];
+        {display: "Manager Proiect", value: "Manager-Proiect" }];
 
     var priordana_list = [
-        {display: "Team Leader", value: "Team Leader" },
-        {display: "Programator Java", value: "Programator Java" },
-        {display: "Programator Android", value: "Programator Android" },
+        {display: "Team Leader", value: "Team-Leader" },
+        {display: "Programator Java", value: "Programator-Java" },
+        {display: "Programator Android", value: "Programator-Android" },
         {display: "Tester", value: "Tester" }];
 
     var ittech_list = [
-        {display: "Manager Proiect", value: "Manager Proiect" },
-        {display: "Programator C#", value: "Programator C#" },
-        {display: "Programator Web", value: "Programator Web" },
+        {display: "Manager Proiect", value: "Manager-Proiect" },
+        {display: "Programator C#", value: "Programator-C#" },
+        {display: "Programator Web", value: "Programator-Web" },
         {display: "Tester", value: "Tester" }];
 
 //If parent option is changed

@@ -50,7 +50,7 @@ function findGetParameter(parameterName) {
 $(document).ready(function () {
 
     $(".to_home").click(function () {
-        location.href='admin';
+        location.href='/UpWeGo/admin';
     });
     $(".log_out").click(function () {
         logout();
