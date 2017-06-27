@@ -10,7 +10,10 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/css/mystyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/js/edituser.js"></script>
-
+    <script>
+        var departament="<?php echo $myUser[0]['departament'];   ?>";
+        var functie=    "<?php echo $myUser[0]['functie'];       ?>";
+    </script>
 
 </head>
 <body>
@@ -37,12 +40,23 @@
                 <label for="email">Adresa email:</label><input type="text" name="email" size="20"  value="<?php echo $user['email']?>"><br>
                 <label for="username">Nume utilizator:</label><input type="text" name="username" size="20" value="<?php echo $user['username']?>"><br>
             </fieldset>
+            Departament:
+            <select name="departament" id="parent_selection">
+                <option value="">-- Please Select --</option>
+                <option value="SisTem"      <?=$user['departament'] == 'SisTem' ? ' selected="selected"' : '';?>>SisTem</option>
+                <option value="PriorDana"   <?=$user['departament'] == 'PriorDana' ? ' selected="selected"' : '';?>>PriorDana</option>
+                <option value="iT Tech"      <?=$user['departament'] == 'iT Tech' ? ' selected="selected"' : '';?>>iT Tech</option>
+            </select><br>
+            Functie:
+            <select name="functie" id="child_selection">
+            </select>
         </div>
         <div style="width:100%; height:80px; clear:left; text-align:center;">
             <button type="submit"
                     style="width:120px; height:30px; background-color:#ECFFC7; border-color:white; outline:none; margin-top:50px;">
                 Salveaza schimbarile
             </button>
+            <button type="reset" value="Reset">Reseteaza</button>
         </div>
     </form>
     <?php endforeach;?>

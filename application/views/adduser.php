@@ -38,6 +38,15 @@
                 <label for="firstname">Prenume:</label><input type="text" name="firstname" size="20"><br>
                 <label for="email">Adresa email:</label><input type="text" name="email" size="20" ><br>
                 <label for="username">Nume utilizator:</label><input type="text" name="username" size="20"><br>
+                    Departament:
+                <select name="departament" id="parent_selection">
+                        <option value="">-- Please Select --</option>
+                        <option value="SisTem">SisTem</option>
+                        <option value="PriorDana">PriorDana</option>
+                        <option value="iT Tech">iT Tech</option>
+                </select><br>
+                    Functie:
+                    <select name="functie" id="child_selection"></select>
             </fieldset>
         </div>
         <div style="width:100%; height:80px; clear:left; text-align:center;">

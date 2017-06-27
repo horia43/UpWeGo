@@ -93,8 +93,8 @@
             <td><?=$user['firstname']; ?></td>
             <td><?=$user['username']; ?></td>
             <td><?=$user['email']; ?></td>
-            <td>Departament</td>
-            <td>Functie</td>
+            <td><?=$user['departament']; ?></td>
+            <td><?=$user['functie']; ?></td>
             <td><a href="#" onclick="window.location='<?php echo site_url("admin/pageaddsalary?id=").$user['id'];?>'">Add salary</a></td>
             <td><a href="#" onclick="window.location='<?php echo site_url("admin/pageedituser?id=").$user['id'];?>'">Edit</a></td>
             <td><a href="#">Delete</a></td>

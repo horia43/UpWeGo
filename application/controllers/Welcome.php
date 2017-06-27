@@ -22,6 +22,9 @@ class Welcome extends CI_Controller {
     function __construct()
     {
         parent::__construct();
+
+        $this->session->unset_userdata('logged_in');
+        session_destroy();
     }
 
 	public function index()

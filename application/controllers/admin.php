@@ -310,25 +310,29 @@ class Admin extends CI_Controller
                     $this->upload->do_upload('fileInput');
 
                     $data = array(
-                        'picture'   => $new_name,
-                        'firstname' => $this->input->post('firstname'),
-                        'lastname'  => $this->input->post('lastname'),
-                        'email'     => $this->input->post('email'),
-                        'username'  => $this->input->post('username'),
-                        'admin'     => '0',
-                        'active'    => '0',
-                        'password'  => $hash
+                        'picture'       => $new_name,
+                        'firstname'     => $this->input->post('firstname'),
+                        'lastname'      => $this->input->post('lastname'),
+                        'email'         => $this->input->post('email'),
+                        'username'      => $this->input->post('username'),
+                        'admin'         => '0',
+                        'active'        => '0',
+                        'password'      => $hash,
+                        'departament'   => $this->input->post('departament'),
+                        'functie'       => $this->input->post('functie')
                     );
                     $this->db->insert('user', $data);
                 }else{
                     $data = array(
-                        'firstname' => $this->input->post('firstname'),
-                        'lastname'  => $this->input->post('lastname'),
-                        'email'     => $this->input->post('email'),
-                        'username'  => $this->input->post('username'),
-                        'admin'     => '0',
-                        'active'    => '0',
-                        'password'  => $hash
+                        'firstname'     => $this->input->post('firstname'),
+                        'lastname'      => $this->input->post('lastname'),
+                        'email'         => $this->input->post('email'),
+                        'username'      => $this->input->post('username'),
+                        'admin'         => '0',
+                        'active'        => '0',
+                        'password'      => $hash,
+                        'departament'   => $this->input->post('departament'),
+                        'functie'       => $this->input->post('functie')
 
                     );
                     $this->db->insert('user', $data);
@@ -427,7 +431,9 @@ class Admin extends CI_Controller
                         'firstname' => $this->input->post('firstname'),
                         'lastname'  => $this->input->post('lastname'),
                         'email'     => $this->input->post('email'),
-                        'username'  => $this->input->post('username')
+                        'username'  => $this->input->post('username'),
+                        'departament'   =>$this->input->post('departament'),
+                        'functie'   =>$this->input->post('functie')
 
                     );
                     $this->db->where('id=', $this->input->get('id'));       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
@@ -507,7 +513,7 @@ class Admin extends CI_Controller
 
         $this->load->database();
 
-        $this->db->select('username,firstname,lastname,email,picture');
+        $this->db->select('username,firstname,lastname,email,picture,departament,functie');
         $this->db->where('id=', $this->input->get('id'));
         $select = $this->db->get('user');
         $users = $select->result_array();
