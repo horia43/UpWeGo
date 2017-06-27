@@ -49,7 +49,12 @@ function findGetParameter(parameterName) {
 
 $(document).ready(function () {
 
-
+    $(".to_home").click(function () {
+        location.href='admin';
+    });
+    $(".log_out").click(function () {
+        location.href='welcome';
+    });
     /*if (parameterExists("page") == true && parseInt(findGetParameter("page")) > parseInt(document.getElementById('pageCount').textContent)) {   // only for manual changing the url
         var x=findGetParameter("page");
         alert(x.match(/^\d+$/));

@@ -10,9 +10,11 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/css/animate.css">
     <script type="text/javascript" src="<?php echo base_url();?>/web/bootstrap-3.3.7-dist/js/ajax.js" ></script>
     <script type="text/javascript" src="<?php echo base_url();?>/web/bootstrap-3.3.7-dist/js/login.js" ></script>
+    <link href="https://fonts.googleapis.com/css?family=Mr+De+Haviland" rel="stylesheet">
 
 </head>
 <body id="loginBody" style="/*background-image:url('https://i.ytimg.com/vi/XxpxJty6K04/maxresdefault.jpg'); background-size:cover; */">
+
     <ul class="fly-in-text hidden">
         <li>S</li>
         <li>a</li>
@@ -22,6 +24,9 @@
         <li>,</li>
         <li id="u_name" class="hidden2">
     </ul>
+    <div id="letter" style="margin-bottom:-90px; margin-left:10px; min-width:430px; " class="animated fadeInDown">
+        UpWeGo
+    </div>
     <div id="myForm" class="animated bounceInLeft">
         <h1>Formular de logare</h1>
         <form id="form1" action="<?php echo site_url('login/index') ?>">
@@ -51,7 +56,7 @@
                     <option>ADMIN</option>
                 </select>
             </div>-->
-            <div id="logIn"><button id="btn1" class="button button1" type="button"">Autentificare</button></div>
+            <div id="logIn"><button id="btn1" class="button button1" type="button">Autentificare</button></div>
         </form>
     </div>
 

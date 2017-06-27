@@ -27,10 +27,17 @@
 
 </head>
 <body>
-<p>Buna ziua,domnule <?php echo $username; ?> , dumneavoastra sunteti ADMIN, felicitari ! <br></p>
-<p>Eu am parola <?php echo $password ?>   </p>
-<p>Eu am email-ul <?php echo $email; ?>   </p>
-
+<!--<p>Buna ziua,domnule <?php /*echo $username; */?> , dumneavoastra sunteti ADMIN, felicitari ! <br></p>
+<p>Eu am parola <?php /*echo $password */?>   </p>
+<p>Eu am email-ul <?php /*echo $email; */?>   </p>-->
+<div style="height:80px; min-width: 1270px;">
+    <button class="button button1 to_home" type="button">
+        <span class="glyphicon glyphicon-home"></span> Acasa
+    </button>
+    <button type="button" class="button button1 log_out">
+        <span class="glyphicon glyphicon-log-out"></span> Delogare
+    </button>
+</div>
 <div id="letter" class="animated fadeInDown">
     UpWeGo
 </div>
@@ -39,7 +46,9 @@
     <thead>
         <tr>
             <th colspan="10">
-                <div style="width:25%;float:left;margin:0;">&nbsp;</div>
+                <div style="width:25%;float:left;margin:0;">
+                    &nbsp;
+                </div>
 
                 <div style="width:51%;float:left;margin-top:15px;">
                     <h1 class="listaAngajati" style="width:400px; margin:0 auto; height: 100%">
