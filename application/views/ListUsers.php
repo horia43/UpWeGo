@@ -52,14 +52,14 @@
                     &nbsp;
                 </div>
 
-                <div style="width:51%;float:left;margin-top:15px;">
+                <div style="width:50%;float:left;margin-top:15px;">
                     <h1 class="listaAngajati" style="width:400px; margin:0 auto; height: 100%">
                         Lista Angajati
                         <span class="shade">&nbsp;</span>
                     </h1>
                 </div>
 
-                <div style="width:24%;float:right;margin:0px;">
+                <div style="width:25%;float:right;margin:0px;">
                     <span class="addUser2">Adauga utilizator:</span><button type="button" class="addUser" style="float:right;"
                             onclick="window.location='<?php echo site_url("admin/pageadduser");?>'" title="Adauga utilizator">+</button>
                 </div>
@@ -95,9 +95,9 @@
             <td><?=$user['email']; ?></td>
             <td><?=$user['departament']; ?></td>
             <td><?=$user['functie']; ?></td>
-            <td><a href="#" onclick="window.location='<?php echo site_url("admin/pageaddsalary?id=").$user['id'];?>'">Add salary</a></td>
-            <td><a href="#" onclick="window.location='<?php echo site_url("admin/pageedituser?id=").$user['id'];?>'">Edit</a></td>
-            <td><a href="#">Delete</a></td>
+            <td><a href="#" onclick="window.location='<?php echo site_url("admin/pageaddsalary?id=").$user['id'];?>'">Adauga plata</a></td>
+            <td><a href="#" onclick="window.location='<?php echo site_url("admin/pageedituser?id=").$user['id'];?>'">Editeaza</a></td>
+            <td><a href="#">Sterge</a></td>
         </tr>
 
 

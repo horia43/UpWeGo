@@ -24,7 +24,7 @@
         <li>,</li>
         <li id="u_name" class="hidden2">
     </ul>
-    <div id="letter" style="margin-bottom:-90px; margin-left:10px; min-width:430px; " class="animated fadeInDown">
+    <div id="letter" style="margin-bottom:-65px; margin-left:10px; min-width:430px; position: relative; " class="animated fadeInDown">
         UpWeGo
     </div>
     <div id="myForm" class="animated bounceInLeft">
