@@ -88,14 +88,16 @@
             <!--<td><?php /*echo ( $user['picture'] );*/?><img src=<?php /*echo $user['picture']; */?>"data:image/jpeg;base64,'<?php /*base64_encode( $user['picture'] );*/?>'"/> </td>-->
             <!--<td><?php /*echo ( $user['picture'] );*/?><img width="80px" height="80px" style="border-radius:50%;"  src="<?php /*echo base_url()*/?>/upload/<?php /*echo $user['picture']; */?>"/> </td>-->
             <!--<td><a onclick="divshow('<?php /*echo base_url()*/?>/upload/<?php /*echo $user['picture']; */?>','<?php /*echo base_url()*/?>/upload/noprofilepic.jpg')" ><img id="myImg"  style="width:150px; height:150px; border-radius:50%; object-fit:cover;"  src="<?php /*echo base_url()*/?>/upload/<?php /*echo $user['picture']; */?>"  alt="Image not found" onerror="this.onerror=null;this.src='<?php /*echo base_url()*/?>/upload/noprofilepic.jpg';"/></a></td>-->
-            <td><div onclick="divshow('<?php echo base_url()?>upload/<?php echo $user['picture']; ?>','<?php echo base_url()?>upload/noprofilepic.jpg')"  style="border-radius:50%; width:150px; height:150px; background: url(<?php echo base_url()?>upload/<?php echo $user['picture']; ?>) no-repeat center, url(<?php echo base_url()?>/upload/noprofilepic.jpg); background-size:cover;"></div></td>
+            <td><div onclick="divshow('<?php echo base_url()?>upload/<?php echo $user['picture']; ?>','<?php echo base_url()?>upload/noprofilepic.jpg')"
+                     style="<?php if($user['active']==0){ echo 'filter: grayscale(100%) blur(1px) contrast(120%);';  }?>
+                             border-radius:50%; width:150px; height:150px; background: url(<?php echo base_url()?>upload/<?php echo $user['picture']; ?>) no-repeat center, url(<?php echo base_url()?>/upload/noprofilepic.jpg); background-size:cover;"></div></td>
             <td><?=$user['lastname']; ?></td>
             <td><?=$user['firstname']; ?></td>
             <td><?=$user['username']; ?></td>
             <td><?=$user['email']; ?></td>
             <td><?=$user['departament']; ?></td>
             <td><?=$user['functie']; ?></td>
-            <td><a href="#" onclick="window.location='<?php echo site_url("admin/pageaddsalary?id=").$user['id'];?>'">Adauga plata</a></td>
+            <td><?php if($user['active']==0){ echo '<span style="position: relative;padding: 13px 0px;margin: 0;cursor:no-drop;">';}?><a href="#" <?php if($user['active']==0){ echo 'class="disabled"';}?> onclick="window.location='<?php echo site_url("admin/pageaddsalary?id=").$user['id'];?>'">Adauga plata</a><?php if($user['active']==0){ echo '</span>';}?></td>
             <td><a href="#" onclick="window.location='<?php echo site_url("admin/pageedituser?id=").$user['id'];?>'">Editeaza</a></td>
             <td><a href="#">Sterge</a></td>
         </tr>

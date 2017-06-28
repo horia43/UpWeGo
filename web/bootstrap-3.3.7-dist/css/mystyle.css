@@ -261,6 +261,9 @@ fieldset input {
 #table1 tr:hover{
     background-color: #37bfb9;
 }
+#table1 a.disabled {
+    pointer-events: none;
+}
 #table1 a{
     background-color: #2c928c;
     border: 1px solid #2c928c;
