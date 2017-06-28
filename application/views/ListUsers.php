@@ -99,7 +99,7 @@
             <td><?=$user['functie']; ?></td>
             <td><?php if($user['active']==0){ echo '<span style="position: relative;padding: 13px 0px;margin: 0;cursor:no-drop;">';}?><a href="#" <?php if($user['active']==0){ echo 'class="disabled"';}?> onclick="window.location='<?php echo site_url("admin/pageaddsalary?id=").$user['id'];?>'">Adauga plata</a><?php if($user['active']==0){ echo '</span>';}?></td>
             <td><a href="#" onclick="window.location='<?php echo site_url("admin/pageedituser?id=").$user['id'];?>'">Editeaza</a></td>
-            <td><a href="#">Sterge</a></td>
+            <td><?php if($user['active']==0){ echo '<span style="position: relative;padding: 13px 0px;margin: 0;cursor:no-drop;">';}?><a href="#" <?php if($user['active']==0){ echo 'class="disabled"';}?> onclick="window.location='<?php echo site_url("admin/makeinactive?id=").$user['id'];?>'">Sterge</a><?php if($user['active']==0){ echo '</span>';}?></td>
         </tr>
 
 
@@ -258,7 +258,6 @@
 
 
     <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/listusers.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/adduser.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
 <!--<script type="text/javascript">

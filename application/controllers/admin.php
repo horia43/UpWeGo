@@ -77,6 +77,7 @@ class Admin extends CI_Controller
         $itemsPerPage = 5;
         $indexPage = 1;//$this->input->get('pageIndex');
 
+        $this->db->order_by("active","desc");
         $this->db->select("*");
         $this->db->where('admin !=', 1);
         $this->db->limit($itemsPerPage, ($indexPage-1)*$itemsPerPage);
@@ -113,7 +114,7 @@ class Admin extends CI_Controller
         /*$sdata = array( $data, $selectall);
         $this->load->view('ListUsers',$sdata);*/
 
-
+        $this->db->order_by("active","desc");
         $this->db->select("*");
         $this->db->where('admin !=', 1);
         $select = $this->db->get("user");
@@ -159,6 +160,7 @@ class Admin extends CI_Controller
         $numberPages=count($pageCount);
         $data['numberPages']=$numberPages;*/
 
+        $this->db->order_by("active","desc");
         $this->db->select("*");
         $this->db->where('admin !=', 1);
         $select = $this->db->get("user");
@@ -173,7 +175,7 @@ class Admin extends CI_Controller
 
         }
 
-
+        $this->db->order_by("active","desc");
         $this->db->select("*");
         $this->db->where('admin !=', 1);
         $this->db->limit($itemsPerPage, ($indexPage-1)*$itemsPerPage);
@@ -521,6 +523,16 @@ class Admin extends CI_Controller
 
 
         $this->load->view("edituser", $data);
+    }
+    function makeinactive(){
+
+        $this->load->database();
+        $data = array(
+            'active' => 0
+        );
+        $this->db->where('id=', $this->input->get('id'));       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
+        $this->db->update('user', $data);
+        redirect('admin', 'refresh');
     }
 
 }

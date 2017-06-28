@@ -39,8 +39,6 @@ $(document).ready(function () {
         logout();
     });
     function logout() {
-        alert("aia apasat");
-
         $.ajax({
             url: base_url + "login/logout",
             dataType: 'json',

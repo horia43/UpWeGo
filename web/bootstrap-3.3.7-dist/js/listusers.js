@@ -108,9 +108,9 @@ $(document).ready(function () {
             var page = document.getElementById('goto_page').value;
             var items = document.getElementById('rows_per_page').value;
             var max = document.getElementById('pageCount').textContent.substring(1);
-            alert(page);
-            alert(items);
-            alert(max);
+            //alert(page);
+            //alert(items);
+            //alert(max);
             if (page.match(/^\d+$/) && parseInt(page)>0) {
                 page = parseInt(page);
                 max = parseInt(max);
