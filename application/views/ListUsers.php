@@ -48,18 +48,27 @@
     <thead>
         <tr>
             <th colspan="10">
-                <div style="width:25%;float:left;margin:0;">
-                    &nbsp;
+                <div style="width:34%;float:left;margin:0;">
+                    <form style="margin-top:20px; margin-right:0px;" class="form-inline" action="<?php echo base_url() . 'admin/indexpage'; ?>" method="post">
+                        <select class="form-control" name="field">
+                            <option selected="selected" disabled="disabled" value="">Filter By</option>
+                            <option value="first_name">First Name</option>
+                            <option value="last_name">Last Name</option>
+                            <option value="email">Email Name</option>
+                        </select>
+                        <input class="form-control" type="text" name="search" value="" placeholder="Search...">
+                        <input class="btn btn-default" type="submit" name="filter" value="Go">
+                    </form>
                 </div>
 
-                <div style="width:50%;float:left;margin-top:15px;">
+                <div style="width:31%;float:left;margin-top:15px;">
                     <h1 class="listaAngajati" style="width:400px; margin:0 auto; height: 100%">
                         Lista Angajati
                         <span class="shade">&nbsp;</span>
                     </h1>
                 </div>
 
-                <div style="width:25%;float:right;margin:0px;">
+                <div style="width:35%;float:right;margin:0px;">
                     <span class="addUser2">Adauga utilizator:</span><button type="button" class="addUser" style="float:right;"
                             onclick="window.location='<?php echo site_url("admin/pageadduser");?>'" title="Adauga utilizator">+</button>
                 </div>
