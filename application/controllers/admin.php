@@ -178,7 +178,11 @@ class Admin extends CI_Controller
             $pageCount = $select->num_rows();
             $pageCount = ceil($pageCount / $itemsPerPage);
             $data['pageCount'] = $pageCount;
-
+            if($pageCount==0){
+                echo '<script type="text/javascript">alert("Nu exista rezultate pentru cautarea efectuata!\\nInapoi la pagina principala");</script>';
+                redirect('admin', 'refresh');
+                exit;
+            }
             if ($indexPage > $pageCount) {
                 $indexPage = $pageCount;
                 $var = $_GET;
@@ -585,14 +589,6 @@ class Admin extends CI_Controller
         $this->db->where('id=', $this->input->get('id'));       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
         $this->db->update('user', $data);
         redirect('admin', 'refresh');
-    }
-
-    function filterBy()
-    {
-        $this->load->database();
-
-
-        $this->load->view('ListUsers', $data);
     }
 
 }

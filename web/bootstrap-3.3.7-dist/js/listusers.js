@@ -49,6 +49,13 @@ function findGetParameter(parameterName) {
 
 $(document).ready(function () {
 
+    $('#search').one('change', function() {
+        $('#go_btn').prop('disabled', false);
+    });
+    $('#field').one('change', function() {
+        $('#go_btn').prop('disabled', false);
+    });
+
     $(".to_home").click(function () {
         location.href='/UpWeGo/admin';
     });
@@ -112,8 +119,14 @@ $(document).ready(function () {
 
     if (parameterExists("items") == true) {
         $('input[name=rows_per_page]').val(findGetParameter("items"));
-
     }
+    if (parameterExists("field") == true) {
+        $('#field').val(findGetParameter("field"));
+    }
+    if (parameterExists("search") == true) {
+        $('#search').val(findGetParameter("search"));
+    }
+
 
 //.$_GET["field"]."&search=".$_GET["search"]
 //     var field = document.getElementById('field').value;

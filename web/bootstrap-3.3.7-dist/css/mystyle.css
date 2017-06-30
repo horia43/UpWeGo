@@ -38,6 +38,7 @@
     opacity: 1;
     transition: all 1.5s ease;
 }
+
 .hidden2{
     visibility: hidden;
 }

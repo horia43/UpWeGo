@@ -51,7 +51,7 @@
                 <div style="width:34%;float:left;margin:0;">
                     <form id="filter" style="margin-top:20px; margin-right:0px;" class="form-inline" action="<?php echo site_url() . 'admin/pageindex' ?>" method="get">
                         <select class="form-control" name="field" id="field">
-                            <option selected="selected" disabled="disabled" value="">Filter By</option>
+                            <option selected="selected" disabled="disabled" value="">Filtreaza</option>
                             <option value="lastname">Nume</option>
                             <option value="firstname">Prenume</option>
                             <option value="username">Utilizator</option>
@@ -59,14 +59,14 @@
                             <option value="departament">Departament</option>
                             <option value="functie">Functie</option>
                         </select>
-                        <input class="form-control" type="text" name="search" id="search" value="" placeholder="Search...">
+                        <input class="form-control" type="text" name="search" id="search" value="" placeholder="Cauta...">
                         <?php if(  isset($_GET['page'])) : ?>
                             <input type="hidden" name="page" value="<?php echo htmlspecialchars($_GET['page']);?>">
                         <?php endif ?>
                         <?php if(  isset($_GET['items'])) : ?>
                             <input type="hidden" name="items" value="<?php echo htmlspecialchars($_GET['items']);?>">
                         <?php endif ?>
-                        <input class="btn btn-default" type="submit" name="filter" value="Go">
+                        <input class="btn btn-default" type="submit" name="filter" id="go_btn" value="Go" disabled>
                     </form>
                 </div>
 
