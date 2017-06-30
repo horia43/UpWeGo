@@ -57,7 +57,21 @@ $(document).ready(function () {
     });
 
 
-
+    function filterBy(){
+        $.ajax({
+            url: base_url + "admin/filterBy",
+            data: $('#filter').serializeArray(),
+            dataType: 'json',
+            success: function (response) {
+                if(response.success){
+                    location.href = "/UpWeGo";
+                }else{
+                    location.href = "/UpWeGo";
+                }
+            },
+            type: 'POST'
+        });
+    }
 
 
     function logout() {

@@ -20,7 +20,7 @@
                         </div>";*/
 
 
-require  'vendor/autoload.php';
+require 'vendor/autoload.php';
 use Mailgun\Mailgun;
 
 class Admin extends CI_Controller
@@ -64,7 +64,6 @@ class Admin extends CI_Controller
         }*/
 
 
-
         $this->load->database();
         //$select = $this->db->query('SELECT * FROM user');
 
@@ -77,10 +76,10 @@ class Admin extends CI_Controller
         $itemsPerPage = 5;
         $indexPage = 1;//$this->input->get('pageIndex');
 
-        $this->db->order_by("active","desc");
+        $this->db->order_by("active", "desc");
         $this->db->select("*");
         $this->db->where('admin !=', 1);
-        $this->db->limit($itemsPerPage, ($indexPage-1)*$itemsPerPage);
+        $this->db->limit($itemsPerPage, ($indexPage - 1) * $itemsPerPage);
         $select = $this->db->get("user");
 
         $users = $select->result_array();
@@ -114,13 +113,13 @@ class Admin extends CI_Controller
         /*$sdata = array( $data, $selectall);
         $this->load->view('ListUsers',$sdata);*/
 
-        $this->db->order_by("active","desc");
+        $this->db->order_by("active", "desc");
         $this->db->select("*");
         $this->db->where('admin !=', 1);
         $select = $this->db->get("user");
         $pageCount = $select->num_rows();
-        $pageCount=ceil($pageCount/$itemsPerPage);
-        $data['pageCount']=$pageCount;
+        $pageCount = ceil($pageCount / $itemsPerPage);
+        $data['pageCount'] = $pageCount;
 
 
         $this->load->view('ListUsers', $data);
@@ -139,54 +138,103 @@ class Admin extends CI_Controller
             redirect('login', 'refresh');
         }*/
     }
-    function pageindex(){
 
+    function pageindex()
+    {
 
-
-        if($this->input->get('items')!=NULL){
-            $itemsPerPage=$this->input->get('items');
-        }
-        else{
-            $itemsPerPage = 5;
-        }
-        $indexPage = $this->input->get('page');
-
-
-
-        /*$this->db->count_all("user");
-        $this->db->where('admin !=', 1);
-        $select = $this->db->get("user");
-        $pageCount = $select->result();
-        $numberPages=count($pageCount);
-        $data['numberPages']=$numberPages;*/
+        /*$field  = $this->input->get('field');
+        $search = $this->input->get('search');
 
         $this->db->order_by("active","desc");
         $this->db->select("*");
-        $this->db->where('admin !=', 1);
+        $this->db->like($field, $search);
         $select = $this->db->get("user");
-        $pageCount = $select->num_rows();
-        $pageCount=ceil($pageCount/$itemsPerPage);
-        $data['pageCount']=$pageCount;
 
-        if($indexPage>$pageCount){
-            $indexPage=$pageCount;
-            $var=$_GET;
-            $_GET['page']=$pageCount;
-
-        }
-
-        $this->db->order_by("active","desc");
-        $this->db->select("*");
-        $this->db->where('admin !=', 1);
-        $this->db->limit($itemsPerPage, ($indexPage-1)*$itemsPerPage);
-        $select = $this->db->get("user");
         $users = $select->result_array();
-        $data['myUsers'] = $users;
+        $data['myUsers'] = $users;*/
 
-        $this->load->view('ListUsers', $data);
+        if ($this->input->get('field') != NULL && $this->input->get('search') != NULL) {
 
+            $field  = $this->input->get('field');
+            $search = $this->input->get('search');
+            if ($this->input->get('items') != NULL) {
+                $itemsPerPage = $this->input->get('items');
+            } else {
+                $itemsPerPage = 5;
+            }
+            if ($this->input->get('page') != NULL) {
+                $indexPage = $this->input->get('items');
+            } else {
+                $indexPage = 1;
+            }
+
+
+
+            $this->db->order_by("active", "desc");
+            $this->db->select("*");
+            $this->db->like($field, $search);
+            $this->db->where('admin !=', 1);
+            $select = $this->db->get("user");
+            $pageCount = $select->num_rows();
+            $pageCount = ceil($pageCount / $itemsPerPage);
+            $data['pageCount'] = $pageCount;
+
+            if ($indexPage > $pageCount) {
+                $indexPage = $pageCount;
+                $var = $_GET;
+                $_GET['page'] = $pageCount;
+
+            }
+
+            $this->db->order_by("active", "desc");
+            $this->db->select("*");
+            $this->db->like($field, $search);
+            $this->db->where('admin !=', 1);
+            $this->db->limit($itemsPerPage, ($indexPage - 1) * $itemsPerPage);
+            $select = $this->db->get("user");
+            $users = $select->result_array();
+            $data['myUsers'] = $users;
+
+            $this->load->view('ListUsers', $data);
+        } else {
+
+
+            if ($this->input->get('items') != NULL) {
+                $itemsPerPage = $this->input->get('items');
+            } else {
+                $itemsPerPage = 5;
+            }
+            $indexPage = $this->input->get('page');
+
+
+            $this->db->order_by("active", "desc");
+            $this->db->select("*");
+            $this->db->where('admin !=', 1);
+            $select = $this->db->get("user");
+            $pageCount = $select->num_rows();
+            $pageCount = ceil($pageCount / $itemsPerPage);
+            $data['pageCount'] = $pageCount;
+
+            if ($indexPage > $pageCount) {
+                $indexPage = $pageCount;
+                $var = $_GET;
+                $_GET['page'] = $pageCount;
+
+            }
+
+            $this->db->order_by("active", "desc");
+            $this->db->select("*");
+            $this->db->where('admin !=', 1);
+            $this->db->limit($itemsPerPage, ($indexPage - 1) * $itemsPerPage);
+            $select = $this->db->get("user");
+            $users = $select->result_array();
+            $data['myUsers'] = $users;
+
+            $this->load->view('ListUsers', $data);
+        }
 
     }
+
     function pageadduser()
     {
         if ($this->input->post()) {
@@ -212,15 +260,15 @@ class Admin extends CI_Controller
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } else {
 
-                $secret_key="key-1a09ec0d388ee909db72392f91315f3f";  // apparently it's the same
+                $secret_key = "key-1a09ec0d388ee909db72392f91315f3f";  // apparently it's the same
                 $domain = "sandbox3e9b9f50dadb48a09d73f35a82204c0c.mailgun.org";
 
                 //$html= $this->load->view('pinql', '', true);
 
-                $pass=rand(1000,500000);
+                $pass = rand(1000, 500000);
                 $hash = password_hash($pass, PASSWORD_BCRYPT);
                 //$link= 'http://gorillaz/UpWeGo/verify.php?email='.$this->input->post("email").'&hash='.$hash;
-                $link= base_url().'login/verify?email='.$this->input->post("email").'&hash='.$hash;
+                $link = base_url() . 'login/verify?email=' . $this->input->post("email") . '&hash=' . $hash;
 
 
                 /*if(password_verify($pass,$hash)){
@@ -229,13 +277,13 @@ class Admin extends CI_Controller
                     echo 'Nein !';
                 }*/
 
-                $Option['FROM_MAIL']="postmaster@sandbox9ca54d91dbdf46b4b961f7700fa16fc4.mailgun.org";
-                $Option['FROM_NAME']="UpWeGo";
-                $Option['TO_MAIL']=$this->input->post('email');
-                $Option['TO_NAME']="Mr/Mrs.".$this->input->post('lastname');
-                $Option['SUBJECT']="UpWeGo Registration";
-                $Option['BODY_TEXT']="Here is some plain message";
-                $Option['BODY_HTML']='  
+                $Option['FROM_MAIL'] = "postmaster@sandbox9ca54d91dbdf46b4b961f7700fa16fc4.mailgun.org";
+                $Option['FROM_NAME'] = "UpWeGo";
+                $Option['TO_MAIL'] = $this->input->post('email');
+                $Option['TO_NAME'] = "Mr/Mrs." . $this->input->post('lastname');
+                $Option['SUBJECT'] = "UpWeGo Registration";
+                $Option['BODY_TEXT'] = "Here is some plain message";
+                $Option['BODY_HTML'] = '  
                         <head>
                             <style>
                                 p{
@@ -252,16 +300,16 @@ class Admin extends CI_Controller
                         <body>
                         
                         <div style="background-color:black; color:white; padding:20px; width:100%; height:700px;">
-                            <h2>Hello,'.$this->input->post('lastname').'</h2>
+                            <h2>Hello,' . $this->input->post('lastname') . '</h2>
                             <p>Thank you for joining our team, everything is almost set up.</p>
                             <p>You can login with the following credentials after you have activated your account by pressing the url below.</p>
                             
                             <p>Activation URL: </p>
-                            <p><i>'.$link.'</i></p>
+                            <p><i>' . $link . '</i></p>
 
                             -------------------------------
-                            <p>Username: '.$this->input->post('username').'</p>
-                            <p>Password: '.$pass.'</p>
+                            <p>Username: ' . $this->input->post('username') . '</p>
+                            <p>Password: ' . $pass . '</p>
                             -------------------------------
                            
                             <p>This password was assigned automatically. For better security, change the password after first login or as soon as possible.</p>
@@ -281,19 +329,19 @@ class Admin extends CI_Controller
                         </body>';
 
                 $client = new \GuzzleHttp\Client([
-                    'verify'=>false,
+                    'verify' => false,
                 ]);
                 $mailgun = new Mailgun($secret_key, new \Http\Adapter\Guzzle6\Client($client));
 
-                        $mailgun->sendMessage($domain,array(
-                            'from'       =>"{$Option['FROM_NAME']} <{$Option['FROM_MAIL']}>",
-                            'to'         =>"{$Option['TO_NAME']} <{$Option['TO_MAIL']}>",
-                            'subject'    =>$Option['SUBJECT'],
-                            'text'       =>$Option['BODY_TEXT'],
-                            'html'       =>$Option['BODY_HTML'],
-                        ));
-                        //echo $html;
-                        //echo "<script type='text/javascript'>alert('$html');</script>";
+                $mailgun->sendMessage($domain, array(
+                    'from' => "{$Option['FROM_NAME']} <{$Option['FROM_MAIL']}>",
+                    'to' => "{$Option['TO_NAME']} <{$Option['TO_MAIL']}>",
+                    'subject' => $Option['SUBJECT'],
+                    'text' => $Option['BODY_TEXT'],
+                    'html' => $Option['BODY_HTML'],
+                ));
+                //echo $html;
+                //echo "<script type='text/javascript'>alert('$html');</script>";
 
 
                 if ($this->input->post('fileInputName') != '') {
@@ -301,40 +349,40 @@ class Admin extends CI_Controller
                     $new_name = $this->input->post('username') . "_" . uniqid() . substr($this->input->post('fileInputName'), $extension_pos);
 
 
-                    $config['upload_path']      = './upload/';
-                    $config['allowed_types']    = 'gif|jpg|png';
-                    $config['max_size']         = 8192000;
-                    $config['max_width']        = 9000;
-                    $config['max_height']       = 9000;
-                    $config['file_name']        = $new_name;
+                    $config['upload_path'] = './upload/';
+                    $config['allowed_types'] = 'gif|jpg|png';
+                    $config['max_size'] = 8192000;
+                    $config['max_width'] = 9000;
+                    $config['max_height'] = 9000;
+                    $config['file_name'] = $new_name;
 
                     $this->load->library('upload', $config);
                     $this->upload->do_upload('fileInput');
 
                     $data = array(
-                        'picture'       => $new_name,
-                        'firstname'     => $this->input->post('firstname'),
-                        'lastname'      => $this->input->post('lastname'),
-                        'email'         => $this->input->post('email'),
-                        'username'      => $this->input->post('username'),
-                        'admin'         => '0',
-                        'active'        => '0',
-                        'password'      => $hash,
-                        'departament'   => $this->input->post('departament'),
-                        'functie'       => $this->input->post('functie')
+                        'picture' => $new_name,
+                        'firstname' => $this->input->post('firstname'),
+                        'lastname' => $this->input->post('lastname'),
+                        'email' => $this->input->post('email'),
+                        'username' => $this->input->post('username'),
+                        'admin' => '0',
+                        'active' => '0',
+                        'password' => $hash,
+                        'departament' => $this->input->post('departament'),
+                        'functie' => $this->input->post('functie')
                     );
                     $this->db->insert('user', $data);
-                }else{
+                } else {
                     $data = array(
-                        'firstname'     => $this->input->post('firstname'),
-                        'lastname'      => $this->input->post('lastname'),
-                        'email'         => $this->input->post('email'),
-                        'username'      => $this->input->post('username'),
-                        'admin'         => '0',
-                        'active'        => '0',
-                        'password'      => $hash,
-                        'departament'   => $this->input->post('departament'),
-                        'functie'       => $this->input->post('functie')
+                        'firstname' => $this->input->post('firstname'),
+                        'lastname' => $this->input->post('lastname'),
+                        'email' => $this->input->post('email'),
+                        'username' => $this->input->post('username'),
+                        'admin' => '0',
+                        'active' => '0',
+                        'password' => $hash,
+                        'departament' => $this->input->post('departament'),
+                        'functie' => $this->input->post('functie')
 
                     );
                     $this->db->insert('user', $data);
@@ -347,28 +395,29 @@ class Admin extends CI_Controller
 
         $this->load->view("adduser");
     }
-    function pageaddsalary(){
 
+    function pageaddsalary()
+    {
 
 
         if ($this->input->post()) {
 
             $this->load->database();
 
-            $id_employee= $this->input->get('id');
-            $s_amount   = $this->input->post('s_amount');
-            $s_date     = $this->input->post('s_date');
+            $id_employee = $this->input->get('id');
+            $s_amount = $this->input->post('s_amount');
+            $s_date = $this->input->post('s_date');
 
             $this->db->select('payment_id');
-            $this->db->where('s_date=',$s_date);
-            $this->db->where('id_employee=',$id_employee);
-            $select=$this->db->get('salary');
+            $this->db->where('s_date=', $s_date);
+            $this->db->where('id_employee=', $id_employee);
+            $select = $this->db->get('salary');
 
             if ($select->num_rows() > 0) {
                 $message = "You already made the payment for this employee on the specific month.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
-            }else{
-                $data=array(
+            } else {
+                $data = array(
                     'id_employee' => $id_employee,
                     's_amount' => $s_amount,
                     's_date' => $s_date
@@ -392,6 +441,7 @@ class Admin extends CI_Controller
 
         $this->load->view("addsalary", $data);
     }
+
     function pageedituser()
     {
         if ($this->input->post()) {
@@ -431,11 +481,11 @@ class Admin extends CI_Controller
 
                     $data = array(
                         'firstname' => $this->input->post('firstname'),
-                        'lastname'  => $this->input->post('lastname'),
-                        'email'     => $this->input->post('email'),
-                        'username'  => $this->input->post('username'),
-                        'departament'   =>$this->input->post('departament'),
-                        'functie'   =>$this->input->post('functie')
+                        'lastname' => $this->input->post('lastname'),
+                        'email' => $this->input->post('email'),
+                        'username' => $this->input->post('username'),
+                        'departament' => $this->input->post('departament'),
+                        'functie' => $this->input->post('functie')
 
                     );
                     $this->db->where('id=', $this->input->get('id'));       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
@@ -449,30 +499,30 @@ class Admin extends CI_Controller
                     var_dump($query->row()->picture!=NULL);
                     echo '<pre>';
                     die;*/
-                    if ($query->row()->picture!=NULL) {
+                    if ($query->row()->picture != NULL) {
 
                         $new_name = $query->row()->picture;
 
                         /*var_dump($new_name);
                         die;*/
 
-                        $config['upload_path']      = './upload/';
-                        $config['allowed_types']    = 'gif|jpg|png';
-                        $config['max_size']         = 8192000;
-                        $config['max_width']        = 9000;
-                        $config['max_height']       = 9000;
-                        $config['file_name']        = $new_name;
-                        $config['overwrite']        = TRUE;
+                        $config['upload_path'] = './upload/';
+                        $config['allowed_types'] = 'gif|jpg|png';
+                        $config['max_size'] = 8192000;
+                        $config['max_width'] = 9000;
+                        $config['max_height'] = 9000;
+                        $config['file_name'] = $new_name;
+                        $config['overwrite'] = TRUE;
 
                         $this->load->library('upload', $config);
                         $this->upload->do_upload('fileInput');
 
                         $data = array(
-                            'picture'   => $new_name,
+                            'picture' => $new_name,
                             'firstname' => $this->input->post('firstname'),
-                            'lastname'  => $this->input->post('lastname'),
-                            'email'     => $this->input->post('email'),
-                            'username'  => $this->input->post('username')
+                            'lastname' => $this->input->post('lastname'),
+                            'email' => $this->input->post('email'),
+                            'username' => $this->input->post('username')
 
                         );
                         $this->db->where('id=', $this->input->get('id'));       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
@@ -481,27 +531,27 @@ class Admin extends CI_Controller
 
                         $extension_pos = strrpos($this->input->post('fileInputName'), '.'); // find position of the last dot, so where the extension starts
                         $new_name = $this->input->post('username') . "_" . uniqid() . substr($this->input->post('fileInputName'), $extension_pos);
-    /*                    echo'sunt aici';
-                        var_dump($new_name);
-                        die;*/
-                        $config['upload_path']      = './upload/';
-                        $config['allowed_types']    = 'gif|jpg|png';
-                        $config['max_size']         = 8192000;
-                        $config['max_width']        = 9000;
-                        $config['max_height']       = 9000;
-                        $config['file_name']        = $new_name;
+                        /*                    echo'sunt aici';
+                                            var_dump($new_name);
+                                            die;*/
+                        $config['upload_path'] = './upload/';
+                        $config['allowed_types'] = 'gif|jpg|png';
+                        $config['max_size'] = 8192000;
+                        $config['max_width'] = 9000;
+                        $config['max_height'] = 9000;
+                        $config['file_name'] = $new_name;
 
 
                         $this->load->library('upload', $config);
                         $this->upload->do_upload('fileInput');
 
                         $data = array(
-                            'picture'   => $new_name,
+                            'picture' => $new_name,
                             'firstname' => $this->input->post('firstname'),
-                            'lastname'  => $this->input->post('lastname'),
-                            'email'     => $this->input->post('email'),
-                            'username'  => $this->input->post('username'),
-                            'admin'     => '0'
+                            'lastname' => $this->input->post('lastname'),
+                            'email' => $this->input->post('email'),
+                            'username' => $this->input->post('username'),
+                            'admin' => '0'
                         );
                         $this->db->where('id=', $this->input->get('id'));       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
                         $this->db->update('user', $data);
@@ -524,7 +574,9 @@ class Admin extends CI_Controller
 
         $this->load->view("edituser", $data);
     }
-    function makeinactive(){
+
+    function makeinactive()
+    {
 
         $this->load->database();
         $data = array(
@@ -533,6 +585,14 @@ class Admin extends CI_Controller
         $this->db->where('id=', $this->input->get('id'));       /////////////////////////////YUHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU////////////////////
         $this->db->update('user', $data);
         redirect('admin', 'refresh');
+    }
+
+    function filterBy()
+    {
+        $this->load->database();
+
+
+        $this->load->view('ListUsers', $data);
     }
 
 }
