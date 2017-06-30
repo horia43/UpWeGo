@@ -50,7 +50,7 @@
             <th colspan="10">
                 <div style="width:34%;float:left;margin:0;">
                     <form id="filter" style="margin-top:20px; margin-right:0px;" class="form-inline" action="<?php echo site_url() . 'admin/pageindex' ?>" method="get">
-                        <select class="form-control" name="field">
+                        <select class="form-control" name="field" id="field">
                             <option selected="selected" disabled="disabled" value="">Filter By</option>
                             <option value="lastname">Nume</option>
                             <option value="firstname">Prenume</option>
@@ -59,7 +59,7 @@
                             <option value="departament">Departament</option>
                             <option value="functie">Functie</option>
                         </select>
-                        <input class="form-control" type="text" name="search" value="" placeholder="Search...">
+                        <input class="form-control" type="text" name="search" id="search" value="" placeholder="Search...">
                         <?php if(  isset($_GET['page'])) : ?>
                             <input type="hidden" name="page" value="<?php echo htmlspecialchars($_GET['page']);?>">
                         <?php endif ?>

@@ -115,13 +115,17 @@ $(document).ready(function () {
 
     }
 
-
+//.$_GET["field"]."&search=".$_GET["search"]
+//     var field = document.getElementById('field').value;
+//     var search = document.getElementById('search').value;
 
     $("#goto_page").on('keyup', function (e) {
         if (e.keyCode == 13) {
             var page = document.getElementById('goto_page').value;
             var items = document.getElementById('rows_per_page').value;
             var max = document.getElementById('pageCount').textContent.substring(1);
+
+
             //alert(page);
             //alert(items);
             //alert(max);
