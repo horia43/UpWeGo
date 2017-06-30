@@ -29,7 +29,7 @@
         <span class="glyphicon glyphicon-log-out"></span> Delogare
     </button>
 </div>
-<div style="border:2px solid #dcffff; border-radius:50px; margin:0 auto; width:700px; height:450px; margin-top:120px; background-color:#d4fff8;">
+<div style="border:2px solid #dcffff; border-radius:50px; margin:0 auto; width:700px; height:470px; margin-top:120px; background-color:#d4fff8;">
 
     <?php foreach($myUser as  $user): ?>
         <form method="post">
@@ -77,25 +77,21 @@
                     </table>
                 <div class="form-group has-feedback group3">
                     <label class="control-label label3">Adauga salariu</label>
-                    <input type="number" id="s_amount" name="s_amount" min="0" maxlength="10" class="form-control input" placeholder="Adauga suma" required/>
-                    <i class="form-control-feedback fa fa-money fa-2x"><span>RON</span></i>
+                    <input type="text" id="s_amount" name="s_amount" pattern="\d*" maxlength="8" class="form-control input" placeholder="Adauga suma" required/>
+                    <i class="form-control-feedback fa fa-money fa-2x"><span>&nbspRON</span></i>
                 </div>
 
-                <div class="group3">
-                    <label class="label3">Adauga salariu</label>
-                    <input       type="number"   name="s_amount" size="20" min="0"   id="s_amount" class="input" required> RON
-                </div>
 
                 <div class="group3">
                     <label class="label3">Luna si anul:</label>
-                    <input type="month" name="s_date" id="myMonth" class="input" required></input>
+                    <input type="month" name="s_date" id="myMonth" class="form-control input" required/>
                 </div>
 
             </div>
             <div style="width:100%; height:80px; clear:left; text-align:center;">
-                <button type="submit"
-                        style="width:120px; height:30px; background-color:#ECFFC7; border-color:white; outline:none; margin-top:50px;">
-                    Save Changes
+                <button type="submit" class="button button1"
+                        style="outline:none; margin-top:50px;">
+                    <i class="fa fa-money fa-lg"></i> Adauga plata
                 </button>
             </div>
         </form>

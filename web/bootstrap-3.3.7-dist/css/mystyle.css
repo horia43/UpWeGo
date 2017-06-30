@@ -316,6 +316,7 @@ body {
 }
 #table2 tr> td:first-child{
     width:120px;
+    font-weight: bold;
 }
 .center{
     width:100%;
@@ -555,28 +556,32 @@ input::-webkit-inner-spin-button {
     margin:3px 0px;
     margin-bottom:10px;
     box-sizing: border-box;
+    width: 60%;
+
 }
 .group3 .label3{
     color: #000000;
     font-size: 12px;
-    font-weight: 100;
+    font-weight: bold;
     text-transform: uppercase;
     box-sizing: border-box;
+    margin:0;
     padding-bottom:2px;
 }
 .group3 > i.form-control-feedback {
-    top: 27px;
-    margin-right: 60px;
+    top: 21px;
+    margin-right: 55px;
 }
 .group3 > i.form-control-feedback >span {
     font-size:20px;
+    position:relative;
+    bottom:3px;
 }
 .group3 .input {
     border: none;
     padding: 7px 20px;
     border-radius: 10px;
     background: rgba(65, 177, 125, 0.71);
-    width: 100%;
     color: #fff;
     display: block;
     box-sizing: border-box;
