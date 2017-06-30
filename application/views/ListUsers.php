@@ -51,7 +51,7 @@
                 <div style="width:34%;float:left;margin:0;">
                     <form id="filter" style="margin-top:20px; margin-right:0px;" class="form-inline" action="<?php echo site_url() . 'admin/pageindex' ?>" method="get">
                         <select class="form-control" name="field" id="field">
-                            <option selected="selected" disabled="disabled" value="">Filtreaza</option>
+                            <option selected="selected" disabled="disabled" value="filter">Filtreaza</option>
                             <option value="lastname">Nume</option>
                             <option value="firstname">Prenume</option>
                             <option value="username">Utilizator</option>
@@ -59,7 +59,10 @@
                             <option value="departament">Departament</option>
                             <option value="functie">Functie</option>
                         </select>
-                        <input class="form-control" type="text" name="search" id="search" value="" placeholder="Cauta...">
+                        <div class="form-group has-feedback">
+                            <input class="form-control" type="text" name="search" style="width:230px;" id="search" value="" placeholder="Cauta...">
+                            <i class="form-control-feedback glyphicon glyphicon-search"></i>
+                        </div>
                         <?php if(  isset($_GET['page'])) : ?>
                             <input type="hidden" name="page" value="<?php echo htmlspecialchars($_GET['page']);?>">
                         <?php endif ?>

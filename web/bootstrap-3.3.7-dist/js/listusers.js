@@ -49,12 +49,48 @@ function findGetParameter(parameterName) {
 
 $(document).ready(function () {
 
-    $('#search').one('change', function() {
-        $('#go_btn').prop('disabled', false);
-    });
+
+/*    if($('#field').is(':disabled')){
+        $('#go_btn').prop('disabled', true);
+    }*/
     $('#field').one('change', function() {
-        $('#go_btn').prop('disabled', false);
+            $('#search').prop('disabled', false);
     });
+
+
+    if (parameterExists("field") == true) {
+        $('#field').val(findGetParameter("field"));
+    }
+    if (parameterExists("search") == true) {
+        $('#search').val(findGetParameter("search"));
+    }
+
+    $('#go_btn').attr('disabled', true);
+
+    if ($("#search")[0].value =='') {
+        $('#search').attr('disabled', true);
+    }else{
+        $('#search').attr('disabled', false);
+    }
+/*    //if ($("#field ")[0].selectedIndex == 0) {
+    if ($("#field")[0].value == 'filter') {
+        $('#search').attr('disabled', true);
+    }else{
+        $('#search').attr('disabled', false);
+    }*/
+
+
+    $('input[name="search"]').on('keyup',function() {
+        var search_value = $('input[name="search"]').val();
+        if(search_value != '') {
+            $('#go_btn').attr('disabled' , false);
+        }else{
+            $('#go_btn').attr('disabled' , true);
+        }
+    });
+
+
+
 
     $(".to_home").click(function () {
         location.href='/UpWeGo/admin';
@@ -120,12 +156,7 @@ $(document).ready(function () {
     if (parameterExists("items") == true) {
         $('input[name=rows_per_page]').val(findGetParameter("items"));
     }
-    if (parameterExists("field") == true) {
-        $('#field').val(findGetParameter("field"));
-    }
-    if (parameterExists("search") == true) {
-        $('#search').val(findGetParameter("search"));
-    }
+
 
 
 //.$_GET["field"]."&search=".$_GET["search"]
