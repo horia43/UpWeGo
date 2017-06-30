@@ -32,10 +32,10 @@ $(document).keydown(function(e){
 });*/
 $(document).ready(function () {
 
-    $(".to_home").click(function () {
+    $(".to_home2").click(function () {
         location.href='/UpWeGo/admin';
     });
-    $(".log_out").click(function () {
+    $(".log_out2").click(function () {
         logout();
     });
     function logout() {
