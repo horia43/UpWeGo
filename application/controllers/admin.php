@@ -436,7 +436,7 @@ class Admin extends CI_Controller
 
         $this->load->database();
 
-        $this->db->select('username,firstname,lastname,email,picture');
+        $this->db->select('username,firstname,lastname,email,picture,departament,functie');
         $this->db->where('id=', $this->input->get('id'));
         $select = $this->db->get('user');
         $users = $select->result_array();

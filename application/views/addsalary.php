@@ -6,7 +6,7 @@
     <title>Add salary</title>
     <link rel="shortcut icon" href="http://legalservicesmiami.org/wp-content/uploads/2015/02/icon-money.png">
 
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>web/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/css/mystyle.css">
 
@@ -22,14 +22,15 @@
 </head>
 <body>
 <div style="height:80px; min-width: 1270px;">
-    <button class="button button1 to_home" type="button">
+    <button class="button button1 to_home2" type="button">
         <span class="glyphicon glyphicon-home"></span> Acasa
     </button>
-    <button type="button" class="button button1 log_out">
+    <button type="button" class="button button1 log_out2">
         <span class="glyphicon glyphicon-log-out"></span> Delogare
     </button>
 </div>
-<div style="border:3px solid #2E4209; border-radius:5px; margin:0 auto; width:700px; height:450px; margin-top:120px;">
+<div style="border:2px solid #dcffff; border-radius:50px; margin:0 auto; width:700px; height:450px; margin-top:120px; background-color:#d4fff8;">
+
     <?php foreach($myUser as  $user): ?>
         <form method="post">
             <!--<div style="height:0px;overflow:hidden">
@@ -46,15 +47,50 @@
             </div>
 
 
-            <div style="float:left; width:440px; margin-top:50px;">
-                <fieldset style="border:1px solid darkgreen; height:270px; padding:30px;">
-                    <p>First name: <?php echo $user['firstname']?></p>
-                    <p>Last name: <?php echo $user['lastname']?></p>
-                    <p>Email address: <?php echo $user['email']?></p>
-                    <p>Username: <?php echo $user['username']?></p>
-                    <p>Add salary: <input       type="number"   name="s_amount" size="20" min="0"   id="s_amount" required> RON</p>
-                    <p>Month and Year: <input   type="month"    name="s_date"   id="myMonth" required></p>
-                </fieldset>
+            <div style="float:left; width:440px; margin-top:50px; border:1px solid darkgray;border-radius:25px; padding-top:20px; padding-left:25px; margin-left:30px; padding-bottom:10px; color:#101010;">
+                    <table id="table2">
+                        <tr>
+                            <td>Nume:</td>
+                            <td> <?php echo $user['lastname']?></td>
+                        </tr>
+                        <tr>
+                            <td>Prenume:</td>
+                            <td> <?php echo $user['firstname']?></td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td> <?php echo $user['email']?></td>
+                        </tr>
+                        <tr>
+                            <td>Utilizator:</td>
+                            <td> <?php echo $user['username']?></td>
+                        </tr>
+                        <tr>
+                            <td>Departament:</td>
+                            <td> <?php echo $user['departament']?></td>
+                        </tr>
+                        <tr>
+                            <td>Functie:</td>
+                            <td> <?php echo $user['functie']?></td>
+                        </tr>
+
+                    </table>
+                <div class="form-group has-feedback group3">
+                    <label class="control-label label3">Adauga salariu</label>
+                    <input type="number" id="s_amount" name="s_amount" min="0" maxlength="10" class="form-control input" placeholder="Adauga suma" required/>
+                    <i class="form-control-feedback fa fa-money fa-2x"><span>RON</span></i>
+                </div>
+
+                <div class="group3">
+                    <label class="label3">Adauga salariu</label>
+                    <input       type="number"   name="s_amount" size="20" min="0"   id="s_amount" class="input" required> RON
+                </div>
+
+                <div class="group3">
+                    <label class="label3">Luna si anul:</label>
+                    <input type="month" name="s_date" id="myMonth" class="input" required></input>
+                </div>
+
             </div>
             <div style="width:100%; height:80px; clear:left; text-align:center;">
                 <button type="submit"
