@@ -126,6 +126,7 @@ class User extends CI_Controller
             $select = $this->db->get("salary");
 
 
+
             //propunere formatare date
 
             $salaries = array();
@@ -243,7 +244,11 @@ class User extends CI_Controller
                     }
                 }
             }*/
-
+            $this->db->select('username,firstname,lastname,email,picture,departament,functie');
+            $this->db->where('id=', $id_employee);
+            $select = $this->db->get('user');
+            $users = $select->result_array();
+            $data['myUser'] = $users;
 
 
             $response = array(
