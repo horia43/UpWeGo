@@ -38,7 +38,14 @@
     opacity: 1;
     transition: all 1.5s ease;
 }
+#search{
+    width:130px;
+    transition: width .35s ease-in-out;
+}
+#search:focus{
+    width:215px;
 
+}
 .hidden2{
     visibility: hidden;
 }

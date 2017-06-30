@@ -49,7 +49,7 @@
         <tr>
             <th colspan="10">
                 <div style="width:34%;float:left;margin:0;">
-                    <form id="filter" style="margin-top:20px; margin-right:0px;" class="form-inline" action="<?php echo site_url() . 'admin/pageindex' ?>" method="get">
+                    <form id="filter" style="margin-top:23px; margin-right:0px; margin-left:5px;float: left;" class="form-inline" action="<?php echo site_url() . 'admin/pageindex' ?>" method="get">
                         <select class="form-control" name="field" id="field">
                             <option selected="selected" disabled="disabled" value="filter">Filtreaza</option>
                             <option value="lastname">Nume</option>
@@ -60,7 +60,7 @@
                             <option value="functie">Functie</option>
                         </select>
                         <div class="form-group has-feedback">
-                            <input class="form-control" type="text" name="search" style="width:230px;" id="search" value="" placeholder="Cauta...">
+                            <input class="form-control" type="text" name="search" style="" id="search" value="" placeholder="Cauta...">
                             <i class="form-control-feedback glyphicon glyphicon-search"></i>
                         </div>
                         <?php if(  isset($_GET['page'])) : ?>

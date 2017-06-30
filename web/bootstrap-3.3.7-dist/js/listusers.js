@@ -198,7 +198,7 @@ $(document).ready(function () {
                             window.location.href = go;
                         }
                         else {
-                            var go = "admin/pageindex?page=" + page + "&items=" + items + "&field=" + field + "&search=" + search;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                            var go = "pageindex?page=" + page + "&items=" + items + "&field=" + field + "&search=" + search;    // cum de nu trebuie sa scriu si admin/pagein.... ?
                             window.location.href = go;
                         }
 
@@ -234,7 +234,7 @@ $(document).ready(function () {
                             window.location.href = go;
                         }
                         else {
-                            var go = "admin/pageindex?page=" + page + "&items=" + items;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                            var go = "pageindex?page=" + page + "&items=" + items;    // cum de nu trebuie sa scriu si admin/pagein.... ?
                             window.location.href = go;
                         }
 
@@ -264,7 +264,7 @@ $(document).ready(function () {
                 if (items.match(/^\d+$/) && parseInt(items) > 0) {
                     items = parseInt(items);
                     if (parameterExists("page") == false) {
-                        var go = "admin/pageindex?page=1" + "&items=" + items + "&field=" + field + "&search=" + search;
+                        var go = "pageindex?page=1" + "&items=" + items + "&field=" + field + "&search=" + search;
                         window.location.href = go;
                     } else {
                         //var go="pageindex?page="+findGetParameter("page")+"&items="+items;
@@ -280,7 +280,7 @@ $(document).ready(function () {
                 if (items.match(/^\d+$/) && parseInt(items) > 0) {
                     items = parseInt(items);
                     if (parameterExists("page") == false) {
-                        var go = "admin/pageindex?page=1" + "&items=" + items;
+                        var go = "pageindex?page=1" + "&items=" + items;
                         window.location.href = go;
                     } else {
                         //var go="pageindex?page="+findGetParameter("page")+"&items="+items;
