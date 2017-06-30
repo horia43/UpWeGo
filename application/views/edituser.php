@@ -26,7 +26,7 @@
         <span class="glyphicon glyphicon-log-out"></span> Delogare
     </button>
 </div>
-<div style="border:2px solid #dcffff; border-radius:50px; margin:0 auto; width:700px; height:630px; margin-top:120px; background-color:#d4fff8;">
+<div style="border:2px solid #dcffff; border-radius:50px; margin:0 auto; width:700px; height:630px; margin-top:60px; background-color:#d4fff8;">
     <?php foreach($myUser as  $user): ?>
     <form method="post" enctype="multipart/form-data">
         <div style="height:0px;overflow:hidden">
