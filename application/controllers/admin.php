@@ -163,7 +163,7 @@ class Admin extends CI_Controller
                 $itemsPerPage = 5;
             }
             if ($this->input->get('page') != NULL) {
-                $indexPage = $this->input->get('items');
+                $indexPage = $this->input->get('page');
             } else {
                 $indexPage = 1;
             }
