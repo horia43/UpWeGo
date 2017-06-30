@@ -6,7 +6,6 @@
     <title>Add User</title>
     <link rel="shortcut icon" href="http://downloadicons.net/sites/default/files/plus-icon-76436.png">
 
-
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/css/mystyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>/web/bootstrap-3.3.7-dist/js/adduser.js"></script>
@@ -24,7 +23,7 @@
         <span class="glyphicon glyphicon-log-out"></span> Delogare
     </button>
 </div>
-<div style="border:3px solid #2E4209; border-radius:5px; margin:0 auto; width:700px; height:350px; margin-top:120px;">
+<div style="border:3px solid #2E4209; border-radius:5px; margin:0 auto; width:700px; height:550px; margin-top:120px;">
 
     <form method="post" enctype="multipart/form-data">
         <div style="height:0px;overflow:hidden">
@@ -42,22 +41,42 @@
         </div>
 
 
-        <div style="float:left; width:440px; margin-top:50px;">
-            <fieldset style="border:1px solid darkgreen; height:180px;">
-                <label for="lastname">Nume:</label><input type="text" name="lastname" size="20"><br>
-                <label for="firstname">Prenume:</label><input type="text" name="firstname" size="20"><br>
-                <label for="email">Adresa email:</label><input type="text" name="email" size="20" ><br>
-                <label for="username">Nume utilizator:</label><input type="text" name="username" size="20"><br>
-                    Departament:
+        <div style="float:left; width:440px; margin-top:50px; border:1px solid red; color:#ffffff; !important; ">
+            <div class="group2">
+                <label class="label">Nume</label>
+                <input id="lastname" type="text" class="input" name="lastname" placeholder="Numele utilizatorului">
+            </div>
+
+            <div class="group2">
+                <label class="label">Prenume</label>
+                <input id="firstname" type="text" class="input" name="firstname" placeholder="Prenumele utilizatorului">
+            </div>
+
+            <div class="group2">
+                <label class="label">Email</label>
+                <input id="email" type="text" class="input" name="email" placeholder="Email-ul utilizatorului">
+            </div>
+
+            <div class="group2">
+                <label class="label">Utilizator</label>
+                <input id="username" type="text" class="input" name="username" placeholder="Numele contului">
+            </div>
+
+            <div class="group2">
+                <label class="label">Departament</label>
                 <select name="departament" id="parent_selection">
-                        <option value="">-- Please Select --</option>
-                        <option value="SisTem">SisTem</option>
-                        <option value="PriorDana">PriorDana</option>
-                        <option value="iT Tech">iT Tech</option>
-                </select><br>
-                    Functie:
-                    <select name="functie" id="child_selection"></select>
-            </fieldset>
+                    <option value="">- - Selecteaza - -</option>
+                    <option value="SisTem">SisTem</option>
+                    <option value="PriorDana">PriorDana</option>
+                    <option value="iT Tech">iT Tech</option>
+                </select>
+            </div>
+
+            <div class="group2">
+                <label class="label">Functie</label>
+                <select name="functie" id="child_selection"></select>
+            </div>
+
         </div>
         <div style="width:100%; height:80px; clear:left; text-align:center;">
             <button type="submit"
