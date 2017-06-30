@@ -198,7 +198,7 @@ class Admin extends CI_Controller
             $this->load->view('ListUsers', $data);
         } else {
 
-
+            //echo '<script type="text/javascript">alert("hello!");</script>';
             if ($this->input->get('items') != NULL) {
                 $itemsPerPage = $this->input->get('items');
             } else {

@@ -125,39 +125,80 @@ $(document).ready(function () {
             var items = document.getElementById('rows_per_page').value;
             var max = document.getElementById('pageCount').textContent.substring(1);
 
+            if(parameterExists("field") == true && parameterExists("search")){
+                var field=findGetParameter("field");
+                var search=findGetParameter("search");
+                /*alert(page);
+                alert(items);
+                alert(max);
+                alert(field);
+                alert(search);*/
+                if (page.match(/^\d+$/) && parseInt(page)>0) {
+                    page = parseInt(page);
+                    max = parseInt(max);
 
-            //alert(page);
-            //alert(items);
-            //alert(max);
-            if (page.match(/^\d+$/) && parseInt(page)>0) {
-                page = parseInt(page);
-                max = parseInt(max);
+                    if (page > max) {
 
-                if (page > max) {
-
-                    if (parameterExists("page") == true) {
-                        var go = "pageindex?page=" + max + "&items=" + items;    // cum de nu trebuie sa scriu si admin/pagein.... ?
-                        window.location.href = go;
+                        if (parameterExists("page") == true) {
+                            var go = "pageindex?page=" + max + "&items=" + items + "&field=" + field + "&search=" + search;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                            window.location.href = go;
+                        }
+                        else {
+                            var go = "admin/pageindex?page=" + max + "&items=" + items + "&field=" + field + "&search=" + search ;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                            window.location.href = go;
+                        }
                     }
                     else {
-                        var go = "admin/pageindex?page=" + max + "&items=" + items;    // cum de nu trebuie sa scriu si admin/pagein.... ?
-                        window.location.href = go;
+                        if (parameterExists("page") == true) {
+                            var go = "pageindex?page=" + page + "&items=" + items + "&field=" + field + "&search=" + search;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                            window.location.href = go;
+                        }
+                        else {
+                            var go = "admin/pageindex?page=" + page + "&items=" + items + "&field=" + field + "&search=" + search;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                            window.location.href = go;
+                        }
+
                     }
                 }
                 else {
-                    if (parameterExists("page") == true) {
-                        var go = "pageindex?page=" + page + "&items=" + items;    // cum de nu trebuie sa scriu si admin/pagein.... ?
-                        window.location.href = go;
+                    alert('Cannot send to this page! Please use only positive natural numbers.');
+                }
+
+            }else {
+
+                //alert(page);
+                //alert(items);
+                //alert(max);
+                if (page.match(/^\d+$/) && parseInt(page) > 0) {
+                    page = parseInt(page);
+                    max = parseInt(max);
+
+                    if (page > max) {
+
+                        if (parameterExists("page") == true) {
+                            var go = "pageindex?page=" + max + "&items=" + items;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                            window.location.href = go;
+                        }
+                        else {
+                            var go = "admin/pageindex?page=" + max + "&items=" + items;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                            window.location.href = go;
+                        }
                     }
                     else {
-                        var go = "admin/pageindex?page=" + page + "&items=" + items;    // cum de nu trebuie sa scriu si admin/pagein.... ?
-                        window.location.href = go;
-                    }
+                        if (parameterExists("page") == true) {
+                            var go = "pageindex?page=" + page + "&items=" + items;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                            window.location.href = go;
+                        }
+                        else {
+                            var go = "admin/pageindex?page=" + page + "&items=" + items;    // cum de nu trebuie sa scriu si admin/pagein.... ?
+                            window.location.href = go;
+                        }
 
+                    }
                 }
-            }
-            else {
-                alert('Cannot send to this page! Please use only positive natural numbers.');
+                else {
+                    alert('Cannot send to this page! Please use only positive natural numbers.');
+                }
             }
 
         }
@@ -171,19 +212,41 @@ $(document).ready(function () {
 
             //var max = $("#pageCount").val();
             //var max = document.getElementById('pageCount').value;
-            if (items.match(/^\d+$/) && parseInt(items)>0) {
-                items = parseInt(items);
-                if (parameterExists("page") == false) {
-                    var go = "admin/pageindex?page=1" + "&items=" + items;
-                    window.location.href = go;
-                } else {
-                    //var go="pageindex?page="+findGetParameter("page")+"&items="+items;
-                    var go = "pageindex?page=1" + "&items=" + items;
-                    window.location.href = go;
+
+            if(parameterExists("field") == true && parameterExists("search")) {
+                var field = findGetParameter("field");
+                var search = findGetParameter("search");
+
+                if (items.match(/^\d+$/) && parseInt(items) > 0) {
+                    items = parseInt(items);
+                    if (parameterExists("page") == false) {
+                        var go = "admin/pageindex?page=1" + "&items=" + items + "&field=" + field + "&search=" + search;
+                        window.location.href = go;
+                    } else {
+                        //var go="pageindex?page="+findGetParameter("page")+"&items="+items;
+                        var go = "pageindex?page=1" + "&items=" + items + "&field=" + field + "&search=" + search;
+                        window.location.href = go;
+                    }
                 }
-            }
-            else {
-                alert('Please use only positive natural numbers.');
+                else {
+                    alert('Please use only positive natural numbers.');
+                }
+            }else{
+
+                if (items.match(/^\d+$/) && parseInt(items) > 0) {
+                    items = parseInt(items);
+                    if (parameterExists("page") == false) {
+                        var go = "admin/pageindex?page=1" + "&items=" + items;
+                        window.location.href = go;
+                    } else {
+                        //var go="pageindex?page="+findGetParameter("page")+"&items="+items;
+                        var go = "pageindex?page=1" + "&items=" + items;
+                        window.location.href = go;
+                    }
+                }
+                else {
+                    alert('Please use only positive natural numbers.');
+                }
             }
 
         }
