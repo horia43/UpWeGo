@@ -15,15 +15,15 @@
     </script>
 </head>
 <body>
-<div style="height:80px; min-width: 1270px;">
-    <button class="button button1 to_home" type="button">
+<div style="height:80px; width:100%; min-width:700px;">
+    <button class="button button1 to_home2" type="button">
         <span class="glyphicon glyphicon-home"></span> Acasa
     </button>
-    <button type="button" class="button button1 log_out">
+    <button type="button" class="button button1 log_out2">
         <span class="glyphicon glyphicon-log-out"></span> Delogare
     </button>
 </div>
-<div style="border:3px solid #2E4209; border-radius:5px; margin:0 auto; width:700px; height:550px; margin-top:120px;">
+<div style="border:2px solid #dcffff; border-radius:50px; margin:0 auto; width:700px; height:600px; margin-top:120px; background-color:#d4fff8;">
 
     <form method="post" enctype="multipart/form-data">
         <div style="height:0px;overflow:hidden">
@@ -41,7 +41,7 @@
         </div>
 
 
-        <div style="float:left; width:440px; margin-top:50px; border:1px solid red; color:#ffffff; !important; ">
+        <div style="float:left; width:440px; margin-top:50px; border:1px solid darkgray;border-radius:25px; padding-top:20px; margin-left:30px; padding-bottom:10px; color:#ffffff; !important; ">
             <div class="group2">
                 <label class="label">Nume</label>
                 <input id="lastname" type="text" class="input" name="lastname" placeholder="Numele utilizatorului">
@@ -79,8 +79,8 @@
 
         </div>
         <div style="width:100%; height:80px; clear:left; text-align:center;">
-            <button type="submit"
-                    style="width:100px; height:30px; background-color:#ECFFC7; border-color:white; outline:none; margin-top:50px;">
+            <button type="submit" class="button button1"
+                    style="outline:none; margin-top:50px;">
                 Adaugare utilizator
             </button>
         </div>

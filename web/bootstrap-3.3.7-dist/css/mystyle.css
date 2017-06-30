@@ -238,6 +238,21 @@ body {
     float:right;
     margin-right:275px; margin-bottom:10px; margin-top:50px;margin-left:0px;
 }
+.to_home2{
+    position:relative;
+    z-index: 100;
+    float:left;
+    margin-left:10%;
+    margin-bottom:10px;
+    margin-top:50px;
+    margin-right:60px;
+}
+.log_out2{
+    position:relative;
+    z-index: 100;
+    float:right;
+    margin-right:10%; margin-bottom:10px; margin-top:50px;margin-left:0px;
+}
 
 fieldset label {
     display: inline-block;
@@ -471,7 +486,7 @@ input::-webkit-inner-spin-button {
     color: #e2e2e2;
 }
 .group .label{
-    color: #000000;
+    color: #e2e2e2;
     font-size: 12px;
     width:100%;
     display:block;
@@ -483,7 +498,7 @@ input::-webkit-inner-spin-button {
     border: none;
     padding: 15px 20px;
     border-radius: 25px;
-    background: rgb(85, 131, 255);
+    background: rgba(255, 255, 255, .1);
     width: 100%;
     color: #fff;
     display: block;
@@ -508,9 +523,9 @@ input::-webkit-inner-spin-button {
 .group2 .input {
     border: none;
     padding: 10px 20px;
-    border-radius: 25px;
+    border-radius: 10px;
     background: rgba(65, 177, 125, 0.71);
-    width: 70%;
+    width: 85%;
     color: #fff;
     display: block;
     box-sizing: border-box;
@@ -520,9 +535,9 @@ input::-webkit-inner-spin-button {
 .group2 select{
     border: none;
     padding: 10px 20px;
-    border-radius: 25px;
+    border-radius: 10px;
     background: rgba(65, 177, 125, 0.71);
-    width: 70%;
+    width: 85%;
     color: #fff;
     display: block;
     box-sizing: border-box;
@@ -530,19 +545,19 @@ input::-webkit-inner-spin-button {
     cursor: auto;
 }
 .group2 *::-webkit-input-placeholder {
-    color: #ff0000;
+    color: #ffffff;
 }
-*:-moz-placeholder {
+.group2 *:-moz-placeholder {
     /* FF 4-18 */
-    color: #e2e2e2;
+    color: #ffffff;
 }
-*::-moz-placeholder {
+.group2 *::-moz-placeholder {
     /* FF 19+ */
-    color: #e2e2e2;
+    color: #ffffff;
 }
-*:-ms-input-placeholder {
+.group2 *:-ms-input-placeholder {
     /* IE 10+ */
-    color: #e2e2e2;
+    color: #ffffff;
 }
 
 /* FROM SAMPLE */
