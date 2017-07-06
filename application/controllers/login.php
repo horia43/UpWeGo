@@ -48,7 +48,7 @@ class Login extends CI_Controller
             if ($select->num_rows() == 0) {
                 throw new Exception("Datele introduse nu sunt valide sau sesiunea a expirat!");
             } elseif ($select->num_rows() > 1) {
-                throw new Exception("Eroare in baza de date. Va rugam adresati-va personalului suport.");
+                throw new Exception("Eroare in baza de date. Vă rugăm adresati-vă personalului suport.");
             } elseif ($select->num_rows() == 1) {
                 $pass = $select->result_array()[0]['password'];
 
@@ -87,7 +87,7 @@ class Login extends CI_Controller
                     if ($query->num_rows() == 0) {
                         throw new Exception("Datele introduse nu sunt valide sau sesiunea a expirat!");
                     } elseif ($query->num_rows() > 1) {
-                        throw new Exception("Eroare in baza de date. Va rugam adresati-va personalului suport.");
+                        throw new Exception("Eroare in baza de date. Vă rugăm adresati-vă personalului suport.");
                     } elseif ($query->num_rows() == 1) {
 
                         if ($query->result_array()[0]['active'] == 0) {
@@ -127,10 +127,10 @@ class Login extends CI_Controller
                             $this->session->set_userdata('logged_in', $sessiondata);
                         }
                     } else {
-                        throw new Exception("There is a problem our developer didn't think about. Please contact our support.");
+                        throw new Exception("Există o problemă. Va rugăm să contactați personalul suport.");
                     }
                 } else {
-                    throw new Exception("Parola nu e buna");
+                    throw new Exception("Parola introdusă nu e corectă");
                 }
             }
             /*
