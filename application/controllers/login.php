@@ -46,9 +46,9 @@ class Login extends CI_Controller
             $this->db->where('username=', $username);
             $select = $this->db->get("user");
             if ($select->num_rows() == 0) {
-                throw new Exception("Invalid input data. Session expired. Re-enter login data.xxxx");
+                throw new Exception("Datele introduse nu sunt valide sau sesiunea a expirat!");
             } elseif ($select->num_rows() > 1) {
-                throw new Exception("Error in Database. Please contact our support.");
+                throw new Exception("Eroare in baza de date. Va rugam adresati-va personalului suport.");
             } elseif ($select->num_rows() == 1) {
                 $pass = $select->result_array()[0]['password'];
 
@@ -85,13 +85,13 @@ class Login extends CI_Controller
                     }*/
 
                     if ($query->num_rows() == 0) {
-                        throw new Exception("Invalid input data. Session expired. Re-enter login data.");
+                        throw new Exception("Datele introduse nu sunt valide sau sesiunea a expirat!");
                     } elseif ($query->num_rows() > 1) {
-                        throw new Exception("Error in Database. Please contact our support.");
+                        throw new Exception("Eroare in baza de date. Va rugam adresati-va personalului suport.");
                     } elseif ($query->num_rows() == 1) {
 
                         if ($query->result_array()[0]['active'] == 0) {
-                            throw new Exception("Please activate your account first using the link sent in the email.");
+                            throw new Exception("Va rugăm să vă activați contul accesând link-ul trimis pe email.");
                         }
                         $isAdmin = $query->result_array()[0]['admin']; /// Select from first result, the 'admin' property
                         $email = $query->result_array()[0]['email'];
