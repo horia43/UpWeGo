@@ -21,6 +21,9 @@ $(document).ready(function () {
     $(".log_out2").click(function () {
         logout();
     });
+	$("#reset").click(function () {
+        location.reload(true);
+    });
     function logout() {
         $.ajax({
             url: base_url + "login/logout",
