@@ -130,7 +130,7 @@ class Login extends CI_Controller
                         throw new Exception("Există o problemă. Va rugăm să contactați personalul suport.");
                     }
                 } else {
-                    throw new Exception("Parola introdusă nu e corectă");
+                    throw new Exception("Datele introduse nu sunt valide sau sesiunea a expirat!");
                 }
             }
             /*
