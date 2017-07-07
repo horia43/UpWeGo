@@ -7,10 +7,13 @@ class User extends CI_Controller
     function __construct()
     {
         parent::__construct();
+
     }
 
     function index()
     {
+
+
 
         if ($this->session->userdata('logged_in') && !$this->session->userdata('logged_in')['isAdmin']) //// dar in teorie nu am nevoie decat de username ca sa il afisez pe undeva :) Majoritatea lor sunt doar pentru testare
         {
@@ -27,6 +30,10 @@ class User extends CI_Controller
             //If no session, redirect to login page
             redirect('welcome', 'refresh');
         }
+
+
+
+
 
         $this->load->database();
 
@@ -60,6 +67,12 @@ class User extends CI_Controller
 
         $jsonArray = json_encode($jsonArray);
         $data['json'] =$jsonArray;
+
+        $this->db->select('username,firstname,lastname,email,picture,departament,functie');
+        $this->db->where('id=', $id_employee);
+        $select = $this->db->get('user');
+        $users = $select->result_array();
+        $data['myUser'] = $users;
 
         /*header('Content-type: application/json');
         echo '<pre>';

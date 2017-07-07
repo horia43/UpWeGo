@@ -435,6 +435,7 @@ input::-webkit-inner-spin-button {
 #chartdiv {
     width: 85%;
     height: 400px;
+    margin:0 auto;
 }
 
 .styled-select {
@@ -443,6 +444,7 @@ input::-webkit-inner-spin-button {
     overflow: hidden;
     width: 240px;
     margin: 20px;
+    margin-left:0px;
 }
 
 .styled-select select {
@@ -612,7 +614,9 @@ input::-webkit-inner-spin-button {
     /* IE 10+ */
     color: #ffffff;
 }
-
+#container{
+    margin-left:130px;
+}
 /* FROM SAMPLE */
 /*
 body{

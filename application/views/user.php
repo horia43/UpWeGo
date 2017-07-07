@@ -30,22 +30,43 @@
 </head>
 <body>
 <div id="container">
-    <div style="width=100%; height:180px; background-color:#404856; color:white; font-weight: bold; overflow: hidden;">
-        <div id="h1">Ziua de astazi</div>
-        <div id="h2">ID ul utilizatorului</div>
+    <div>
+        <div style="float:left; width:150px; height:150px; margin-left:110px; margin-top:50px; margin-right:5px; border-radius:50%; background-color:white;">
+            <img id="changePhoto" onclick="chooseFile();"
+                 style="object-fit:cover; width:150px; height:150px; border-radius:50%; border: 1px;"
+                 src="<?php echo base_url()?>upload/<?php echo $myUser[0]['picture']; ?>"  alt="Image not found"
+                 onerror="this.onerror=null;this.src='<?php echo base_url()?>/upload/noprofilepic.jpg';"/>
+        </div>
+        <div style="float:left; width:440px; margin-top:50px; border:1px solid darkgray;border-radius:25px; padding-top:20px; padding-left:25px; margin-left:30px; padding-bottom:10px; color:#101010;">
+            <table id="table2">
+                <tr>
+                    <td>Nume:</td>
+                    <td> <?php echo $myUser[0]['lastname']?></td>
+                </tr>
+                <tr>
+                    <td>Prenume:</td>
+                    <td> <?php echo $myUser[0]['firstname']?></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td> <?php echo $myUser[0]['email']?></td>
+                </tr>
+                <tr>
+                    <td>Utilizator:</td>
+                    <td> <?php echo $myUser[0]['username']?></td>
+                </tr>
+                <tr>
+                    <td>Departament:</td>
+                    <td> <?php echo $myUser[0]['departament']?></td>
+                </tr>
+                <tr>
+                    <td>Functie:</td>
+                    <td> <?php echo $myUser[0]['functie']?></td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <div class="common">
-        <p>Detalii 1</p>
-        <p>Nume Prenume</p>
-        <p>Zi de nastere</p>
-        <p>Email</p>
-    </div>
-
-    <div class="common">
-
-
-
-
+    <div class="common" style="clear:both; top:20px; left:100px; position:relative;">
         <form id="form2" action="<?php echo site_url('user/changeChart') ?>">
             <div class="styled-select yellow rounded ">
                 <select id="yearPicker" name="yearPicker" class="form-control">
@@ -57,14 +78,14 @@
             </div>
 
         </form>
-        <button type="button" id="exportCSV" name="exportCSV" class="btn btn-warning" style="outline:0;">Exportare fisier CSV</button>
+        <button type="button" id="exportCSV" name="exportCSV" class="btn btn-warning" style="outline:0; margin-bottom:20px;">Exportare fisier CSV</button>
 
         <a id="downloadFlyer" href="<?php base_url();?>user/downloadPDF" class="btn btn-danger" target="_blank" style="visibility: hidden;" download> <!--download="awsomeeeee"-->Download PDF</a>
         <!--<input type="submit" id="downloadPDF" name="downloadPDF" class="btn btn-danger" style="outline:0;" value="Download PDF"/>-->
-
-        <div id="chartdiv"></div>
-
     </div>
+</div>
+
+<div id="chartdiv">
 
 </div>
 
