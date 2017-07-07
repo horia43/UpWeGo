@@ -16,6 +16,11 @@
     animation: BackgroundGradient 25s ease infinite;
     overflow: hidden;
 }
+#verifyBody {
+    background: linear-gradient(150deg, #155181, #1f677f, #348c7d, #41a17c,#0fecdd);
+    background-size: 600% 600%;
+    animation: BackgroundGradient 25s ease infinite;
+}
 @keyframes BackgroundGradient {
     0% {background-position: 0% 50% ;}
     50% {background-position: 100% 50% ;}

@@ -17,7 +17,7 @@
     </script>
 
 </head>
-<body id="loginBody">
+<body id="verifyBody">
 <div id="letter" style="margin-bottom:0px; margin-left:10px; min-width:430px; position: relative; " class="animated fadeInDown">
     UpWeGo
 </div>
