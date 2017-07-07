@@ -226,13 +226,13 @@ class Login extends CI_Controller
                     $select = $this->db->get("user");
                     if ($select->num_rows() == 1) {
                         if(!password_verify($password, $hash)){
-                            throw new Exception("First field does not meet the requirements.");
+                            throw new Exception("Primul câmp nu corespunde cerințelor.");
                         }
                         if($new_pass != $new_pass2){
-                            throw new Exception("Passwords don't match.");
+                            throw new Exception("Parolele nu se potrivesc.");
                         }
                         if(strlen($new_pass)<6 || strlen($new_pass2)<6){
-                            throw new Exception("Please fill in a password that has at least 6 characters.");
+                            throw new Exception("Vă rugăm să introduceți o parola ce are minim 6 caractere.");
                         }
                         $new_pass=password_hash($new_pass, PASSWORD_BCRYPT);
                         $data = array(
@@ -248,13 +248,13 @@ class Login extends CI_Controller
                             "msg" => "Activated"// preiau mesajul "umpleti campul"
                         );
                     } else {
-                        throw new Exception("The url is either invalid or you already have activated your account.");
+                        throw new Exception("URL-ul accesat este invalid sau contul a fost deja validat.");
                         /*echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #ffd3db;color: #c40022;border: 3px solid;padding: 20px;margin-bottom: 20px;">
                         The url is either invalid or you already have activated your account.</div>';*/
 
                     }
                 }else {
-                    throw new Exception("Invalid approach, please use the link that has been send to your email.");
+                    throw new Exception("Abordare invalidă, vă rugăm să folosiți link-ul trimis în e-mail.");
                     /* echo '<div class="statusmsg" style="margin:50px auto; width:450px;text-align:center;background: #ffd3db; color: #c40022;border: 3px solid;padding: 20px;margin-bottom: 20px;">
                          Invalid approach, please use the link that has been send to your email.</div>';*/
                 }

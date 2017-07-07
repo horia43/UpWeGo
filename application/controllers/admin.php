@@ -254,13 +254,13 @@ class Admin extends CI_Controller
 
 
             if ($query->num_rows() > 0) {
-                $message = "Username already exists. Please try a different username.";
+                $message = "Acest nume de utilizator există deja. Vă rugăm să alegeți alt nume de utilizator.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } elseif ($query2->num_rows() > 0) {
-                $message = "This email is already being used. Please try a different email.";
+                $message = "Această adresă de email există deja. Vă rugăm să alegeți altă adresă de email.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } elseif (!(filter_var($this->input->post('email'), FILTER_VALIDATE_EMAIL))) {
-                $message = "This email is not valid.";
+                $message = "Această adresă de email nu este validă";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } else {
 
@@ -470,17 +470,15 @@ class Admin extends CI_Controller
             /*var_dump($this->input->post('picture'));
             die;*/
             if ($query->num_rows() > 0) {
-                $message = "Username already exists. Please try a different username.";
+                $message = "Acest nume de utilizator există deja. Vă rugăm să alegeți alt nume de utilizator.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } elseif ($query2->num_rows() > 0) {
-                $message = "This email is already being used. Please try a different email.";
+                $message = "Această adresă de email există deja. Vă rugăm să alegeți altă adresă de email.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } elseif (!(filter_var($this->input->post('email'), FILTER_VALIDATE_EMAIL))) {
-                $message = "This email is not valid.";
+                $message = "Această adresă de email nu este validă.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
             } else {
-
-
                 if ($this->input->post('fileInputName') == '') {
 
                     $data = array(
