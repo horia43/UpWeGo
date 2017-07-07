@@ -23,7 +23,7 @@ $(document).ready(function () {
         $.ajax({
             url: base_url + "login/verify",
 
-            data: $('#form3').serializeArray(),    // data=  ce trimit eu la script ( php )
+            data: $('#form1').serializeArray(),    // data=  ce trimit eu la script ( php )
             dataType: 'json',
             success: function (response) {    //success e un event care se executa cand request-ul catre php s-a terminat cu succes
                 //console.log(response);     // rezultatul a ceea ce face output scriptul de php
