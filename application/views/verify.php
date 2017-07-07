@@ -18,10 +18,13 @@
 
 </head>
 <body id="verifyBody">
+<div id="active_msg">
+
+</div>
 <div id="letter" style="margin-bottom:0px; margin-left:10px; min-width:430px; position: relative; " class="animated fadeInDown">
     UpWeGo
 </div>
-<div id="myForm" style="margin-top:80px;">
+<div id="myForm" style="margin-top:80px; position:relative;">
     <form id="form1" style="margin-top:50px;">
 
         <div class="group">
@@ -47,9 +50,7 @@
         <div id="activate"><button id="btn_activate" class="button button1" type="button">Activeaza contul</button></div>
     </form>
 </div>
-<div id="active_msg">
 
-</div>
 
 </body>
 </html>

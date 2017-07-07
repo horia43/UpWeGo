@@ -20,6 +20,7 @@
     background: linear-gradient(150deg, #155181, #1f677f, #348c7d, #41a17c,#0fecdd);
     background-size: 600% 600%;
     animation: BackgroundGradient 25s ease infinite;
+    overflow-x:hidden;
 }
 @keyframes BackgroundGradient {
     0% {background-position: 0% 50% ;}
@@ -80,6 +81,7 @@ body {
     background-color: #9bf3d4;
     padding-right: 0 !important;
 }
+
 .statusmsg_yes {
     margin: 50px auto;
     width: 450px;
@@ -87,6 +89,7 @@ body {
     background: #cdffc0;
     color: #0dc435;
     border: 3px solid;
+    border-radius:10px;
     padding: 20px;
     margin-bottom: 20px;
 }
@@ -98,8 +101,9 @@ body {
     background: #ffd3db;
     color: #c40022;
     border: 3px solid;
+    border-radius:10px;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 .listaAngajati{
     text-align: center;
