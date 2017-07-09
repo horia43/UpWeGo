@@ -61,6 +61,9 @@ $(document).ready(function () {
     $('#exportCSV').click(function () {
         download_CSV();
     });
+    $(".log_out2").click(function () {
+        logout();
+    });
     function changeChart() {
         //var message=$('.error'); // ca sa nu scriu tot timpul $('.error')
 
@@ -334,7 +337,21 @@ function b64EncodeUnicode(str) {
             return String.fromCharCode('0x' + p1);
         }));
 }
-
+function logout() {
+    $.ajax({
+        url: base_url + "login/logout",
+        dataType: 'json',
+        success: function (response) {
+            if(response.success){
+                location.href = "/UpWeGo";
+            }else{
+                alert("Ceva nu a mers bine, inapoi la login");
+                location.href = "/UpWeGo";
+            }
+        },
+        type: 'POST'
+    });
+}
 /*
 
     var bodyHtml = document.getElementsByTagName('body')[0].innerHTML;

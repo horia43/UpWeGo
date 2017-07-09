@@ -29,6 +29,11 @@
     </script>
 </head>
 <body>
+<div style="height:80px; width:85%; min-width:700px; position:relative; top:50px; margin:0 auto;">
+    <button type="button" class="button button1 log_out2" style="float: right; margin-right:20px;">
+        <span class="glyphicon glyphicon-log-out"></span> Delogare
+    </button>
+</div>
 <div id="container">
     <div>
         <div style="float:left; width:150px; height:150px; margin-left:110px; margin-top:50px; margin-right:5px; border-radius:50%; background-color:white;">
