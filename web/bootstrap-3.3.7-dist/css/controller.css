@@ -1,0 +1,44 @@
+body { background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden; }
+.controller.xbox {
+    background: url("https://raw.githubusercontent.com/horia43/UpWeGo/refs/heads/master/upload/base%20Updated.png");
+    height: 630px;
+    width: 750px;
+    /*    margin-left: -375px;
+        margin-top: -285px;*/
+}
+
+.xbox .trigger {
+    width: 88px;
+    height: 121px;
+    background: url("https://raw.githubusercontent.com/horia43/UpWeGo/refs/heads/master/upload/trigger.png");
+    opacity: 0;
+}
+
+.xbox .bumper {
+    width: 170px;
+    height: 61px;
+    background: url("https://raw.githubusercontent.com/horia43/UpWeGo/refs/heads/master/upload/BumperV2.0.png");
+    opacity: 0;
+}
+
+.xbox .button {
+    position: absolute;
+    background: url("https://raw.githubusercontent.com/horia43/UpWeGo/refs/heads/master/upload/abxy.png");
+    width: 48px;
+    height: 48px;
+}
+
+
+.xbox .stick {
+    position: absolute;
+    background: url("https://raw.githubusercontent.com/horia43/UpWeGo/refs/heads/master/upload/stick.png");
+    background-position: -85px 0;
+    height: 83px;
+    width: 83px;
+}
+
+.xbox .face {
+    background: url("https://raw.githubusercontent.com/horia43/UpWeGo/refs/heads/master/upload/dpad.png");
+    position: absolute;
+    opacity: 0;
+}
