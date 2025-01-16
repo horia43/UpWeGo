@@ -1,23 +1,32 @@
 body { background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden; }
 .controller.xbox {
-    background: url("https://raw.githubusercontent.com/horia43/UpWeGo/refs/heads/master/upload/base%20Updated.png");
-    height: 630px;
-    width: 750px;
-    /*    margin-left: -375px;
+    background: url("https://raw.githubusercontent.com/horia43/UpWeGo/refs/heads/master/upload/baseUpdated3.0.png");
+    background-size:cover;
+        
+    /*height: 500px;
+    width: 500px;*/
+	/*    margin-left: -375px;
         margin-top: -285px;*/
 }
 
 .xbox .trigger {
-    width: 88px;
-    height: 121px;
+    width: 90px;
+    height: 125px;
     background: url("https://raw.githubusercontent.com/horia43/UpWeGo/refs/heads/master/upload/trigger.png");
+    background-size:90px 125px;
+    background-repeat:no repeat;
+    margin-right:-5px;
     opacity: 0;
 }
 
 .xbox .bumper {
-    width: 170px;
-    height: 61px;
+    width: 160px;
+    height: 81px;
     background: url("https://raw.githubusercontent.com/horia43/UpWeGo/refs/heads/master/upload/BumperV2.0.png");
+    background-size:160px 81px;
+    background-repeat:no repeat;
+    
+    margin-left:5px;
     opacity: 0;
 }
 
@@ -27,8 +36,59 @@ body { background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden; }
     width: 48px;
     height: 48px;
 }
-
-
+.xbox .button.b.pressed {
+	background-position-y: -48px;
+	opacity:0.8;
+}
+.xbox .button.a.pressed {
+    
+    margin-top: -7px;
+    margin-left:-3px;
+}
+.xbox .button.y.pressed {
+    margin-top: -3px;
+    margin-left:-3px;
+}
+.xbox .button.x.pressed {
+    margin-top: -7px;
+    margin-left:0px;
+}
+.xbox .button.b.pressed {
+    margin-top: -3px;
+    margin-right:5px;
+}
+.xbox .quadrant {
+    top: 243px;
+    left: 356px;
+}
+.xbox .stick.left {
+    top: -11px;
+    left: 10px;
+}
+.xbox .stick.right {
+    top: 97px;
+    left: 289px;
+}
+.xbox .abxy {
+	left: 490px;
+}
+.xbox .dpad {
+    top: 331px;
+    left: 230px;
+}
+.xbox .arrows {
+    top: 251px;
+    left: 310px;
+}
+.xbox .back.pressed {
+    margin-left: 2px;
+}
+.xbox .start.pressed {
+    margin-right: 1px;
+}
+.xbox .face.pressed {
+    opacity: 0.8;
+}
 .xbox .stick {
     position: absolute;
     background: url("https://raw.githubusercontent.com/horia43/UpWeGo/refs/heads/master/upload/stick.png");
@@ -42,3 +102,4 @@ body { background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden; }
     position: absolute;
     opacity: 0;
 }
+
